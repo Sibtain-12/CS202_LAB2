@@ -1,0 +1,2224 @@
+Hash,Author,Date,Message,Hashes_of_parents,Is_merge_commit,List_of_modified_files
+17e620a11c7b0aedfc35e5b1347ddeaa1a7940b3,Aymeric Augustin,2013-04-01T14:45:38+02:00,Fix tests after making a function private.,['36b9ff23fdbc0300ee176c9f7549fdc75bc714ae'],False,['test_http.py']
+985f82defd1fc702cf90f57d639cc36d02d37049,Aymeric Augustin,2013-04-01T19:18:07+02:00,Fix description on PyPI.,['17e620a11c7b0aedfc35e5b1347ddeaa1a7940b3'],False,['setup.py']
+b548a4fcefdf1aa922ae86d10993c8214b6ec939,Aymeric Augustin,2013-04-02T14:21:53+02:00,Fix shortest representation of message length.,['726227c7eb99437410a8b3f930e7fad28536bea2'],False,['framing.py']
+a317e1999e84ba409098a49379c6f3caa64aa530,Aymeric Augustin,2013-04-03T16:27:47+02:00,"Track states and close connections properly.
+
+Decode fragmented text messages incrementally.",['e1fdc9c424f8f4366da26d984162bb4c104a2fe4'],False,"['index.rst', 'client.py', 'framing.py', 'server.py']"
+8c72e89597496643eec1c4f27f68364a22ed2e60,Aymeric Augustin,2013-04-05T13:29:16+02:00,Implement codes and reasons for the Close frames.,['a317e1999e84ba409098a49379c6f3caa64aa530'],False,"['index.rst', 'framing.py']"
+d4de37fb7a17690813fa9c36130c2c89110fe5a9,Aymeric Augustin,2013-04-05T17:32:58+02:00,"Fix my English.
+
+Thanks Kevin P. Fleming.",['7459ae9b1fee11a8faa84c2d729ef2bc2f7fdf84'],False,"['README.rst', 'index.rst']"
+6175b99df13bbec0561c8dd9f8f544c99245de2a,Preston Holmes,2013-04-05T09:33:19-07:00,fix external version in setup.py,['d4de37fb7a17690813fa9c36130c2c89110fe5a9'],False,['setup.py']
+aa11ff74d99637d85fc703b8458f202b2ad0ade2,Aymeric Augustin,2013-04-05T09:44:48-07:00,"Merge pull request #1 from ptone/fix-version
+
+fix external version in setup.py","['d4de37fb7a17690813fa9c36130c2c89110fe5a9', '6175b99df13bbec0561c8dd9f8f544c99245de2a']",True,[]
+7f256b59e994e869852e08a766016b04842406cd,Aymeric Augustin,2013-04-30T17:19:17+02:00,The result of close() doesn't matter in general.,['b0970a90e6b94948947b1cfdb81adc5b19713fd9'],False,['framing.py']
+443f912d54ba6726d9387e92db2bdd49716767f9,Aymeric Augustin,2013-05-27T00:15:11+02:00,"Redesign protocol handling around a task.
+
+It used to be driven by coroutines reading frames. That made it
+impossible to call close() while recv() was running without ending up
+with two coroutines attempting to read a frame in parallel.
+
+The new design delegates the handling of incoming frames to a task.
+Received messages are added to a queue. This doesn't change the external
+API, except that it removes the need for wait_close().",['a2ab56c2a33c433f03cbbccd2a0091efe9a227ee'],False,"['test_client.py', 'test_server.py', 'client.py', 'client.py', 'protocol.py', 'server.py', 'test_client_server.py', 'test_protocol.py']"
+d029016c66904f311d6b198711e85f73f7a7ca33,Aymeric Augustin,2013-08-01T11:42:21+02:00,"Close connection cleanly after cancelling recv().
+
+Tulip's DataBuffer might not be suitable for our needs.",['443f912d54ba6726d9387e92db2bdd49716767f9'],False,"['protocol.py', 'test_protocol.py']"
+6d8d456234651c11aa4ba699092e354df51276aa,Aymeric Augustin,2013-08-01T15:01:08+02:00,"Avoid duplicate logging.
+
+If a task ends with an exception, and nothing recovers it, Tulip already
+logs the exception.",['a8ec99f1df125966c6caf78081c2d6cfe3b9b453'],False,"['protocol.py', 'test_protocol.py']"
+8b7d614952d9fe841f6481068b6188c55001c993,Aymeric Augustin,2013-10-13T10:50:58+02:00,Improve error handling in client and server.,['1cc8e69ecc804db8345a7651b81df2cd5c1f7e5d'],False,"['client.py', 'server.py', 'test_client_server.py']"
+00513fd4e58eb8bd211f45b3c6d54ccbc831d26a,Aymeric Augustin,2013-10-22T23:40:40+02:00,Copy-paste failure.,['a814fd62462f1ab9c9d3c2fefed370b3f8308bbe'],False,['LICENSE']
+54cf805c5b3b5c15a94c7f1cfc9923cd1dccfd94,Aymeric Augustin,2013-10-24T08:39:08+02:00,"Symlink to README.rst was removed.
+
+Fix #4.",['38fe9d1e0c4038128838971028e5a722dc5c85cb'],False,['setup.py']
+21a14088dd198e93f139f0d374321a243cd67553,Stein Magnus Jodal,2013-11-14T21:52:36+01:00,Fix reference to 'websockets.protocols' in plural,['1aa31d0545c877aea22d3b4452a4b92dbd631306'],False,['protocol.py']
+38337df9d7b516b493c40860440593bf4066268a,Aymeric Augustin,2013-11-14T12:58:39-08:00,"Merge pull request #6 from jodal/patch-1
+
+Fix reference to 'websockets.protocols' in plural","['1aa31d0545c877aea22d3b4452a4b92dbd631306', '21a14088dd198e93f139f0d374321a243cd67553']",True,[]
+53f61fa9c4c3ba10789a1de86aa7a69b8f623414,Aymeric Augustin,2013-11-22T18:48:35+01:00,"Don't rely on utf-8 being the default system encoding.
+
+Fix #7.",['38337df9d7b516b493c40860440593bf4066268a'],False,['setup.py']
+a13be1f1f2f1af137d1ab256997b1a75079cd59c,Aymeric Augustin,2013-11-29T17:07:08+01:00,"Support ping cancellation.
+
+Fix #8.",['53f61fa9c4c3ba10789a1de86aa7a69b8f623414'],False,"['protocol.py', 'test_protocol.py']"
+2bf6a14464a97ffeabad8890b11bc403bd59c91c,Aymeric Augustin,2014-02-06T23:30:46+01:00,"Take advantage of StreamReaderProtocol.
+
+This is a step towards supporting flow control.
+
+Refactor connection termination to better follow the specification:
+close the TCP connection properly with shutdown() then close().",['181c8a392c795da19de4f9a8462320ff990a316a'],False,"['client.py', 'protocol.py', 'server.py', 'test_protocol.py']"
+b198151cc6a8e35d34fcc751d02534973855f672,Aymeric Augustin,2014-02-08T20:05:55+01:00,"Add flow control. Fix #10.
+
+Invoke drain() after each write.",['2bf6a14464a97ffeabad8890b11bc403bd59c91c'],False,"['test_client.py', 'test_server.py', 'index.rst', 'client.py', 'server.py', 'protocol.py', 'test_client_server.py', 'test_protocol.py']"
+c9587401f3ba5a890d3d75078c367bbc0b6ac4a3,Aymeric Augustin,2014-02-16T19:36:02+01:00,Fix ResourceWarnings under Python 3.4.,['024c4a5c98e5f17805bae271c76eeb63252c1ae8'],False,"['client.py', 'server.py', 'test_client_server.py']"
+13bf3354736f219e739dc78e5f5c0cc2ab3058c7,Aymeric Augustin,2014-04-06T09:58:49+02:00,Fix a test that wasn't running.,['bfac179d417b44e3678fa4a6fb1ab67cbb3cbe1a'],False,['test_client_server.py']
+ad5cb55dfe97d1b107422ca8bd1e7a725ac3b331,Aymeric Augustin,2014-04-15T23:50:56+02:00,"Incorrect assertion when closing SSL connections.
+
+Fix #22.",['d744d63ceb45e7de8b1e5a2e39ed9fd39d26fbe6'],False,"['client.py', 'protocol.py', 'server.py']"
+18a809ca6ac546e4a3c0e5ca3540f80bdf42afb9,Aymeric Augustin,2014-04-16T00:11:16+02:00,Fix some resource warnings in tests.,['ad5cb55dfe97d1b107422ca8bd1e7a725ac3b331'],False,['test_client_server.py']
+8d0ebc241c3d318b698e45c64523ee10eba61b68,Aymeric Augustin,2014-04-26T13:59:24+02:00,"Make error handling more robust in the server.
+
+Fix #23.",['18a809ca6ac546e4a3c0e5ca3540f80bdf42afb9'],False,['server.py']
+415b3d560cf3691d465189e07339157e2bff598b,Aymeric Augustin,2014-05-01T22:41:03+02:00,"No more wheels, fix #25.",['481986fd209c5d0667195390b5f1f56f2ee899a7'],False,['setup.cfg']
+90e0494f53c8670a0bd233b1811ea3b596843a5c,Aymeric Augustin,2014-05-17T21:43:57+02:00,"Close connection properly when the socket dies.
+
+This avoids flooding logs with messages output by asyncio:
+""socket.send() raised exception.""
+
+Fix #23 (hopefully).",['415b3d560cf3691d465189e07339157e2bff598b'],False,"['protocol.py', 'test_client_server.py']"
+567db4eca52008cd4401124e344ee916f8229d0e,Aymeric Augustin,2014-06-30T21:39:15+02:00,Avoid showing stack traces during test runs.,['48b9c0226dd4d770b92459b68d0ef073008bacf2'],False,['test_client_server.py']
+c19008269801741af1f32ebf0f7fe1fe0658ead8,Aymeric Augustin,2014-06-30T21:43:21+02:00,Run the event loop a bit to avoid race conditions.,['567db4eca52008cd4401124e344ee916f8229d0e'],False,['test_client_server.py']
+fdae6c828549a148345bc32aa6de8e10136ca035,Rui Abreu Ferreira,2014-06-18T09:05:33+01:00,"Add support for limiting message length.
+
+Initial patch by Rui Abreu Ferreira, final patch by Aymeric Augustin.
+
+Fix #28, #29.",['c19008269801741af1f32ebf0f7fe1fe0658ead8'],False,"['LICENSE', 'index.rst', 'exceptions.py', 'framing.py', 'protocol.py', 'test_framing.py', 'test_protocol.py']"
+1f8bd3ade280a3d7e1254cee7a7379a96a247154,housleyjk,2014-09-29T13:11:42-06:00,Prevent incomplete task leak in recv.,['7e4ef005696a956def34fa735422ca4e1ef17197'],False,['protocol.py']
+43d334f4e19e2a9755c44448b47fa8ff07e9b0fb,Aymeric Augustin,2014-11-03T22:07:08+01:00,"Improve handling of concurrent close from both sides.
+
+This fixes random failures in the test suite.",['1520cc1f2d1310529fdb5164ddfced1e4ac1c080'],False,"['protocol.py', 'test_client_server.py', 'test_protocol.py']"
+634c329958f5707a687f96d51106a9f17477d355,Aymeric Augustin,2014-11-03T23:00:56+01:00,"Second attempt at producing wheels.
+
+Fix #35. Refs #25.",['43d334f4e19e2a9755c44448b47fa8ff07e9b0fb'],False,"['setup.cfg', 'setup.py']"
+5b204ddec43cea65e53d184b7656fc4cae1d4071,Aymeric Augustin,2015-01-31T16:35:57+01:00,Fix compliance tests.,['67fa773d72b6b3888e86ae65f3d4f89ceb705198'],False,"['README.rst', 'test_client.py', 'test_server.py']"
+d62a5f267116ccc575f645f5954d027dd3c41cb0,Aymeric Augustin,2015-01-31T16:41:42+01:00,"Support non-default event loop.
+
+Fix #42.",['5b204ddec43cea65e53d184b7656fc4cae1d4071'],False,"['index.rst', 'client.py', 'protocol.py', 'server.py']"
+0f1697fcfde2656b8a2b6a2f100dd99b7ec70bb1,Aymeric Augustin,2015-01-31T19:00:24+01:00,"Add support for subprotocols.
+
+Fix #38.",['d62a5f267116ccc575f645f5954d027dd3c41cb0'],False,"['index.rst', 'client.py', 'protocol.py', 'server.py', 'test_client_server.py']"
+e65f032116a1ee95f8e80b622362ee813f5158a9,Rémy HUBSCHER,2015-04-03T17:15:14+02:00,Fix #50 — Make sure protocol.recv() can be Cancelled without loosing messages.,['7d8191699a6d647c1b45e3e11681c5987437e5b5'],False,"['protocol.py', 'test_protocol.py']"
+9469965a6552c038232ae987e473199451295730,Aymeric Augustin,2015-07-14T21:34:50+02:00,"The closing handshake can be initiated by the client.
+
+I had misunderstood the RFC. It's the TCP closing handshake that should
+be initiated by the server.
+
+Fix #53.",['7d8191699a6d647c1b45e3e11681c5987437e5b5'],False,"['test_client.py', 'client.py', 'protocol.py']"
+72bfb7af489001a50c78f9e2f79ec9748d30914f,Aymeric Augustin,2015-07-14T21:36:37+02:00,Minor fixes.,['9469965a6552c038232ae987e473199451295730'],False,['README.rst']
+0a815f860550ac89eefd27d626d5b7d02543c48d,Aymeric Augustin,2015-07-14T22:02:39+02:00,"Document how to multiplex reads and writes.
+
+Fix #48.",['e8a12dfc54ed23904a1926ef196523d1b07837c7'],False,['index.rst']
+6ce37977296199aa888881b0bfd75ed0f67a2502,Aymeric Augustin,2015-07-14T22:39:38+02:00,"Allow customizing request or response HTTP headers.
+
+Thanks @knutae for providing an initial patch.
+
+Fix #47.",['0a815f860550ac89eefd27d626d5b7d02543c48d'],False,"['index.rst', 'client.py', 'server.py', 'test_client_server.py']"
+a621764215c5abdd78808df7ec9bd1b3c265d39c,Aymeric Augustin,2015-07-14T23:02:19+02:00,Documented the fix for #50.,['8eca627048fd2b03f25d35035d651394f2ec7dff'],False,['index.rst']
+23878bc5b0ad85d6a2cf6e7f9c80876b99916f23,Aymeric Augustin,2015-07-18T15:37:43+02:00,"Import collections.abc for Python 3.4.
+
+Thanks @SzieberthAdam for the report and initial patch.
+
+Fix #62.",['a621764215c5abdd78808df7ec9bd1b3c265d39c'],False,"['client.py', 'server.py']"
+8e406194ed412b06a6c88ec9824684a06a41d3c1,Aymeric Augustin,2015-07-19T15:58:38+02:00,"Add a missing ""yield from"" in a test utility.
+
+Since the result of this method was always yielded from, this bug didn't
+have visible effects.",['23878bc5b0ad85d6a2cf6e7f9c80876b99916f23'],False,['test_protocol.py']
+381a3641ba997a33e19acb73721e324c96d01635,Szieberth Ádám,2015-07-16T10:16:39+02:00,"Pass event loop explicitly to all asyncio objects
+
+Fix #60.",['fb58aa61c8f77e73adb7e591e7a65acbf8470499'],False,"['client.py', 'protocol.py', 'server.py', 'test_client_server.py', 'test_framing.py', 'test_http.py', 'test_protocol.py']"
+6a3ed1ecc6edb788a05783028af1d64dcd25f612,Aymeric Augustin,2015-07-19T16:59:09+02:00,Add flake8 and fix warnings.,['14473689ae0f92f7aee16868fd41665e3ad9aac0'],False,"['setup.cfg', 'tox.ini', '__init__.py', 'client.py', 'exceptions.py', 'handshake.py', 'protocol.py', 'server.py', 'test_client_server.py', 'test_framing.py', 'test_protocol.py', 'uri.py']"
+3b170ad097db8a5b86d574572d283cf981c7b36b,Aymeric Augustin,2015-07-19T22:06:45+02:00,"Close sockets correctly in tests.
+
+This prevents spurious ResourceWarnings on Python 3.4.",['c3a71a1405269db361b256af623daebf4202f338'],False,['test_client_server.py']
+25aba2beceda000d89aab969fec96fc1678e6f6a,Aymeric Augustin,2015-07-20T14:12:20+02:00,Fix a test case and add another.,['1b90eb080a47e369ed01d4ff434d5c37f2a1561e'],False,['test_uri.py']
+9638bee3b7890c48529e7b93f167d0fdbe14eff1,Aymeric Augustin,2015-07-20T14:48:59+02:00,Fix remaining flake8 warnings.,['739f9d1057cea1e0039b664bbf5f6e88138c46c6'],False,"['index.rst', 'test_protocol.py']"
+25d8de0ab0e4c9ffda63997066ebd91959cb1d56,Aymeric Augustin,2015-07-20T15:42:18+02:00,"Provide access to HTTP headers as MIME messages.
+
+Document the private API to acces them as a list of (name, value) pairs.
+
+Fix #24.",['9638bee3b7890c48529e7b93f167d0fdbe14eff1'],False,"['index.rst', 'client.py', 'protocol.py', 'server.py', 'test_client_server.py']"
+4bb82d95ae34592fcf861cdaf02faeca0c6a6249,Aymeric Augustin,2015-07-20T23:17:15+02:00,"Remove a misunderstanding of the specification.
+
+As explained properly in the remainder of the library, clients are
+allowed to start the WebSocket closing handshake. It's the TCP
+connection that should be closed by the server (to allow reuse).",['7cb30eaa88fa0b1352d7cbcb0950c74d6cf88eac'],False,['client.py']
+b6120037b71752443bddd683eaba620ef5ea5dab,Aymeric Augustin,2015-07-21T12:41:56+02:00,"Add receive_eof to match receive_frame.
+
+Clarify how the connection close sequence works in asyncio transports.
+
+Remove two tests for a sequence that cannot happen in practice (unless
+the event loop runs exceedingly slow, in which case there isn't much we
+can do). As explained in the docstring of receive_eof and TransportMock,
+transports always close themselves and call connection_lost.",['56ad98fc1f0ba025edfa172f7b4caef31978d2d4'],False,['test_protocol.py']
+dc711581a48e2f9b57dee98aecc716128654154e,Aymeric Augustin,2015-07-21T12:52:12+02:00,"Client is allowed to close the connection.
+
+Remove more comments related to my misunderstanding of this point.",['b6120037b71752443bddd683eaba620ef5ea5dab'],False,['test_protocol.py']
+8b0ab64c9b1c2664d01721fb7b328a024e2464cc,Aymeric Augustin,2015-07-22T10:25:15+02:00,"Large cleanup in the tests for closing scenarios.
+
+Remove the echo() utility. Check sent frames and receive frames
+explicitly instead.
+
+Factor out the definition of close frames which are used by several
+tests.
+
+Separate setup from assertions.
+
+Document tests that rely on timings.
+
+Check that no unexpected frames are sent.
+
+Run the same tests on the server and the client side.
+
+Rewrite test_eof_received_timeout which I removed recently.
+
+Remove test_close_after_cancelled_recv which is superseded by the more
+general test_recv_cancelled.",['d1be44c579c1884e0ff676c8f2a1eeb11a446760'],False,"['index.rst', 'protocol.py', 'test_protocol.py']"
+d4aaf8ca6754934f765ca0e6a20ff8b38db0e32f,Aymeric Augustin,2015-07-22T10:40:52+02:00,"Fix tests for sent frames.
+
+The previous implementation silently ignored trailing data, which means
+assertFrameSent + assertNoFrameSent didn't behave as one might expect.",['8b0ab64c9b1c2664d01721fb7b328a024e2464cc'],False,['test_protocol.py']
+be439b5c28c81e5a43bc88c1f931a89dbf926c30,Aymeric Augustin,2015-07-22T13:23:30+02:00,"Don't send a close frame on a broken connection.
+
+This fix is exercised by a test refactor I'm working on in parallel.",['88bb97de0fef710b5320c3a65e3ca6b6fd4195b3'],False,['protocol.py']
+6c2667bde53086e9854d53d78a1608172227f409,Aymeric Augustin,2015-07-26T23:21:49+02:00,"Always update the state before yielding control.
+
+Otherwise multiple close frames could be sent.
+
+This fix is required by changes I'm making to the test suite and will
+commit soon.",['bb8db1e5a16dbc8b77e2b1b2138eea52ed330e14'],False,['protocol.py']
+65748576877f9520e3ac0394ecbbf87261d16035,Aymeric Augustin,2015-07-26T23:23:46+02:00,"Remove the expected_state parameter.
+
+Since we now always set the state to CLOSING before sending a close
+frame, it isn't needed anymore.",['68da42aff05a8e5640f02cfa3b2050f4bfe0d4c2'],False,['protocol.py']
+66df21b6a8e45fceeb9234a2e64bc2c4cdfc5d37,Aymeric Augustin,2015-07-26T23:24:42+02:00,"Large-scale test refactor.
+
+Back to 100% branch coverage.
+
+* Delay invocation of protocol methods (connection_made, data_received,
+  eof_received, connection_lost) with call_soon() to match what asyncio
+  does. This enforces a higher level of asynchrony in tests.
+* Use call_soon(...) instead of call_later(x * MS, ...) to schedule
+  series of callbacks. asyncio will invoke them in order.
+* Use a context manager instead of a pair of futures for timing tests.
+* Factor out code that makes writes slow.
+* Add a test for connection close during send to mirror the existing
+  test for connection close during recv.",['65748576877f9520e3ac0394ecbbf87261d16035'],False,"['protocol.py', 'test_protocol.py']"
+8be2e61b7889d6911ed342caefe22cfdb4bd692b,Aymeric Augustin,2015-07-26T23:40:48+02:00,"Close connection more efficiently on handshake errors.
+
+This avoids a warning about an unclosed SSL socket in tests (at least).",['66df21b6a8e45fceeb9234a2e64bc2c4cdfc5d37'],False,"['client.py', 'protocol.py']"
+e085d334b409f6e797da426a127b3680b8e21156,Aymeric Augustin,2015-07-27T12:20:48+02:00,"Remove lock protecting fail_connection.
+
+Since we now always set the state to CLOSING before sending a close
+frame, it isn't needed anymore.",['a16d30de2abf3fe3d241fcac672657fe213d8731'],False,"['protocol.py', 'test_protocol.py']"
+88f067fdc04accd62b0664d83f744844b4f4578c,Aymeric Augustin,2015-07-28T22:22:04+02:00,"Set the close status code and reason more consistently.
+
+Set them when the closing handshake is considered complete or aborted.",['471cbbc72760802f334fdf68e5c1c3ef54ca98eb'],False,"['index.rst', 'protocol.py', 'test_protocol.py']"
+8e5a3954d62d01e2201aedaf4fe366d67e6af2c3,Aymeric Augustin,2015-08-07T15:05:14+02:00,"Close open connections on server shutdown.
+
+Fix #64.",['5482cccab5be5aee7a80c959f3335697862477a6'],False,"['index.rst', 'protocol.py', 'server.py', 'test_client_server.py']"
+a52cbbb1cf68b89f7690f1570ff6aa7721f8efe7,Aymeric Augustin,2015-08-07T23:14:23+02:00,"Wait on the handler task instead of the closing handshake.
+
+Fix #64 (again).",['8e5a3954d62d01e2201aedaf4fe366d67e6af2c3'],False,['server.py']
+93bad7d638db60d91cc3909fbc97b8923d0765e4,Aymeric Augustin,2015-08-08T13:01:08+02:00,"Fix test failures on Windows.
+
+Fix #63.",['a52cbbb1cf68b89f7690f1570ff6aa7721f8efe7'],False,['test_protocol.py']
+5666434e8d250a6b0731b6328ce389eb99eced1a,Aymeric Augustin,2015-08-09T22:05:53+02:00,"Close connections instead of failing them on shutdown.
+
+This lets the client complete the closing handshake. Previously the TCP
+connection was closed just after sending a close frame.
+
+Fix #64 (again).",['93bad7d638db60d91cc3909fbc97b8923d0765e4'],False,['server.py']
+2a41dd8a4bd6105e53dea6803872c79a7db969f5,Mike Putnam,2015-08-16T12:55:28-05:00,"Fix typo ""on top of""",['5666434e8d250a6b0731b6328ce389eb99eced1a'],False,"['README.rst', 'index.rst']"
+7271c575ac4143881d7e914e324df5eefdbb527e,Aymeric Augustin,2015-08-16T21:03:55+02:00,"Merge pull request #67 from mikeputnam/fix-typo
+
+Fix typo ""on top of""","['5666434e8d250a6b0731b6328ce389eb99eced1a', '2a41dd8a4bd6105e53dea6803872c79a7db969f5']",True,[]
+bb2269a9b2d40801bc88fb62a455cb6cd3181256,Aymeric Augustin,2015-08-18T08:55:44+02:00,"Avoided TCP fragmentation of small frames.
+
+Fix #68.",['7271c575ac4143881d7e914e324df5eefdbb527e'],False,"['index.rst', 'framing.py', 'test_framing.py']"
+be26a070c7c37e0838410734466587a267d047c7,Aymeric Augustin,2015-08-18T13:28:41+02:00,"Add local/remote_address attributes on protocols.
+
+Fix #66.",['bb2269a9b2d40801bc88fb62a455cb6cd3181256'],False,"['index.rst', 'protocol.py', 'test_protocol.py']"
+ea5087c2a917fd6ec9a2e3954b28a548fd29c145,Aymeric Augustin,2015-08-25T23:01:19+02:00,"Tie registration with handle tasks' lifecycle.
+
+Since the purpose of registering or unregistering is to keep a list of
+active connection handlers, it makes sense to register when starting a
+connection handler and unregister only when the connection handler is
+about to terminate.
+
+Fix #69.",['72f9b68b87395bdf598411398d07917b043dfc41'],False,['server.py']
+be9852913637932351feb09729048eaa18ccf58d,Aymeric Augustin,2015-10-31T14:06:16+01:00,"Close connections correctly on Python 3.5.
+
+* Counteract change in StreamReaderProtocol.eof_received()
+* Ensure the transport is closed to fix resource warnings
+
+Fix #76.",['212fed7b5d30314bcd5b466f339fa79e81c0075e'],False,['protocol.py']
+46986ef80728c2aeef2a72795014803c9890c4ed,Aymeric Augustin,2015-10-31T18:31:33+01:00,"Improve docs with the alabaster theme and a logo.
+
+Also split them across multiple pages. Fix #30.",['37e6234a5f4c9908827dbf2eb9b375cd7253ca52'],False,"['websockets.svg', 'api.rst', 'changelog.rst', 'cheatsheet.rst', 'conf.py', 'index.rst', 'intro.rst', 'license.rst', 'limitations.rst', 'pydoctheme.css', 'theme.conf']"
+db9eb7033d81fba3c30711bf1c9d9635fc288a18,Aymeric Augustin,2015-10-31T19:33:16+01:00,"Add an HTML + JS example.
+
+Fix #74.",['292cd17b6021e5239525303f3635af088c40e071'],False,"['intro.rst', 'client.py', 'server.py', 'time.html', 'time.py']"
+fd33d297d836bf0acf22b793450be0bd00e9e391,Aymeric Augustin,2015-11-18T19:26:41+01:00,"Make tests for error conditions more robust.
+
+This will prevent the tests from locking on Python 3.6, assuming that
+the proposed fix for http://bugs.python.org/issue25593 is implemented.
+
+https://groups.google.com/d/msg/python-tulip/r8nN53Fq_x0/8Z7BCdgsAAAJ
+
+Thanks Guido for the patch.",['a8b098d30386c7a05dff59baf04ba12370a841c3'],False,"['test_client_server.py', 'test_protocol.py']"
+46741370aeaa44fd2957d19e02e5d66b71d35f38,Aymeric Augustin,2015-12-12T12:15:08+01:00,"Avoid busy loop during connection termination.
+
+Refs #84.
+
+Refs https://github.com/python/asyncio/pull/280.",['6ec274636ec89453d04decc1c51be68bac6c3af9'],False,"['changelog.rst', 'protocol.py', 'test_protocol.py']"
+3a04aa2f2b363d6fb8c4874acc64446b2495a64e,Aymeric Augustin,2015-12-13T14:17:00+01:00,"Check the connection state in send, ping and pong.
+
+This doesn't change the behavior significantly. It raises a slightly
+more explicit ConnectionClosed error that carries the close code and
+reason instead of the technical InvalidState (which it subclasses to
+preserve API compatibility).",['34f9c3e7b2ce7f344c221baa47a98b59e604d0b4'],False,"['exceptions.py', 'protocol.py', 'test_protocol.py']"
+52e7750a8ddf1d7674fa27ad2f46fd2a448ce0cb,Aymeric Augustin,2015-12-13T21:26:03+01:00,"Raise an exception in recv instead of returning None.
+
+This makes the API more Pythonic.
+
+Fix #77.",['3a04aa2f2b363d6fb8c4874acc64446b2495a64e'],False,"['changelog.rst', 'intro.rst', 'time.py', 'client.py', 'protocol.py', 'server.py', 'test_client_server.py', 'test_protocol.py']"
+ff85c929992796a19629b0e34034c209ff33c954,Aymeric Augustin,2015-12-13T22:20:17+01:00,Fix incorrect order due to history rewriting.,['6bd24ac1c9daa6d9ceeaf8941e69244b3f7e5a9a'],False,['changelog.rst']
+f531d696dad7a0b3c8fe59e3512992f3bc9c3037,Aymeric Augustin,2015-12-14T09:05:48+01:00,"Avoid swallowing an exception in write_frame.
+
+This raises a consistent ConnectionClosed exception when the connection
+is closed while attempting to send a frame.
+
+Thanks @dzen for the suggestion.",['7e673ece009ddd666040288185741c4d34e7c55a'],False,"['protocol.py', 'test_protocol.py']"
+1de8f529dbd12eed001b63fd715f5fddda16118b,Aymeric Augustin,2015-12-14T17:05:17+01:00,"Messages can be read after the close handshake.
+
+This test implied the opposite of the current, and desired, behavior.",['6f38c47f58257f0882f7c917cbc52a3b486d0d74'],False,['test_protocol.py']
+61ee954bb45708eec8021dcb40210c446b7c1650,Aymeric Augustin,2015-12-14T17:11:48+01:00,Fix typo.,['1de8f529dbd12eed001b63fd715f5fddda16118b'],False,['test_protocol.py']
+abec6594f81d60c23e5ef8af650284ee44ef44e1,Szieberth Ádám,2015-12-14T18:06:35+01:00,"Avoid conflict with the built-in time module.
+
+Fix #87.",['61ee954bb45708eec8021dcb40210c446b7c1650'],False,"['intro.rst', 'sendtime.py', 'showtime.html']"
+00d04cbf12e2c6691cdf34d22162d8204625d702,Aymeric Augustin,2015-12-16T18:57:31+01:00,"Improve emulation of receiving EOF.
+
+This fixes tests on Python 3.5.1.
+
+Fix #92.",['abec6594f81d60c23e5ef8af650284ee44ef44e1'],False,['test_protocol.py']
+b9a235d8f37872924e3a8fe3a44f0373f552d827,Aymeric Augustin,2015-12-16T21:16:24+01:00,Factor out testing on closed connections.,['00d04cbf12e2c6691cdf34d22162d8204625d702'],False,['test_protocol.py']
+4f16e25625bfe67d713658b8d0b19e7b3b1d9121,Aymeric Augustin,2015-12-15T23:49:00+01:00,"Update docs to async / await syntax.
+
+Fix #88.",['00f0b530cd15b21a7ee6ba7193b8bb5e9f7990e8'],False,"['changelog.rst', 'intro.rst', 'sendtime.py', 'server.py']"
+992fc3a2794301ca4dbb94f9ce7801a4515e997d,Rémi Cardona,2016-02-12T15:16:07+01:00,"Fix setup.py errors/warnings on Python < 3.5.
+
+The core of the change is to move the py35_*.py files to a subpackage
+called websockets.py35, which we can then ignore in setup.py if running
+on Python < 3.5.",['ffb326ca8861d0e254de10ade068f533d36aa678'],False,"['MANIFEST.in', 'setup.py', 'client.py', '__init__.py', 'client.py', 'client_server.py', 'test_client_server.py']"
+6285a989881908579a65a002258f18b8b89ed094,Rémi Cardona,2016-03-24T18:57:05+01:00,"protocol: make sure the worker task always finishes, closes #102
+
+When a client connection is closed before the initial handshake is done,
+the ""opening_handshake"" Future is not finished and thus blocks the ""run""
+coroutine and its ""worker"" Task.  This raises warnings later on when the
+object is garbage collected.",['992fc3a2794301ca4dbb94f9ce7801a4515e997d'],False,"['protocol.py', 'test_client_server.py']"
+fbc218ea93288e56dd7b55f69186392844171c5c,Aymeric Augustin,2016-03-30T22:28:54+02:00,Fix assorted flake8 warnings or errors.,['b3d4e18e562c20967bac59a93549c99b771d90fa'],False,"['setup.cfg', '__init__.py', 'client.py', 'handshake.py', 'http.py', 'protocol.py', 'server.py', 'uri.py']"
+fd22f008815e5e6a5dcd8cae876b172b7af77b91,Mark E. Haase,2016-04-07T20:15:06-04:00,"Add flow control for reading from a websocket (#105)
+
+Add a configurable size limit on the reader's message queue.
+When the queue is full, the reader will block. (A well behaved server
+will slow down transmission to avoid packet loss.)",['fbc218ea93288e56dd7b55f69186392844171c5c'],False,['protocol.py']
+181acf3e29499ecff61b5e6892d73bae5332292e,Aymeric Augustin,2016-08-16T15:19:10+02:00,"Improve server closing sequence.
+
+Previously, the server wouldn't close correctly when handlers were
+waiting on something other than the websocket connection.",['22876eaf44d86cb218caae8681edd9eb9ae3847b'],False,"['changelog.rst', 'client.py', 'server.py', 'test_client_server.py']"
+6b1db40e93fbedd8a7c4134bb0c82d29e651fcbf,Aymeric Augustin,2016-12-23T11:04:09+01:00,"Fix tests on Python 3.5.2.
+
+Thanks Julien Enselme for the investigation.",['c25954538aab85c259dc37e8235c1362d9543146'],False,['test_protocol.py']
+34c4031db2355c20785d0a7d50b5aa3ef5ccb90e,Aymeric Augustin,2017-01-15T16:56:30+01:00,Fix regression from adf6fe4b.,['fd54f619769a5a07ad85d18152d3c1bf39dd5936'],False,['test_client_server.py']
+2e7fd48e19731aa1fe8e5af57825b5a7f43a972c,Niklas Keller,2017-02-06T08:06:23+01:00,Fix read_response when reason is empty,['34c4031db2355c20785d0a7d50b5aa3ef5ccb90e'],False,['http.py']
+16c4a74d365217159c15a03e650ec2c30eea3a7f,Aymeric Augustin,2017-02-06T10:17:50+01:00,"Merge pull request #160 from kelunik/fix-parser
+
+Fix read_response when reason is empty","['34c4031db2355c20785d0a7d50b5aa3ef5ccb90e', '2e7fd48e19731aa1fe8e5af57825b5a7f43a972c']",True,[]
+2466e74b17494191dc6d390f2b87dcdb46072f52,Rémi Cardona,2016-12-09T18:14:50+01:00,"server: don't print exceptions for network errors during opening and closing handshakes
+
+Since 181acf3, full tracebacks are printed if a connection is reset
+during handshake.  Connection resets are to be expected, even in
+controlled environments.  Simply log them as info rather than warning,
+and don't print a full traceback.
+
+Closes #126.",['16c4a74d365217159c15a03e650ec2c30eea3a7f'],False,['server.py']
+198b71537917adb44002573b14cbe23dbd4c21a2,Rémi Cardona,2017-03-29T00:17:49+02:00,"protocol: add a lock around StreamWriter.drain(), closes #16
+
+Works around the following error:
+
+    File /usr/lib/python3.4/asyncio/streams.py, line 194, in _drain_helper
+      assert waiter is None or waiter.cancelled()
+    AssertionError
+
+when the write buffer reaches the high watermark (and thus blocks) and
+2+ tasks try to call drain().  Clearly, asyncio's current code (all
+versions up to 3.6.1 included) is not ""thread"" safe.  So use a lock
+around the only place drain() is called.",['2466e74b17494191dc6d390f2b87dcdb46072f52'],False,['protocol.py']
+e7e681fc1cae2bb13e09418c9c5ab6624bf8160a,Aymeric Augustin,2017-05-03T21:29:08+02:00,"Specify charset for open() calls.
+
+Otherwise they're locale dependent, which can cause issues.
+
+Fix #171.",['cdfa863472b64b2eb3b4deac1fcac933aebd70cb'],False,['setup.py']
+a1dce912dfa0841d18d45e93f4f308e31cb1e49b,Aymeric Augustin,2017-05-03T21:53:11+02:00,"Support ssl=None when connecting to ws:// URIs.
+
+Fix #149.",['4a570396c7e859340ca8539ab883aa368f8b5415'],False,['client.py']
+438310501703ddb580d4bbc7628993190faf1152,Aymeric Augustin,2017-05-03T22:04:03+02:00,"Document the type of the stream argument.
+
+FIx #174.",['388bd4a1e621370571059d4dd4bd584db7debbbd'],False,['http.py']
+5b48c3c9a58c6d5c61b928c61915e4ee2c42aa41,Aymeric Augustin,2017-05-04T09:19:37+02:00,Fix flake8.,['438310501703ddb580d4bbc7628993190faf1152'],False,"['test_client.py', 'test_server.py', 'server.py']"
+b763ac48b9dc3cdd446eaff14ed5bf62a2290ed5,Aymeric Augustin,2017-05-04T09:39:08+02:00,Fix deprecation warning for Python 3.7.,['65179090062eac8c555bf0f3f85bfbee4c957baa'],False,['test_protocol.py']
+a41c8310807af4de9b2275c685988b3cbcf01ae2,Aymeric Augustin,2017-05-05T11:57:00+02:00,"Document how to shut down the server.
+
+Fix #124, #103.",['e58c1ac1315f4dd73aea99eaca2a60509f2fcf03'],False,"['deployment.rst', 'client.py', 'shutdown.py']"
+d0d434a71f3cfa0270a8b0bd1f809b9807f26f5c,Aymeric Augustin,2017-05-05T13:01:43+02:00,"Document that port sharing is unsupported.
+
+Fix #116.",['3ec6f896e50820ab0048533d89155aa48cca52e6'],False,['deployment.rst']
+8e6baa8d118cb6f6cff683c135f7170aeb763dba,Aymeric Augustin,2017-05-05T13:56:54+02:00,Fix tests on Circle CI.,['d8739496f120e576014539b00194c09b86059d11'],False,['test_client_server.py']
+13f2e408707627260f2eed954bdec735f701daa5,Aymeric Augustin,2017-05-05T14:42:09+02:00,"Document how to keep connections open.
+
+Fix #110.",['8e6baa8d118cb6f6cff683c135f7170aeb763dba'],False,['cheatsheet.rst']
+76f02cab95879648481f2dd84e4c3c6924d52c54,Aymeric Augustin,2017-05-05T13:31:35+02:00,"Make serve an async context manager.
+
+Fix #86.",['13f2e408707627260f2eed954bdec735f701daa5'],False,"['changelog.rst', 'deployment.rst', 'oldshutdown.py', 'shutdown.py', 'client.py', 'client_server.py', 'server.py', 'server.py']"
+5d361a361a31ce19896dd0fb2c9dc684514e2a09,Aymeric Augustin,2017-05-10T23:04:03+02:00,"Revert accidental change.
+
+Fix #183.",['7dfccc446ec73eea28c5fee6ad2c76b080005fab'],False,['client.py']
+b1d09a1b1c36215a59f6a630215ed15d4582b3a8,Aymeric Augustin,2017-07-09T18:49:10+02:00,Fix Circle CI.,['5d361a361a31ce19896dd0fb2c9dc684514e2a09'],False,['circle.yml']
+f120792cbb52d55be1ad8388d24fbd087adfc111,Aymeric Augustin,2017-07-09T18:27:45+02:00,"Replace MIME parsing with custom HTTP parsing.
+
+Given that websockets makes straightforward use of HTTP, that websocket
+implementations can be expected not to exhibit legacy behaviors, and
+that RFC 7230 deprecates this behavior, parsing HTTP is doable.
+
+Thanks https://github.com/njsmith/h11 for providing some inspiration,
+especially for translating the RFC to regular expressions and figuring
+out some edge cases.
+
+I expect the new implementation to be faster, since it has a much
+tighter focus than the stdlib's general purpose MIME parser, and
+possibly more secure, since it was written from the beginning with
+security as a primary goal (with the caveat that it's new code,
+which means it's more likely to have security issues).
+
+Fix #19.",['b1d09a1b1c36215a59f6a630215ed15d4582b3a8'],False,"['changelog.rst', 'client.py', 'http.py', 'protocol.py', 'server.py', 'test_http.py']"
+ce61a9dac266cac87fa1f1ae20ed37ad7bf60770,Chris Jerdonek,2017-07-10T19:06:52-07:00,"Address issue #203: make WebSocketServer not inherit.
+
+This commit changes WebSocketServer not to inherit from
+asyncio.AbstractServer. It also improves the documentation to explain
+more clearly the relationship between the WebSocketServer and the
+underlying asyncio.Server object.",['00efcc605fd0f88eb0bef9e5b7bda6fdb7d954ad'],False,"['api.rst', 'cheatsheet.rst', 'server.py']"
+79949f1859b0ab7a742e234f46b2b1ceb0cd038e,Chris Jerdonek,2017-07-18T16:24:02-07:00,Fix CircleCI flake8 error.,['ce61a9dac266cac87fa1f1ae20ed37ad7bf60770'],False,['server.py']
+e0915479ce582b0b69b551cc62ab2eb4e6cd39f9,Chris Jerdonek,2017-07-14T15:15:16-07:00,Fix issue #207: always set self.origin.,['79949f1859b0ab7a742e234f46b2b1ceb0cd038e'],False,"['server.py', 'test_client_server.py']"
+aa711aa5554814eb625924e5e543191dc3ad5b0a,Chris Jerdonek,2017-07-20T14:14:04-07:00,"Expose invalid status code during connection. (#209)
+
+Fix #198. Thanks @cjerdonek!
+
+* Address issue #198: expose invalid status code during connection.
+
+* Address review comments.
+
+* Fix tests, code coverage, and flake8.
+
+* Ignore the response reason per the spec.
+
+* Use double quotes for consistency.",['e0915479ce582b0b69b551cc62ab2eb4e6cd39f9'],False,"['changelog.rst', 'client.py', 'exceptions.py', 'test_client_server.py', 'test_http.py']"
+93f258fb455d68ec931a53dde3d138e27ed5ef72,Chris Jerdonek,2017-07-21T19:16:54-07:00,Address issue #212: have coverage report missing line numbers.,['aa711aa5554814eb625924e5e543191dc3ad5b0a'],False,['tox.ini']
+1f7604b7e2272567fbb3e00c7814782018113a94,38elements,2017-07-02T13:37:30+09:00,"Fix api.rst
+
+This adds max_queue to WebSocketCommonProtocol in api.rst.",['b8eda04abb8ab39f89e3d93457e53efdbd71beea'],False,['api.rst']
+6173a0d6ad12967224d7a2d588ce8ab93f22b11c,mayeut,2017-07-23T17:53:54+02:00,"Correctly read mask in non SSE2 cases in speedups.c
+
+Fixes aaugustin/websockets#223",['0058c0954fc102ba74434c66ee810a078e40789b'],False,['speedups.c']
+ccc5d34f068e1e3e6b51c49aa0c69983d9cd104d,Chris Jerdonek,2017-07-23T13:46:45-07:00,Fix argument mis-copy in PR #219.,['4703884a5c82452c25ed39224160913162cf448e'],False,['test_client_server.py']
+725675eb20eb78e4cc3a9230daea3cdaf3dc7ffd,Chris Jerdonek,2017-07-27T11:54:20-07:00,Address issue #216: rename the klass argument to create_protocol.,['f859e2f017903abf195d3663ba486d6d1ef2cb23'],False,"['api.rst', 'changelog.rst', 'cheatsheet.rst', 'client.py', 'server.py', 'test_client_server.py']"
+39cec143769a31c92fce282b6270bbf52ceb1206,Aymeric Augustin,2017-07-29T14:55:47+02:00,"Review fix for issue #216.
+
+* Clarify documentation wording a bit.
+* Make the backwards-compatibility logic more explicit (and removable).
+* Move klass with legacy_recv, the other backwards-compatibility shim.",['725675eb20eb78e4cc3a9230daea3cdaf3dc7ffd'],False,"['cheatsheet.rst', 'client.py', 'server.py']"
+e1c3c3143679afc018622800c215e88e55786673,Chris Jerdonek,2017-07-30T02:03:44-07:00,"Merge pull request #236 from aaugustin/issue-216-remove-klass
+
+Address issue #216: rename the klass argument to create_protocol.","['f859e2f017903abf195d3663ba486d6d1ef2cb23', '39cec143769a31c92fce282b6270bbf52ceb1206']",True,[]
+68e2af5cd9d823f8d9f77bc18bd2556694b5d84e,mayeut,2017-08-01T22:35:53+02:00,Fix build of speedups.c on MSVC 2010,['e1c3c3143679afc018622800c215e88e55786673'],False,['speedups.c']
+50fd62e333256cd5db43927bc98bebe7bba6e564,Aymeric Augustin,2017-08-12T10:18:43+02:00,"Provide a better way to override request handling.
+
+This replaces the get_response_status() API which never made it into a
+release (so there's no backwards incompatibility).
+
+Remove a test that depends on get_response_status() being called after
+check_request(). The extension point must be before check_request() so
+it can handle regular HTTP requests.
+
+Fix #116.
+
+Supersedes #202 #154, #137.",['3242b20e6ef7fe6bf916d7d7c5026c47e8f99398'],False,"['api.rst', 'changelog.rst', 'server.py', 'test_client_server.py']"
+22f8cef96063361cd14ab372b0c7608c4a05c0ad,Matthieu Darbois,2017-08-20T13:45:05+02:00,"Build wheels on various platforms (#239)
+
+* C extension mandatory if '.cibuildwheel' file is present
+
+* build wheels on travis-ci
+
+* build wheels on appveyor
+
+Fix #220.",['d45b29062c48c6678d889a63f3d5745994be85d3'],False,"['.travis.yml', 'appveyor.yml', 'setup.py']"
+a786635863f591106b258716be2d2998692e2505,Aymeric Augustin,2017-08-20T15:09:18+02:00,"Change Upgrade header to lowercase value.
+
+This value is technically case-insensitive but sloppy servers may expect
+it to be lower case.
+
+Fix #250.",['e812f02d30d930eb802e0439a397431880bad5f1'],False,['handshake.py']
+8f1ff2825c5fc541830b0e530efc9a0a9ee49c1e,Aymeric Augustin,2016-05-15T18:52:09+02:00,"Check close codes of outgoing frames.
+
+This can avoid protocol violations.",['2e5e851c9695b01a10870dced6136c9b50c052e5'],False,"['framing.py', 'test_framing.py']"
+6b94888efb5c90f4955f0a04e884aff61e489c8f,Jonathan Martin,2017-08-08T11:16:49+02:00,Avoid sending empty `Sec-WebSocket-Extensions` when no extension was negotiated,['7e878e6d0e479b7df251aaa65c58922fb71e8a74'],False,['utils.py']
+d8f5df1f8929af0ca62cfd12d3d91c8beac37b2f,Aymeric Augustin,2017-08-27T14:45:06+02:00,"Specify more closely extension negotiation.
+
+Remove the unclear distinction between ""not accepting an exception"" and
+""raising a negotiation error"" on the server side. A negotiation error
+means the extension isn't accepted, that's all.",['89725778f6f6ff43dac49aadd5c600fc683d35c3'],False,"['client.py', 'base.py', 'server.py', 'test_client_server.py']"
+fb71c7d8f81a5a36a0054ebbf4912922b0ed219f,Aymeric Augustin,2017-09-02T10:14:30+02:00,Take advantage of TestCase.subTest.,['22bff9c9d563d04679b81de023aab5ae424016aa'],False,"['test_permessage_deflate.py', 'test_utils.py', 'test_uri.py', 'test_utils.py']"
+37650ae60cc92f2073f271e57af2bfc27cdc9636,Aymeric Augustin,2017-08-27T16:27:06+02:00,"Parse Sec-WebSocket-Protocol robustly.
+
+Fix #257.",['9f8539f3060c8c5c19e1ddeda146716b49382d34'],False,"['api.rst', 'client.py', 'test_permessage_deflate.py', 'headers.py', 'http.py', 'server.py', 'test_client_server.py', 'test_headers.py']"
+0ae899ced8e38f1222aaa8dcd2da19a193c7f5c6,Aymeric Augustin,2017-09-03T20:45:39+02:00,"Avoid leaking tasks when close() is cancelled.
+
+Fix #142.
+
+Thanks @cjerdonek for diagnosing this tricky issue.
+
+Also add a test for a code path that was exercised by accident before
+this change.",['37650ae60cc92f2073f271e57af2bfc27cdc9636'],False,"['changelog.rst', 'protocol.py', 'test_client_server.py', 'test_protocol.py']"
+570661453b7c69d133c0d97f45ebc09809d0ee87,Aymeric Augustin,2017-09-03T21:59:47+02:00,"Reduce verbosity of fail connection log.
+
+""Failing the WebSocket connection"" is an essential concept in the RFC,
+but it's only relevant for developers of the library, not end users.
+
+Fix #167.",['0ae899ced8e38f1222aaa8dcd2da19a193c7f5c6'],False,"['changelog.rst', 'protocol.py']"
+32081781e99d9a8244c262da838f5c2b0bbf6b54,Aymeric Augustin,2017-09-03T22:57:53+02:00,"Support asynchronous iteration of protocol instances.
+
+Kudos to @cjerdonek for the idea and proof of concept.
+
+Fix #192. Ref #195.",['570661453b7c69d133c0d97f45ebc09809d0ee87'],False,"['MANIFEST.in', 'changelog.rst', 'intro.rst', 'setup.py', 'client.py', 'protocol.py', '_test_client_server.py', '__init__.py', '_test_client_server.py', 'protocol.py', 'server.py', 'test_client_server.py']"
+4ad3b1a7f9860e4dd7916b0f8a4385b6435225ac,Aymeric Augustin,2017-09-09T17:45:43+02:00,"Only set close code when receiving close frame.
+
+The RFC is clear about this:
+
+> _The WebSocket Connection Close Code_ is defined as the status code
+> (Section 7.4) contained in the first Close control frame received by
+> the application implementing this protocol.
+
+Also:
+
+* Differentiate between closing and failing the connection in tests.
+* Remove a test for setting the close code based on a local close code.",['3ecd5475ee3b39c9698e46e9b53418c74b1c720d'],False,"['protocol.py', 'test_protocol.py']"
+5592994e8a8f5b418a1b6b2522b71ca7778fe102,Michael Sverdlik,2017-09-14T06:30:50+10:00,"Allow customizing User-Agent and Server headers (#266)
+
+Fix #262.",['4ad3b1a7f9860e4dd7916b0f8a4385b6435225ac'],False,"['changelog.rst', 'client.py', 'server.py', 'test_client_server.py']"
+1b8ab39be670b3e8f46839caafb6824133cbd59b,Aymeric Augustin,2017-09-23T22:07:45+02:00,"Handle cancellation of pong waiters more elegantly.
+
+Fix #269.",['7d7e2630188f965999908085da9b85293517174f'],False,['protocol.py']
+16b09f801a010b17759cff5a2a99828a2c7f7cae,Aymeric Augustin,2017-09-23T22:08:08+02:00,Fix documentation of how to wait for a pong.,['1b8ab39be670b3e8f46839caafb6824133cbd59b'],False,"['cheatsheet.rst', 'protocol.py']"
+0827eeee5bfe8b776dfae70642a336d324435027,Aymeric Augustin,2017-09-09T16:44:16+02:00,"Rework connection close handling.
+
+* Split the task that runs the data transfer part from the task that
+  closes the TCP connection.
+* Explain why self.connection_closed is needed.
+* Fix usage of wait_for to avoid accidental cancellations.
+* Simplify connection_lost() because it's called exactly once.
+* Don't call close() immediately after write_eof() -- the goal is to
+  wait until the other end closes the connection too and then close()
+  in connection_lost().
+* Refactor tests to reduce asynchrony.
+* Make the transport mock in tests more realistic.",['dd16c0e56289d0cd7593ce7c83399613e95f740e'],False,"['client.py', 'protocol.py', 'server.py', 'test_client_server.py', 'test_protocol.py']"
+fcc73bcdc0cb69b67e0acea3c74a871214e1aba4,Aymeric Augustin,2017-09-17T23:03:13+02:00,"Stop swallowing cancellations in close().
+
+Fix #264. Ref #142.
+
+Remove a test that no longer makes sense now that close() no longer
+swallows CancelledError.",['0827eeee5bfe8b776dfae70642a336d324435027'],False,"['protocol.py', 'test_protocol.py']"
+43784eac2932fee3b0e87d579608000f2be30cfb,Aymeric Augustin,2017-09-30T17:50:22+02:00,"Add a timeout when writing a close frame.
+
+Fix #112.",['fcedaf59514f7447f84e69bf226393496480ab48'],False,"['protocol.py', 'test_protocol.py']"
+f9721dec3700987cff03410110ddd7b6c8c69315,Aymeric Augustin,2017-09-30T18:10:58+02:00,"Abort TCP connection if it doesn't close fast enough.
+
+Fix #112.",['43784eac2932fee3b0e87d579608000f2be30cfb'],False,"['design.rst', 'protocol.py', 'test_protocol.py']"
+124e2762ec165a15809eda24d2db1793fb958fab,Aymeric Augustin,2017-09-30T20:34:22+02:00,"Reorganize docs by use case.
+
+Fix #275.",['712e48d34c4991011f776272e60d90dcac19aa16'],False,"['LICENSE', 'changelog.rst', 'contributing.rst', 'index.rst', 'intro.rst', 'echo.py', 'hello.py']"
+77fc08303eca8f8cbc43ea99f00191fa1fadadbf,Aymeric Augustin,2017-09-30T22:27:08+02:00,"Add marketing copy to the README.
+
+Fix #245.
+
+Thanks @cjerdonek for your feedback!",['037d56a67f241843fdb175cdf7a5cef34cd202ed'],False,['README.rst']
+51b26f8ff65912a611a2f169b352c671f0afae01,Aymeric Augustin,2017-10-01T14:44:32+02:00,"Add support for sock argument in client.
+
+Fix #221.
+
+Adapted from PR #229.",['77fc08303eca8f8cbc43ea99f00191fa1fadadbf'],False,"['changelog.rst', 'client.py', 'test_client_server.py']"
+5769cbf1a06be91a272eff54f7c140bea85d0c3f,Aymeric Augustin,2017-10-01T21:47:13+02:00,"Optimize ensure_open when the connection is closing.
+
+* If the remote side started the closing handsake, the close code and
+  reason are already known.
+* If they aren't, there's no need to add a timeout because we know that
+  self.transfer_data_task will complete quickly anyway.
+
+Extend protocol tests to cover the two cases of CLOSING connections:
+initiated by the local or the remote side.",['91be27e9c4d23b3902ac77cdfe648e480ec63985'],False,"['protocol.py', 'test_protocol.py']"
+8cdf09b8f122a339188905a58182148eed05778d,Aymeric Augustin,2017-10-02T21:54:57+02:00,"Document concurrency-safety of public APIs.
+
+Fix #238.",['68553b77af7aa8f880e18471d1b93f33392bc769'],False,"['design.rst', 'framing.py', 'protocol.py']"
+050a6aeb90225fe54b05f8c8cef9ed05596f3553,Aymeric Augustin,2017-10-02T22:13:34+02:00,"Documented passing extra args to the handler.
+
+Fix #271.",['8cdf09b8f122a339188905a58182148eed05778d'],False,['cheatsheet.rst']
+4a8415da441ebab15dfebd798838c293f07d38d7,Aymeric Augustin,2017-10-02T23:04:44+02:00,"Add explanation of status codes in error messages.
+
+Fix #249.",['5a9d2e0038acee5ffca60c047b7a28cd72b4324e'],False,"['exceptions.py', 'framing.py', 'test_exceptions.py', 'uri.py']"
+5ce75688f59b017c2f0d4efebff8e9022f0e3d67,Aymeric Augustin,2017-10-01T09:37:19+02:00,"Test ConnectionError handling.
+
+Fix #215.
+
+Thanks @cjerdonek for reporting and investigating this issue.",['4a8415da441ebab15dfebd798838c293f07d38d7'],False,['test_client_server.py']
+27549c4b390443b7504e937d4d974bd0855b4c7f,Aymeric Augustin,2017-10-07T20:56:57+02:00,"Await close_connection_task in ensure_open.
+
+This fixes the following edge case:
+
+- this side starts the closing handshake
+- the connection hangs and the other end never completes the handshake
+- meanwhile, another coroutine attempts to send a message
+
+Before this change, that coroutine would receive a CloseConnection
+exception with code = None. After this change, it gets code = 1006,
+set in connection_lost.",['f83362ef91a6ac2ea89fd8bda4d18ff22ffb7a40'],False,['protocol.py']
+4cbb18c21a66fb406e7cbd36eca3329312367a54,Chris Jerdonek,2017-11-01T10:25:38-07:00,"Eliminate the need to wrap serve(). (#294)
+
+* Eliminate the need to wrap serve().
+
+See issue #197 for related discussion.
+
+* Fix Python 3.4.
+
+* Choose better names per @aaugustin's comment.
+
+* Update client.py.
+
+* Fix flake8.
+
+* Fix test for Python 3.4.",['69cd26dcf3aea3ebfa9750ada894283a7c53d2d4'],False,"['client.py', 'client.py', 'server.py', 'server.py', 'test_client_server.py']"
+fa96c583d178ff79a1536ce597b1a4ceef4d3d2e,Aymeric Augustin,2017-11-01T21:01:34+01:00,"Manage connection states with an enum.
+
+Fix #284.",['4cbb18c21a66fb406e7cbd36eca3329312367a54'],False,"['api.rst', 'changelog.rst', 'protocol.py', 'test_protocol.py']"
+2c0b6618a71453cf1ff39a3bf769081a25475aaf,Aymeric Augustin,2017-11-01T21:21:10+01:00,Fix doc generation on Python 3.5+.,['4cbb18c21a66fb406e7cbd36eca3329312367a54'],False,"['client.py', 'server.py']"
+2599b8a3df918a3718422e7ccebb3f316ef602b0,Aymeric Augustin,2017-11-01T21:41:36+01:00,Workaround for https://github.com/travis-ci/travis-ci/issues/8552.,['639975ebd32ab2fb0fb5470c5486bf57e47361bb'],False,['.travis.yml']
+cb9b268c60a96f5bdcc8988587e0460ca4edbcdc,Aymeric Augustin,2017-11-02T21:07:59+01:00,Attempt to fix wheel upload on Travis CI.,['4e67f829cfe4e9c23046415d6cd38cd2825cd6b7'],False,['.travis.yml']
+05907cd7e390617d6c80f2b2a0bf222e622dd641,Aymeric Augustin,2017-11-02T22:58:58+01:00,Attempt #2 to fix wheel upload on Travis CI.,['a6211d48c57a0886ee1eefa87651c99bd08d4fd2'],False,['.travis.yml']
+136d9bc9a917f7f5fdde4001e801b591ee1b4a0b,Anton Lakotka,2017-11-07T11:06:33+01:00,"Fixed infinite loop in ""Graceful Shutdown"" Examples when client closed the connection.
+
+Replaced ""pass"" statement by ""break"" inside echo handler loop.
+If client closes connection it causes infinite loop and took 100% CPU.
+""websocket.recv()"" always return throws ""websockets.ConnectionClosed"" so pass statement just
+continue loop over and over again.",['05907cd7e390617d6c80f2b2a0bf222e622dd641'],False,"['oldshutdown.py', 'shutdown.py']"
+9f566c5d12eae1258aa6f1991fe8cf0a7d390f97,MysterialPy,2017-12-14T23:41:48+10:00,"Fix Syntax error thrown in 3.7
+
+Maintains backward compat.",['136d9bc9a917f7f5fdde4001e801b591ee1b4a0b'],False,['compatibility.py']
+d4a6a24fcf9786b1917668bfaee946e85bc22478,pv2b,2018-01-03T16:06:00+01:00,"Fix typo in README.rst
+
+courountine -> coroutine",['9f566c5d12eae1258aa6f1991fe8cf0a7d390f97'],False,['README.rst']
+f7331b04c524f2ebfd2371a1a59852d3d3439779,Ashley Sommer,2018-02-12T02:45:49+10:00,"Add zip_safe=True to setup.py (#342)
+
+Add `zip_safe=True` to setup.py to tell easy_install and setuptools that the code should not be analyzed before installing.
+
+This avoids the problem caused by evaluating code in the websockets/py36/ directory when running under Python 3.5.
+
+Fixes #341.",['d4a6a24fcf9786b1917668bfaee946e85bc22478'],False,['setup.py']
+13eb4a09815b7edf3ac6270cbdf131b89b4ccc9d,Aymeric Augustin,2018-02-12T21:46:17+01:00,"Mention that README requires Python ≥ 3.6.
+
+The Python < 3.6 version is provided in the documentation.
+
+Fix #340.",['f7331b04c524f2ebfd2371a1a59852d3d3439779'],False,"['README.rst', '__init__.py']"
+99e6a4d9dbbab01f514bd84d21723ba98d6f8634,Aymeric Augustin,2018-04-28T17:49:23+02:00,"Use the latest version of cibuildwheel.
+
+It's more likely to fix issues than introduce them.",['13eb4a09815b7edf3ac6270cbdf131b89b4ccc9d'],False,"['.travis.yml', 'appveyor.yml']"
+61badeb0a87db175157429647eae5d47fd596393,Aymeric Augustin,2018-04-28T18:05:52+02:00,Fix AppVeyor builds.,['ad13e489a305b28d78e30460e694fa735a180890'],False,['appveyor.yml']
+38145985e37474fe5c1145731ec7022836f12a41,Aymeric Augustin,2018-04-28T20:42:08+02:00,"Make unix_serve an asynchronous context manager.
+
+Fix #355.",['4579c2b93eff053c624eebf44cba09f45c140f1a'],False,"['changelog.rst', '_test_client_server.py', 'server.py']"
+4199fc83e5ddb717b67681e4bb5ad6c6c2df4428,Aymeric Augustin,2018-04-28T22:02:56+02:00,"Allow running a single test with tox.
+
+Fix #297.",['33341afda0c1917fb4a37e3459e3c39d66668d11'],False,['tox.ini']
+f3f3fd0c19843f5e4359738ce298932e93ce2758,Aymeric Augustin,2018-04-28T19:03:34+02:00,"Disable async context manager functionality on Python 3.5.
+
+Clarify documentation about unsupported features in older Pythons.
+
+Fix #318.",['4199fc83e5ddb717b67681e4bb5ad6c6c2df4428'],False,"['changelog.rst', 'cheatsheet.rst', 'deployment.rst', 'intro.rst', 'client.py', '_test_client_server.py', 'server.py']"
+35d6754ce32f36dab013e0273470be1529578317,Aymeric Augustin,2018-04-28T17:42:00+02:00,"Add support for HTTP Basic Auth in the client side.
+
+Fix #373.",['f3f3fd0c19843f5e4359738ce298932e93ce2758'],False,"['changelog.rst', 'client.py', 'http.py', 'test_client_server.py', 'test_http.py', 'test_uri.py', 'uri.py']"
+a3e1680a7a9bc5ec9f68f339a69afe1d24aca89c,Aymeric Augustin,2018-05-01T18:14:34+02:00,"Add debug logs in ping / pong handling.
+
+Fix #315.",['35d6754ce32f36dab013e0273470be1529578317'],False,['protocol.py']
+0a69dac1cf49a802ea36a10b5d1d1a58f1a504fc,Aymeric Augustin,2018-05-01T15:10:50+02:00,"Don't close TCP connection if it's already closed.
+
+This had no effect because closing a TCP connection is idemptotent.
+However it emitted a log line which could be confusing.",['f2432937bd13c64df23bf14d336d9336d1251964'],False,['protocol.py']
+402059e4a46a764632eba8a669f5b012f173ee7b,Aymeric Augustin,2018-05-01T17:05:05+02:00,"Fix behavior of recv() in the CLOSING state.
+
+The behavior wasn't tested correctly: in some test cases, the connection
+had already moved to the CLOSED state, where the close code and reason
+are already known.
+
+Refactor half_close_connection_{local,remote} to allow multiple runs of
+the event loop while remaining in the CLOSING state. Refactor affected
+tests accordingly.
+
+I verified that all tests in the CLOSING state were behaving is intended
+by inserting debug statements in recv/send/ping/pong and running:
+
+$ PYTHONASYNCIODEBUG=1 python -m unittest -v websockets.test_protocol.{Client,Server}Tests.test_{recv,send,ping,pong}_on_closing_connection_{local,remote}
+
+Fix #317, #327, #350, #357.",['0a69dac1cf49a802ea36a10b5d1d1a58f1a504fc'],False,"['protocol.py', 'test_protocol.py']"
+faa1a8aec785ea62e3c595ecf72b6802691a1d6e,Aymeric Augustin,2018-05-01T19:38:24+02:00,"Improve description of connect and serve.
+
+Fix #300.",['402059e4a46a764632eba8a669f5b012f173ee7b'],False,"['client.py', 'server.py']"
+9b52a8df0daf0ed7e226674fa4bae49a572bf65c,Aymeric Augustin,2018-05-06T09:51:40+02:00,"Add closed property on protocols.
+
+Fix #286.",['d851f57f56cbf4fceb6743d3afafb12780fe6132'],False,"['api.rst', 'changelog.rst', 'protocol.py', 'test_protocol.py']"
+63f2ff7bcd86f66bdb0d59a708bff94ea69d26a1,Aymeric Augustin,2018-05-06T10:00:48+02:00,Fix a couple formatting issues.,['9b52a8df0daf0ed7e226674fa4bae49a572bf65c'],False,['changelog.rst']
+8bbff9dd1a515288063ef47ce7e49cf527ea0760,Aymeric Augustin,2018-05-05T19:28:57+02:00,"Explain how to secure websockets with TLS.
+
+Fix #363.",['f0b997a5960786d37a999ea808e2c71f8c24e2ce'],False,"['intro.rst', 'client.py', 'localhost.pem', 'oldclient.py', 'secure_client.py', 'secure_server.py', 'test_client_server.py']"
+efad8562cb9fcd51199ba0504a90a3cdbec350e9,Aymeric Augustin,2018-05-08T08:26:46+02:00,"Log connection close codes and reasons.
+
+For debugging.",['9b0929582874cab3b3d18e283a841c43fd198eaf'],False,['protocol.py']
+cd304ff803377255dbd587068dc5d46a9964c6c2,Aymeric Augustin,2018-05-05T21:09:01+02:00,"Add an example of health check.
+
+Fix #354.",['45067908efb81169bfb6437a35887df5a5c52764'],False,"['deployment.rst', 'health_check_server.py']"
+4f5e66fd02f102d9d5faea11b8fda884e3bb8d67,Aymeric Augustin,2018-05-06T21:56:26+02:00,"Better handle hard TCP connection termination.
+
+There's no need to print a full stack trace when the network connection
+dropped earlier than we expected. A 1006 close code is likely sufficient
+to identify the cause if this is an issue in actual deployments.
+
+Fix #348, #349.",['cd304ff803377255dbd587068dc5d46a9964c6c2'],False,"['changelog.rst', 'protocol.py']"
+9eefbc25831837aac3fa7370ba5faff9b8c17bb1,Aymeric Augustin,2018-05-12T19:00:13+02:00,"Prevent TypeError in WebSocketServer.wait_closed().
+
+I think there's room for further improvement. Until then this will help.
+
+Fix #309.",['4f5e66fd02f102d9d5faea11b8fda884e3bb8d67'],False,['server.py']
+4c2c93a30cf9a843959dcfbb9b7cc94ebca50825,Aymeric Augustin,2018-05-12T16:16:46+02:00,"Downgrade log severity in handshake.
+
+Logging InvalidHandshake errors at the debug level avoids dumping stack
+traces into server logs whenever a plain HTTP client hits a WS endpoint.
+
+Fix #369.",['9eefbc25831837aac3fa7370ba5faff9b8c17bb1'],False,['server.py']
+7578987add60c72a8e2fdecfc407d7d3af47c154,Aymeric Augustin,2018-05-12T15:57:00+02:00,"Document that handlers can be cancelled.
+
+Fix #337.",['4b1527d380ee0fe6526b07107788c77026e12da9'],False,['server.py']
+2098046e41d139b54f7884b7f13e93bc79894a78,Aymeric Augustin,2018-05-15T14:00:32+02:00,"Don't treat close code 1001 as an error.
+
+Quite often, browsers close WebSocket connections when the user
+navigates to another page. In most cases this isn't an error
+condition and thus not worth reporting with an exception.",['7578987add60c72a8e2fdecfc407d7d3af47c154'],False,"['changelog.rst', 'protocol.py', '_test_client_server.py', 'protocol.py']"
+97c81dfaaa522861c7849a76caff2c790a9b1d02,Aymeric Augustin,2018-05-16T22:52:53+02:00,"Add an example of synchronization between clients.
+
+Fix #395.",['2098046e41d139b54f7884b7f13e93bc79894a78'],False,"['intro.rst', 'counter.html', 'counter.py']"
+6204d2e90eae9ccc7b8825b84f90b2d09f07233c,Aymeric Augustin,2018-05-16T22:53:41+02:00,Fix a few inconsistencies.,['97c81dfaaa522861c7849a76caff2c790a9b1d02'],False,"['intro.rst', 'health_check_server.py', 'show_time.py']"
+cffbed8f33995e70d80226d73d7b9c3edc8bcfe2,Aymeric Augustin,2018-05-16T22:08:19+02:00,"Improve parsing of Connection and Upgrade headers.
+
+Revert 43f4a6db which was based on a misunderstanding of the ABNF.
+
+This change uniformizes header parsing logic and provides better error
+messages on invalid headers.",['cb5943808e36122cfc05d2ca3165860fd5f249a5'],False,"['client.py', 'handshake.py', 'headers.py', 'http.py', 'server.py', 'test_headers.py']"
+23d208797c43f28bc278160de4309707c184f280,Aymeric Augustin,2018-05-17T22:41:17+02:00,"Fix a race condition in the closing handshake.
+
+Fix #339.",['cffbed8f33995e70d80226d73d7b9c3edc8bcfe2'],False,"['changelog.rst', 'protocol.py', 'test_protocol.py']"
+d375a075c16b47166597d24ec88f8f792b3986dd,Aymeric Augustin,2018-05-19T09:00:25+02:00,"Improve check for the connection to be usable.
+
+Fix #320.",['23d208797c43f28bc278160de4309707c184f280'],False,"['changelog.rst', 'protocol.py', 'test_protocol.py']"
+a11fa66afa3c60759a06de0cce9a8513f8bad689,Aymeric Augustin,2018-05-08T23:38:04+02:00,"Improve failing the WebSocket connection.
+
+* Make it more compliant with the specification by preventing further
+  processing of incoming frames.
+* Make it synchronous, which will make it easier to control error
+  handling.
+* Allow transfer_data_task to be cancelled.
+* Extend design documentation.",['d375a075c16b47166597d24ec88f8f792b3986dd'],False,"['changelog.rst', 'design.rst', 'protocol.py', 'server.py', 'test_protocol.py']"
+a28d14763adcd3fc97985753a32ada831d7f3f2e,Aymeric Augustin,2018-05-12T13:52:08+02:00,"Don't call fail_connection on closed connections.
+
+This change prevents spurious debug logs. fail_connection didn't do
+anything in the CLOSED state anyway.",['0a1b76a01e5ea6c2ea9f9a99e141dc85db9bb4cf'],False,['server.py']
+b32a44a998708d6817b8ea5a484bfcf6698fef66,Aymeric Augustin,2018-05-12T13:50:37+02:00,"Report cause of ConnectionClosed exception.
+
+This makes it much easier to figure out why the connection drops,
+all the more since the close code is always 1006 when failing the
+WebSocket connection.
+
+Fix #368.",['a28d14763adcd3fc97985753a32ada831d7f3f2e'],False,"['changelog.rst', 'protocol.py']"
+b6a25ceb3555d0ba69e5961b8d7616e4c1aecb2b,Aymeric Augustin,2018-05-08T11:57:12+02:00,Security fix: defend against zip bombs.,['2b89213dc3a34c98d19f87cd4504046a656fe05c'],False,"['changelog.rst', 'base.py', 'permessage_deflate.py', 'test_permessage_deflate.py', 'framing.py', 'test_client_server.py', 'test_framing.py']"
+414a51414d37bfa51d9e533bde39f545c7fe9041,Aymeric Augustin,2018-05-21T12:48:00+02:00,Fix regression from b07b8895.,['b6a25ceb3555d0ba69e5961b8d7616e4c1aecb2b'],False,['handshake.py']
+5b991fb441fc7626d783a813609022e670397132,Aymeric Augustin,2018-05-24T12:39:39+02:00,"Revert ""Declare __await__ as coroutine.""
+
+This reverts commit 7da5f40a65fc6003b3d2457d042c07443a8256d1.
+
+Fix #411.",['c08a3186b750be3fdfbe40c7f92b45e026e563e6'],False,"['changelog.rst', 'client.py', 'server.py']"
+68371dd26ed08cc7839987ca5c77e9e03248ca58,Aymeric Augustin,2018-05-21T12:49:04+02:00,Autobahn testsuite issue 77 was fixed.,['458169b1c8ce692633d9bf90e8474c249936d49d'],False,"['README.rst', 'fuzzingclient.json', 'fuzzingserver.json']"
+6f8f1c877744623f0a5df5917a85b97807bfb7e5,Aymeric Augustin,2018-05-24T22:29:12+02:00,"Add support for Python 3.7.
+
+Hopefully for real this time.
+
+This is annoyingly complicated.
+
+Fix #405.",['68371dd26ed08cc7839987ca5c77e9e03248ca58'],False,"['changelog.rst', 'client.py', '_test_client_server.py', 'client.py', 'server.py', 'server.py', 'test_client_server.py']"
+ada2987ddf2eccbb36a6ead0a5936ba0ed397032,Aymeric Augustin,2018-06-05T22:08:55+02:00,"Replace conditional errors with version checks.
+
+This avoids silently ignoring tests instead of failing them in case of
+mistakes.
+
+Fix #415.",['6f8f1c877744623f0a5df5917a85b97807bfb7e5'],False,"['protocol.py', 'test_client_server.py']"
+2037226b0f1dc2c8e5ff255ec57a1fd18b0d1da9,Aymeric Augustin,2018-06-03T10:12:07+02:00,"Use Headers throughout the library.
+
+Document changes.
+
+Fix #210, #256.",['43809a0688591dd7c24daf16b6057d3be7cf1ca8'],False,"['changelog.rst', 'client.py', 'http.py', 'protocol.py', 'server.py', 'test_client_server.py', 'test_exceptions.py', 'test_http.py']"
+25630f3c26b57ec035c8e2f151abafb4104b8edc,Aymeric Augustin,2018-06-17T16:14:36+02:00,"Send mandatory HTTP headers, including Date.
+
+This improves HTTP compliance.
+
+Fix #386.",['2037226b0f1dc2c8e5ff255ec57a1fd18b0d1da9'],False,"['client.py', 'exceptions.py', 'server.py', 'test_client_server.py']"
+02371af16a6311fe9d07e5f0f0bbd6fd996becd5,Aymeric Augustin,2018-07-15T11:26:37+02:00,"Set up Circle 2.
+
+Fix #437.",['39b050fc8a053f21fe490c09b7d294b988241280'],False,"['config.yml', 'circle.yml', 'tox.ini']"
+e4e21e35219d04e7bca97fe690191b4da29c0ab1,Aymeric Augustin,2018-07-15T12:47:31+02:00,"Remove IPv6 host entries.
+
+It's impossible to connect to ::1 in a Circle CI container because IPv6
+networking isn't set up:
+
+    OSError: [Errno 99] error while attempting to bind on address ('::1', 0, 0, 0): cannot assign requested address",['02371af16a6311fe9d07e5f0f0bbd6fd996becd5'],False,['config.yml']
+91a376685b1ab7103d3d861ff8b02a1c00f142b1,Aymeric Augustin,2018-07-15T11:07:47+02:00,"Support yield from connect/serve on Python 3.7.
+
+Fix #435.",['e4e21e35219d04e7bca97fe690191b4da29c0ab1'],False,"['client.py', '_test_client_server.py', 'server.py', 'test_client_server.py']"
+75b5874a235c82990d5b97da4bbb454b00b978eb,Aymeric Augustin,2018-07-29T18:21:26+02:00,Fix typos in docs.,['2c68e9cb0a917de48af99e29d71e1d85ec8c0a62'],False,"['changelog.rst', 'design.rst']"
+1c9d314dbe7c371e1be39e0738492aaf9f7e0869,Aymeric Augustin,2018-07-29T18:21:37+02:00,"Document that cancelling recv is safe.
+
+(It wasn't until version 2.5.)
+
+Fix #333.",['75b5874a235c82990d5b97da4bbb454b00b978eb'],False,['protocol.py']
+ef33ebd2a913d548cc261ef054d89d04f20d9dd1,Aymeric Augustin,2018-07-30T14:59:41+02:00,"Clarify why timeout only applies to close.
+
+Fix #428.",['3525ec391cb031d62015e71dcb4710b6f06248aa'],False,['protocol.py']
+ab590c620dd195a508e2884cfb9763e50d99addd,Aymeric Augustin,2018-07-16T21:33:51+02:00,"Add an interactive client.
+
+Fix #361.",['e2c4303129801c87a1f0f1c36ec7134f306e3194'],False,"['Makefile', 'changelog.rst', 'intro.rst', 'tox.ini', '__main__.py', 'exceptions.py']"
+4216b35384c177981c4d18d763248c712b8e21d4,Aymeric Augustin,2018-08-11T12:16:12+02:00,"Fix typo.
+
+Fix #454.",['2d6b4290bd4e59badbcfe1592f9312c3e28fa48d'],False,['design.rst']
+adbe4e5bc70090a3a8aa514e0d613a08e3ec960e,Aymeric Augustin,2018-08-19T13:51:55+02:00,"Improve handling of missing headers.
+
+Specifically this change makes websockets return a HTTP 426 error with a
+proper message instead of a HTTP 400 with a cryptic message when the
+Connection header is missing.
+
+Fix #456.",['4216b35384c177981c4d18d763248c712b8e21d4'],False,"['changelog.rst', 'exceptions.py', 'handshake.py', 'test_exceptions.py', 'test_handshake.py']"
+b99f1bd1a108ac8e8e3b1624696f03d8fe5c3537,Aymeric Augustin,2018-08-19T14:39:00+02:00,"Improve handling of the HTTP Origin header.
+
+* Represent the lack of a header by None rather than ''. (The empty
+  string suggests that the header is present with an empty value.)
+  Backwards-compatibility is preserved with a deprecation warning.
+* Provide a better error message if there's more than one Origin header
+  in a HTTP request. (Clients aren't supposed to do that.)",['adbe4e5bc70090a3a8aa514e0d613a08e3ec960e'],False,"['changelog.rst', 'server.py', 'test_client_server.py']"
+c2dd6b6eff0b24aaf99a48dbcd543ea6918b3241,Aymeric Augustin,2018-08-19T15:30:04+02:00,"Handle multiple HTTP headers with the same name.
+
+Fix #424.",['b99f1bd1a108ac8e8e3b1624696f03d8fe5c3537'],False,"['changelog.rst', 'handshake.py', 'test_handshake.py']"
+0197e82c7cd5b825a8d9b966e5586d77fa01f454,Aymeric Augustin,2018-07-29T17:56:40+02:00,"Ping at regular intervals.
+
+Fix #383.",['d2b9537e0ef904fdec92f45e9f0b6a4e0e671a08'],False,"['api.rst', 'changelog.rst', 'cheatsheet.rst', 'design.rst', 'lifecycle.graffle', 'lifecycle.svg', 'client.py', 'protocol.py', 'server.py', 'test_client_server.py', 'test_protocol.py']"
+983f4fd8ec3f24362e0bdf2d821ea8282eb2d008,Aymeric Augustin,2018-09-01T19:04:03+02:00,"Abort pending pings with ConnectionClosed.
+
+Fix #464.",['638df3ac16669ecc711cb585c0e50bab55d8f89f'],False,"['changelog.rst', 'protocol.py', 'test_protocol.py']"
+a8d54373901c56832fafa33b7c713a555f5bce02,Aymeric Augustin,2018-09-15T20:58:31+02:00,"Fix typo.
+
+Fix #471.",['983f4fd8ec3f24362e0bdf2d821ea8282eb2d008'],False,['design.rst']
+ff9fc363f70068a52c8d75f9d3048b5a6aa223fd,Aymeric Augustin,2018-09-23T16:25:29+02:00,"Add wait_closed method to protocols.
+
+Fix #469.",['a8d54373901c56832fafa33b7c713a555f5bce02'],False,"['api.rst', 'changelog.rst', 'protocol.py', 'test_protocol.py']"
+4e7a82eeec4621f7a6d99d43aa0a995b70382992,Aymeric Augustin,2018-09-23T16:09:21+02:00,"Rename timeout to close_timeout.
+
+Fix #460.",['ff9fc363f70068a52c8d75f9d3048b5a6aa223fd'],False,"['api.rst', 'changelog.rst', 'conf.py', 'design.rst', 'client.py', 'protocol.py', 'server.py', 'test_client_server.py', 'test_protocol.py']"
+84ce48cb148fa815fb40882bf4aa4806f562886d,Aymeric Augustin,2018-09-02T21:04:45+02:00,"Make it possible to fragment outgoing messages.
+
+Fix #258.",['4e7a82eeec4621f7a6d99d43aa0a995b70382992'],False,"['changelog.rst', 'protocol.py', 'test_protocol.py']"
+2f5ec328679e77eec03a5410a11bdccaa51e8c91,Aymeric Augustin,2018-10-27T17:30:09+02:00,Fix indentation.,['db8820790f0f066493db5de7c964c26771f73c75'],False,['changelog.rst']
+af9f318973f71bfdb79d00af0ff443b195ef8fc7,Aymeric Augustin,2018-10-27T17:34:08+02:00,"Call WebSocket codes ""close codes"" consistently.",['8dfe6e3e860efc1cb753518ef652adc38b8da4c9'],False,"['changelog.rst', 'protocol.py']"
+71c4db9c5947dc7a69eb05513bfc46a1a9771c1a,Aymeric Augustin,2018-09-29T18:27:06+02:00,"Simplify connection termination on server shutdown.
+
+Previously, there were two scenarios where a connection handler on the
+server side would receive an unexpected connection termination:
+
+1. When the remote endpoint closed the connection or it dropped for any
+   reason: this was signalled with a ConnectionClosed exception when
+   interacting with the connection, usually thrown by recv() since most
+   connection handlers spend the majority of their time awaiting recv()
+
+2. When the server shut down: this caused the connection handler to be
+   cancelled, meaning that a CancelledError exception was injected at
+   an arbitrary location.
+
+Now, when the server shuts down, scenario 1 also applies. This removes
+the need to prepare for CancelledError in connection handlers.
+
+A good way to understand this change is to consider that ""shutting down
+the server"" means ""shutting down all connections"".
+
+Given that WebSocket connections are long-running, I find it sensible
+to require connection handlers to detect when the connection they're
+managing drops and to terminate.
+
+I expect this to make it easier for users to write connection handlers
+that behave correctly when the server shuts down, for two reasons:
+
+- There's only one scenario to implement, which reduces the amount of
+  exception handling required. In addition, this avoids the specially
+  messy situation where the clean-up process for ConnectionClosed gets
+  interrupted by CancelledError.
+- Users are much more likely to check what happens when the connection
+  drops than when the server shuts down. Making the latter behave like
+  the former gives them proper behavior for free.
+
+Another argument for this change is that cancellation wasn't properly
+used there. Cancellation should only be used for terminating the
+execution of a task that one started when one no longer cares about its
+result. Since websockets runs a connection handler provided by the user,
+it can't make the decision that whatever code comes next doesn't matter,
+especially finalization code.
+
+The counter-argument against this change is that shutdown will be much
+slower for a server that reads events from an external source and sends
+them over the WebSocket connection. Previously, such a server would
+close immediately. Now, unless the connection handler checks for
+termination explicitly, it won't notice that the server is closing
+until it attempts to send the next event, which could take some time.
+
+Fix #338 and #394.
+
+Revert #337 and #392.",['c3a81ff690acadaa3f57da2bbdaec69f873d4c0d'],False,"['changelog.rst', 'cheatsheet.rst', 'design.rst', 'exceptions.py', 'protocol.py', 'server.py', 'test_client_server.py']"
+64575c87c82b34a77a358ccd25f90a537ef570a0,Aymeric Augustin,2018-10-28T15:01:34+01:00,"Add support for python setup.py test.
+
+Tell setuptools to use the default unittest loader, unittest.TestLoader,
+rather than its own version, setuptools.command.test.ScanningLoader, as
+documented here:
+
+https://setuptools.readthedocs.io/en/latest/setuptools.html#test-loader
+
+Fix #415.",['71c4db9c5947dc7a69eb05513bfc46a1a9771c1a'],False,['setup.py']
+c1b74b61dc07d5a1359307a1ff50510e6026765f,Aymeric Augustin,2018-10-28T15:47:22+01:00,"Fix backwards-compatibility recipe.
+
+Refs #338.",['64575c87c82b34a77a358ccd25f90a537ef570a0'],False,['changelog.rst']
+b64fee8eb849d292ddc0e0246c20bd4196cda030,Aymeric Augustin,2018-10-28T20:39:34+01:00,"Support common customizations without subclassing.
+
+This reduces the amount of boilerplate required for defining a
+custom process_request.
+
+Fix #495.",['c1b74b61dc07d5a1359307a1ff50510e6026765f'],False,"['api.rst', 'changelog.rst', 'deployment.rst', 'health_check_server.py', 'client.py', 'server.py', 'test_client_server.py']"
+21d3bed6bcdd4a0374e28dfee0887584ec64e12c,Aymeric Augustin,2018-10-28T20:48:19+01:00,"Simplify fail_connection.
+
+Wait for the connection to terminate separately.
+
+Avoid the  weird ""yield from / await function that returns a Future""
+pattern.
+
+Fix #498.",['324d436648c816b06b42cf68702c8647b7660c57'],False,"['client.py', 'protocol.py', 'client.py', 'server.py']"
+b870638044c8b4e9c5944b05142014258654f79c,Aymeric Augustin,2018-10-30T13:05:14+01:00,"Rewrite recv() to avoid a data loss bug.
+
+A race condition between receiving a message and cancelling recv() could
+result in losing the message.
+
+Fix #486 and #470.",['21d3bed6bcdd4a0374e28dfee0887584ec64e12c'],False,"['changelog.rst', 'design.rst', 'protocol.graffle', 'protocol.svg', 'protocol.py', 'test_protocol.py']"
+62795d1a370858bdd3c43e092d273ed8953c2b59,Aymeric Augustin,2018-10-31T22:34:21+01:00,"Update discussion of transfer_data_task cancellation.
+
+Fix #509.",['dc2722bcf5e275f44d6fbd3f36da529642c697c0'],False,"['design.rst', 'protocol.py']"
+6e7666e4203e245b7a0097e7d578d871a71d024e,Aymeric Augustin,2018-11-01T15:54:34+01:00,Fix typos in the docs.,['62795d1a370858bdd3c43e092d273ed8953c2b59'],False,"['changelog.rst', 'spelling_wordlist.txt', 'server.py']"
+9d6fe04da62b35368de4ec047ab940e3a4e06b77,Aymeric Augustin,2018-11-01T16:28:28+01:00,"Make the client and server examples compatible.
+
+Fix #484.",['1138974fc7dd003d6626faf0b5f3a13f3a44c13d'],False,"['README.rst', 'hello.py']"
+9668b5bb93a7ffb738125ae8f6c1e9002bc57c13,Aymeric Augustin,2018-11-01T16:50:56+01:00,Fix typo.,['391aa13091869cb1073e967be4295e83bd4649cc'],False,['contributing.rst']
+82baae15dba99dc4b6d7a476be501a643c1ae1bf,Aymeric Augustin,2018-11-01T18:04:07+01:00,"Add debug logs of HTTP requests and responses.
+
+Fix #493.",['5a92a1124f47b5d439ac38a607c5a47a2115d6d7'],False,"['changelog.rst', 'client.py', 'http.py', 'protocol.py', 'server.py', 'test_client_server.py', 'test_http.py']"
+771a5f2d1f1c873ea09a7a1191529a93f3f21846,Aymeric Augustin,2018-11-01T21:38:33+01:00,"Return 503 on server shutdown during handshake.
+
+That was a regression in 71c4db9c.
+
+Fix #499.
+
+Ref #483.",['4f1a14c341df27338460db97ea6376571dc3ada7'],False,"['exceptions.py', 'server.py', 'test_client_server.py']"
+9329ef30f4af2c6720ca17aa3980fe59ac52efce,Aymeric Augustin,2018-11-04T21:25:39+01:00,Fix formatting in changelog.,['771a5f2d1f1c873ea09a7a1191529a93f3f21846'],False,['changelog.rst']
+6a8c8332838ef9814b773a4752aa80f7bca42d96,Aymeric Augustin,2018-11-04T17:45:47+01:00,"Support memoryview objects like bytes.
+
+Minimize memory copies when they're C-contiguous.
+
+Fix #478.",['5897ee913650efdcdcf2c2c98b9f74c9b605e83a'],False,"['framing.py', 'speedups.c', 'test_framing.py', 'test_protocol.py', 'test_utils.py']"
+a4dbe6ccb22fd9a591e7557de8ed9b6aa7202741,Aymeric Augustin,2018-11-06T22:50:49+01:00,"Fix wait_closed signature in docs.
+
+Fix #512.",['dff6cfc1a285c0a36ad440290fe81b46269bbba8'],False,['api.rst']
+b6fc5c06d91fbbd76c5db5293adb9b3269116557,Aymeric Augustin,2018-11-11T10:22:18+01:00,Fix side effect of automatic code formatting.`,['a4dbe6ccb22fd9a591e7557de8ed9b6aa7202741'],False,['protocol.py']
+00458f2749bbaeb36280c3129af74f00dab26b3d,Cory Johns,2018-12-12T17:47:32-05:00,"Handle redirects in client when connecting
+
+Per https://tools.ietf.org/html/rfc6455.html#section-4.2.2 the server
+may redirect the client during the handshake. This allows the client to
+handle redirects properly instead of raising an InvalidStatusCode error.",['b6fc5c06d91fbbd76c5db5293adb9b3269116557'],False,"['client.py', 'exceptions.py', 'client.py', 'test_client_server.py']"
+e4b49877e8ffdc618360f5ed85fc1212056a6ded,Cory Johns,2018-12-12T20:13:01-05:00,Fix references to HTTPStatus,['ee92bc490bd762ef575cd2eee8883561d4066f15'],False,"['compatibility.py', 'test_client_server.py']"
+7192081a94ebd2591a4418641335c32be11c5bbd,Aymeric Augustin,2018-12-27T22:51:16+01:00,"Merge pull request #528 from johnsca/bug/client-redirects
+
+Handle redirects in client when connecting","['b6fc5c06d91fbbd76c5db5293adb9b3269116557', '170088dcf478b661097556e97ad60d0dba410408']",True,[]
+40adef93ae4cc74fef34d8ad4e72648a361799e8,Aymeric Augustin,2018-12-29T22:33:24+01:00,"Add documentation for extensions.
+
+Fix #255.",['ec805604e3dd37aa85f2ab3d54ff0b3895d638f9'],False,"['api.rst', 'changelog.rst', 'extensions.rst', 'index.rst', 'base.py', 'permessage_deflate.py']"
+3da06faadec19d50cc068f62e10e2ca456396f53,Aymeric Augustin,2018-12-31T10:16:15+01:00,"Document how to optimize memory usage.
+
+Include benchmarking scripts.
+
+Also improve neighboring docs.
+
+Fix #272.",['4034bc768f1adec08274ef28f62ea6e401d4e88e'],False,"['changelog.rst', 'deployment.rst', 'design.rst', 'extensions.rst', 'intro.rst', 'security.rst', 'spelling_wordlist.txt', 'mem_client.py', 'mem_server.py', 'http.py', 'protocol.py']"
+04336426f894374012da0933ee370d5c20abeeda,Aymeric Augustin,2019-01-01T17:06:27+01:00,"Indicate which functions are coroutines.
+
+Also fix indentation issues in the API docs.
+
+Thanks @cjerdonek for the idea and @njsmith for sphinxcontrib-trio.
+
+Fix #295 (assuming RTD builds properly).",['7d72dabd100b65bb05580f3e0163e3b7ce3dc787'],False,"['.readthedocs.yml', 'api.rst', 'conf.py', 'server.py']"
+8fc78fee48d52bb3c690e925bad0825613319296,Aymeric Augustin,2019-01-01T19:45:03+01:00,"Send fragmented messages from async iterators.
+
+Fix #477.",['76d739dfcf85b3739181c11dcbaab4d4b542e354'],False,"['protocol.py', 'test_protocol.py']"
+5c08626717e29e55b3e0180050c1292833ceef44,Aymeric Augustin,2019-01-26T10:01:22+01:00,Remove workarounds for bugs fixed in Python 3.6.,['31106eb42c846e50e1956043e9f2564e398ccd6c'],False,['protocol.py']
+d836f8b107f040ce3877c21d19a029c6a534343b,Aymeric Augustin,2019-01-25T22:37:51+01:00,"Take advantage of loop.create_future().
+
+It's the best practice for creating futures in asyncio since Python 3.5.2.
+
+Fix #504.",['5c08626717e29e55b3e0180050c1292833ceef44'],False,"['shutdown.py', 'mem_server.py', '__main__.py', 'protocol.py', 'server.py']"
+94945fec3280c1c6d04aa4c9dc41a794f1ef1a42,Aymeric Augustin,2019-01-19T21:00:06+01:00,"Annotate source code with type hints.
+
+Fix a few minor bugs revealed by static typing.
+
+This required adjustments where the code wasn't statically typable,
+usally because a variable was reused with a different type.",['7bff03bbd74ab10a08237efbfb61cc831fa67de8'],False,"['Makefile', 'changelog.rst', '__main__.py', 'client.py', 'exceptions.py', 'base.py', 'permessage_deflate.py', 'framing.py', 'handshake.py', 'headers.py', 'http.py', 'protocol.py', 'server.py', 'uri.py', 'utils.py', 'test_permessage_deflate.py', 'test_exceptions.py', 'test_http.py', 'tox.ini']"
+e4cec94ceacbb039ced993dd0d4fd00c4761cd90,Aymeric Augustin,2019-02-10T14:14:33+01:00,"Document bugfix releases in the changelog.
+
+Mostly so users don't wonder why these releases exist.
+
+Fix #572.",['dcca6efd750bd42062fe9cb3ecb822a7cae75d19'],False,['changelog.rst']
+217477fa1119c26cccf30bbfb07573444839bb27,Aymeric Augustin,2019-02-17T08:58:02+01:00,"Restore support for unbounded incoming message queues.
+
+The API change is backwards incompatible. However, None is a better
+value than 0 to mean ""no limit"" and users already hit the backwards
+incompatibility when they upgraded to 7.0, which broke the feature.
+For this reason I didn't include a backwards compatibility shim.
+
+Thanks @petr-fedorov for the report.
+
+Fix #576.",['569042a682eaa0b5e5a953bea9f3d22832b8dea1'],False,"['changelog.rst', 'protocol.py', 'test_protocol.py']"
+b5690affb4698d18574221ae68024b2fe995a583,Aymeric Augustin,2019-02-03T22:09:34+01:00,"Add ConnectionClosed subclass for normal closure.
+
+Thanks @cjerdonek for the suggestion.
+
+Fix #285.",['52872a5485651d606900cddd720b4a4aa658d690'],False,"['changelog.rst', 'exceptions.py', 'protocol.py', 'server.py', 'test_exceptions.py']"
+b3d60d75fc2973b67ac39d34f08409207c557a97,Aymeric Augustin,2019-06-16T18:02:11+02:00,"Don't crash if a extra_headers callable returns None.
+
+Fix #619.",['05ccc5ee64d5f24ed77809985ae5176d71c6caaf'],False,"['changelog.rst', 'server.py', 'test_client_server.py']"
+f255722c158b531415916ae29be16f295987d5d7,Aymeric Augustin,2019-06-17T13:17:17+02:00,Fix copy-paste mistake in b3d60d75.,['595978c75b42a768e8c85accd02884a8ffa9a503'],False,['test_client_server.py']
+218f0a9866740773349e8d50f76b4af1d9873d39,Aymeric Augustin,2019-06-19T21:04:29+02:00,"Change process_request to be a coroutine (again).
+
+b64fee8e made it possible to use either a function or a coroutine. It
+was part of the 7.0 release.
+
+4f1a14c3 documented this possibility but wasn't released. However, users
+may have read the ""latest"" docs and taken advantage of this.
+
+For this reason, include proper deprecation warnings and preserve
+backwards-compatibility (for the foreseeable future).
+
+The deprecation warnings need to be in two locations to account for
+passing a process_request argument and for overriding the
+process_request method.
+
+Issue #597 shows that `isinstance(..., Awaitable)` is more robust than
+`asyncio.iscoroutinefunction(...)` because it also supports functions
+returning awaitables.",['f255722c158b531415916ae29be16f295987d5d7'],False,"['changelog.rst', 'health_check_server.py', 'server.py', 'test_client_server.py']"
+56cd365310a341eef59f11659631d7ee73b9f1da,Aymeric Augustin,2019-06-17T13:18:18+02:00,"Support HTTP Basic Auth on the server side.
+
+Fix #492.",['c2b7e1bb5a221fe7fea6efb53ab33d8efc8783ad'],False,"['api.rst', 'changelog.rst', '__init__.py', 'auth.py', 'client.py', 'headers.py', 'test_auth.py', 'test_client_server.py', 'test_headers.py']"
+c0c31b89c1eb382ca0604a6edb762e0b2c919ed2,Aymeric Augustin,2019-06-22T13:18:41+02:00,Avoid crash caused by type annotations.,['918d83f6abcd468998a1a6a51387ae5c42a90297'],False,['__main__.py']
+71d476a5141be67daaab82dab729278940085a86,Aymeric Augustin,2019-06-22T13:43:17+02:00,"Handle ConnectionClosed exception in keepalive_ping.
+
+Fix #551.
+
+Thanks @Harmon758 for reporting this bug and identifying the root cause.",['c0c31b89c1eb382ca0604a6edb762e0b2c919ed2'],False,"['changelog.rst', 'protocol.py', 'test_protocol.py']"
+f8d8a61d8e2c7dcd6eb807d952cfa2b5179b29cb,Aymeric Augustin,2019-06-22T17:46:22+02:00,"Handle aborted pings when receiving a pong.
+
+Fix #551.
+
+Thanks @Harmon758 for reporting this bug and identifying the root cause.",['71d476a5141be67daaab82dab729278940085a86'],False,"['protocol.py', 'test_protocol.py']"
+9b89de93b1d00fd404439675ecc1f3f385287cc4,Aymeric Augustin,2019-06-22T19:04:07+02:00,"Handle ConnectionClosed when echoing a close frame.
+
+Fix #606.
+
+Thanks @lgrahl for the bug report.",['bf6db5ddeda3f2da7a48f69ec9fa6c024fdcbfa8'],False,"['protocol.py', 'test_protocol.py', 'utils.py']"
+7d429b56b62a263320fc693b6862da757ffb763f,Aymeric Augustin,2019-06-23T18:56:27+02:00,"Rewrite documentation for process_request.
+
+Fix #496.",['9b89de93b1d00fd404439675ecc1f3f385287cc4'],False,['server.py']
+cac72a7bfdf744fb5d4604317f2ec68caf941751,Aymeric Augustin,2019-06-23T18:42:13+02:00,"Add a FAQ.
+
+Fix #621.",['7d429b56b62a263320fc693b6862da757ffb763f'],False,"['changelog.rst', 'faq.rst', 'index.rst']"
+aa2a2bb52621626c5661f8be5de4985e18e87acf,Aymeric Augustin,2019-06-24T22:08:44+02:00,"Improve HTTP parsing error messages.
+
+Fix #494.",['cac72a7bfdf744fb5d4604317f2ec68caf941751'],False,"['changelog.rst', 'client.py', 'http.py', 'server.py', 'test_http.py']"
+d5a670019dd7baf966e5822c37f45c0da4971fdd,Aymeric Augustin,2019-06-26T08:27:07+02:00,"Improve error messages for hanshake failures.
+
+Fix #611.",['9f9da4478bb2c3f84020abadce118dfad6d53391'],False,"['__main__.py', 'auth.py', 'client.py', 'exceptions.py', 'permessage_deflate.py', 'framing.py', 'protocol.py', 'server.py', 'test_auth.py', 'test_client_server.py', 'test_exceptions.py']"
+721ef99dab6efebbf1aad29ba127387f5e129855,Aymeric Augustin,2019-06-29T10:31:06+02:00,"Add unix_connect to connect to a Unix socket..
+
+Fix #539.",['626544bc58565b19dc11f74ebe9b8fe25ff411b6'],False,"['api.rst', 'changelog.rst', 'unix_client.py', 'unix_server.py', 'client.py', 'test_client_server.py']"
+752f4145cd06d303f7ac2ddc8c1fdffe9c492bff,Aymeric Augustin,2019-06-29T12:52:11+02:00,"Support overriding host and port in connect().
+
+Fix #540.
+
+Thanks @Kirill888 for the report and initial patch.",['721ef99dab6efebbf1aad29ba127387f5e129855'],False,"['changelog.rst', 'client.py', 'test_client_server.py']"
+dd653dbe551a88dec4491fd5d83c9eefa236213a,Aymeric Augustin,2019-06-30T14:32:22+02:00,"Add WebSocketServer to server.__all__.
+
+Fix #562.
+
+Thanks @lgrahl for the suggestion.",['f967833ee3c8215e49edd4033d1efb3985a895ad'],False,['server.py']
+e832c565b6ac85b5c1a80c7e6eab15eaead31440,Aymeric Augustin,2019-07-01T21:37:09+02:00,"Fix InvalidStateError when failing the connection.
+
+This exception occurred when:
+
+- the incoming queue was full
+- the connection terminated with an error
+- recv() was called at the wrong time
+
+Fix #634.",['6386867594a685c026099fb307ae0efd36ca6095'],False,"['protocol.py', 'test_protocol.py']"
+d601f68b7edfed92fbb7566511bea927f324b3c2,Aymeric Augustin,2019-07-01T21:54:46+02:00,"Serialize sending fragmented messages.
+
+While sending a fragmented message, no other data frame can be sent.
+
+Fix #542.",['e832c565b6ac85b5c1a80c7e6eab15eaead31440'],False,"['protocol.py', 'test_protocol.py']"
+7ef66541192be89373a904c27908a411400f5d68,Aymeric Augustin,2019-07-01T22:06:32+02:00,"Serialize sending fragmented messages.
+
+When sending a fragmented message, wait until it's finished to send
+other messages.
+
+Fix #542 (more elegantly).",['d601f68b7edfed92fbb7566511bea927f324b3c2'],False,"['protocol.py', 'test_protocol.py']"
+e3452230eaf67ec5c4c253682eecb26aebee2223,Aymeric Augustin,2019-06-30T14:22:58+02:00,"Discourage cancellation of APIs that write frames.
+
+If writing is stuck (and closing the connection counts as a write),
+then cancelling won't achieve anything. There's only one way out:
+closing the connection, waiting until all timeouts elapse, and
+eventually websockets gives up and aborts the TCP connection.
+
+Fix #278.",['7ef66541192be89373a904c27908a411400f5d68'],False,['protocol.py']
+be04e2fe397ba0dd4b7f7a7f33b84cd4c2c2efd2,Aymeric Augustin,2019-07-03T20:39:58+02:00,"Try to make tests less flaky.
+
+Fix #639.",['5a1b0bb890cb3d6c0ba2dcf05996f7fed8d3b751'],False,['test_protocol.py']
+3718311049eb32a46a0e6b40c1132eeef85fd369,Aymeric Augustin,2019-07-02T22:44:15+02:00,"Avoid logging ping exceptions that aren't retreived.
+
+This is a bit of a hack: it relies on the implementation of asyncio.
+
+Fix #637.",['be04e2fe397ba0dd4b7f7a7f33b84cd4c2c2efd2'],False,"['protocol.py', 'test_protocol.py']"
+45e9a86e5dfdb772ce40a64863083b2664d2e44b,Aymeric Augustin,2019-07-03T23:34:11+02:00,Fix references in changelog.,['3718311049eb32a46a0e6b40c1132eeef85fd369'],False,['changelog.rst']
+b0f6a3ec70fdfe87be8fbb877ca9bc46dc877c39,Aymeric Augustin,2019-07-03T23:33:22+02:00,"Close connections properly in WebSocketServer.close.
+
+Thanks @lburg for the first iteration of this patch.
+
+Fix #541.",['45e9a86e5dfdb772ce40a64863083b2664d2e44b'],False,"['changelog.rst', 'protocol.py', 'server.py', 'test_client_server.py']"
+fc245f269e7108392a4437b1d1b02ed5b99dd9fa,Aymeric Augustin,2019-06-30T22:30:59+02:00,"Improve API docs.
+
+* Add info fields for parameters and exceptions.
+* Rewrite significant parts for clarity.
+* Make minor consistency fixes.
+
+Refs #567.",['b0f6a3ec70fdfe87be8fbb877ca9bc46dc877c39'],False,"['api.rst', 'changelog.rst', 'spelling_wordlist.txt', 'auth.py', 'client.py', 'base.py', 'permessage_deflate.py', 'framing.py', 'handshake.py', 'headers.py', 'http.py', 'protocol.py', 'server.py', 'typing.py', 'uri.py', 'utils.py', 'test_auth.py']"
+8afffd60f4fa8993f6d29965767dcedec4bfceb9,Aymeric Augustin,2019-07-07T11:38:03+02:00,"Update design document.
+
+It wasn't updated when fragmentation was implemented.
+
+Fix #642.",['c7d795ee91804fac5f869b31b41001695f265a36'],False,['design.rst']
+1585da2aa7da6f7984ac1c55a05784619cf974c4,Aymeric Augustin,2019-07-07T14:45:20+02:00,"Improve exception hierarchy.
+
+* Group and sort exceptions from most common to least common.
+* Add a base WebSocketException.
+* Rename WebSocketProtocolError.
+* Document exception tree.
+
+Fix #270.",['8afffd60f4fa8993f6d29965767dcedec4bfceb9'],False,"['changelog.rst', 'design.rst', 'exceptions.py', 'framing.py', 'protocol.py', 'test_exceptions.py', 'test_framing.py']"
+c3681322989aab7c49b3bf94082690764f10c0a2,Aymeric Augustin,2019-07-07T16:56:06+02:00,"Use a plain dict to store pings.
+
+This is possible since Python 3.6 because dict preserves order.
+
+Also remove dependency on binascii for converting bytes to hex with
+bytes.hex() which is available since Python 3.5.
+
+Fix #645.",['1585da2aa7da6f7984ac1c55a05784619cf974c4'],False,['protocol.py']
+d8a3a98bddedb1949d8da3c902fecdf7ce020c50,Aymeric Augustin,2019-07-07T17:26:17+02:00,"Deprecate host, port and secure attrs of protocols.
+
+Also factor out logic for testing deprecations.
+
+Fix #644.",['c01ae626a30891b2302b5b2df80296b5345f118a'],False,"['api.rst', 'changelog.rst', 'client.py', 'protocol.py', 'test_client_server.py', 'utils.py']"
+8d907e029996a5563ceb5b65e02406c442674733,Aymeric Augustin,2019-07-07T19:15:41+02:00,"Explain close code 1006.
+
+Also remove redundant message from ConnectionClosed exception: it's
+pretty clear that websockets.exceptions.ConnectionClosed[Error|OK]
+means that a WebSocket connection is closed.
+
+This makes the close code more prominent and increases the chances
+that users will find the explanation in the FAQ.
+
+Fix #579. Fix #624.",['d8a3a98bddedb1949d8da3c902fecdf7ce020c50'],False,"['cheatsheet.rst', 'faq.rst', 'exceptions.py', 'test_exceptions.py']"
+ec50f6b2b965f9ffa48a5760ed72376796728ede,Manu NALEPA,2019-07-12T17:29:50+02:00,__main.py__: Fix typo,['02af45351df41603c2767b004b29ab158337a667'],False,['__main__.py']
+7e0a651a06963c0a30f6c4888a30a9e7d3a7ad68,Aymeric Augustin,2019-07-31T20:40:51+02:00,"Remove incorrect assertion.
+
+create_server must receive either host + port or sock.
+It does its own checks anyway; we don't need to replicate them.
+
+Fix #659.",['5d059da31f0d967ddf300a15f03fd00a92c8712f'],False,"['changelog.rst', 'server.py']"
+fac562ddd5e6004949acd504c48fc91f2558593f,Aymeric Augustin,2019-07-31T21:11:33+02:00,"Remove incorrect assertion.
+
+Fix #646.
+
+See the ticket for details.",['7e0a651a06963c0a30f6c4888a30a9e7d3a7ad68'],False,"['changelog.rst', 'protocol.py']"
+3f444b1629237a6795c30d55f0775f4e75728bf3,Gunnlaugur Thor Briem,2019-08-12T21:58:08+00:00,"fix: permit None in type annotations
+
+Fix type annotations for four parameters which are documented to accept `None`.",['e8deaf9a93302c291eb8c05456a5bf90e94d7b63'],False,['protocol.py']
+05d256da094759200016f123d787d315d86fc5c2,Gunnlaugur Thor Briem,2019-08-13T09:47:54+00:00,fix: downstream type annotations/assertions,['3f444b1629237a6795c30d55f0775f4e75728bf3'],False,['protocol.py']
+4ccc512861e1b56d9152b93e133f2ec9c6118c21,Aymeric Augustin,2019-08-21T15:18:43+02:00,Fix typo in docstring.,['05d256da094759200016f123d787d315d86fc5c2'],False,['http.py']
+e679490cf2af87bc060fc63a0f2898444f26d5c3,Aymeric Augustin,2019-10-05T15:49:08+02:00,"Update to the latest version of mypy.
+
+The bugs that were locking us on an old version are fixed.",['8952c3a78a0cbf98501c94c30920a3eb4162c5d2'],False,"['__init__.py', '__main__.py', 'client.py', 'handshake.py', 'protocol.py', 'server.py', 'tox.ini']"
+65ae7cd42ca5bcd1796e33c42909752b26b197f9,Aymeric Augustin,2019-10-05T15:49:51+02:00,"Fix deprecation warnings on Python 3.8.
+
+* Don't pass the deprecated loop argument.
+* Ignore deprecation warnings for @asyncio.coroutine.",['e679490cf2af87bc060fc63a0f2898444f26d5c3'],False,"['protocol.py', 'server.py', 'test_client_server.py', 'test_protocol.py']"
+1d673debfd306e3e1953f0312390fa5456e09b5a,Aymeric Augustin,2019-10-05T21:33:27+02:00,"Remove test that no longer makes sense.
+
+Since version 7.0, when the server closes, it terminates connections
+with close code 1001 instead of canceling them.",['a9ef745899b8346526eb3e29a95b5e0f7db9a1f2'],False,['test_client_server.py']
+d537c26ac380a1b74444f83f31cd744f7f24bf15,Aymeric Augustin,2019-10-05T21:41:13+02:00,"Fix refactoring error.
+
+WebSocketCommonProtocol.transport can be unset, but it cannot be None.",['1d673debfd306e3e1953f0312390fa5456e09b5a'],False,"['protocol.py', 'test_protocol.py']"
+93ad88a9a8fe2ea8d96fb1d2a0f1625a3c5fee7c,Alex Coplan,2019-11-04T11:54:49+00:00,"fix type hints on client/server args
+
+ * Make ping_interval et al. optional so that code that passes None here will
+   type check.",['139085fe2624192a5a6c72b1e5db211dcec6ced1'],False,"['client.py', 'server.py']"
+3bab7fd155636c73b79b258de752b36687bba347,Aymeric Augustin,2019-11-16T20:37:14+01:00,"Clarify local/remote_address after connection is closed.
+
+Fix #688.",['93ad88a9a8fe2ea8d96fb1d2a0f1625a3c5fee7c'],False,['protocol.py']
+910f417c9179150c5ab4b44c7361dbf1e51ec322,Aymeric Augustin,2019-11-16T20:40:15+01:00,"Always reraise CancelledError.
+
+It's really hard to write tests for this :-(
+
+Fix #672.",['3bab7fd155636c73b79b258de752b36687bba347'],False,"['client.py', 'server.py']"
+a1615b47fcd416e5016d7e471976314c267f4349,Hugo,2020-01-14T20:53:41+02:00,Fix for Python 3.10: use sys.version_info instead of sys.version,['910f417c9179150c5ab4b44c7361dbf1e51ec322'],False,['http.py']
+6b5cbaf41cdbc9a2074e357ccc613ef25517dd32,Tim Gates,2020-03-01T19:10:49+11:00,"Fix simple typo: severel -> several
+
+There is a small typo in src/websockets/client.py, src/websockets/server.py.
+Should read `several` rather than `severel`.",['4f1964295ad0e81c8c96b99c3fe9dafc96f11f28'],False,"['client.py', 'server.py']"
+46e8fb5cecb474991e18f7b809378b7d76477df2,Aymeric Augustin,2020-05-23T09:58:58+02:00,Fix flake8 violation.,['6170e235723f27a5aaa42ea86828f0266cc004f9'],False,['protocol.py']
+69c94af5c0ad19402e0bedcc6b61a23fa070c946,David Bordeynik,2020-05-18T10:38:08+03:00,"Future-proof asyncio.wait usage.
+
+Fix #762.",['fafcf65d430149a8b94379f9557655828a0dcdab'],False,"['config.yml', '.gitignore', 'server.py', 'tox.ini']"
+017a072705408d3df945e333e5edd93e0aa8c706,Ram Rachum,2020-06-12T23:16:57+03:00,Fix exception causes in server.py,['24a77def7097cb7ae651edf35582c8def5a6ad3e'],False,['server.py']
+17499930cec591778d13e594b0cb978a9961e276,Aymeric Augustin,2020-07-26T13:39:43+02:00,Ignore coverage measurement issue.,['017a072705408d3df945e333e5edd93e0aa8c706'],False,['protocol.py']
+fad4c57d4d84cb884bd30ebe44e07ace4d5f4cfb,akgnah,2020-03-02T13:01:51+08:00,fix typo in example/counter.py,['207407404d2a1bfd95da040f3948892cbf17c950'],False,['counter.py']
+458c4d67faaaf52359f713aafc3eda26afb1de3d,Thomas LÉVEIL,2020-04-09T01:09:36+02:00,"support request lines of 4107 bytes
+
+fix #743
+
+avoid sending a `HTTP 400` response when popular browsers send a request with cookies maxing up the user-agent limit",['fad4c57d4d84cb884bd30ebe44e07ace4d5f4cfb'],False,"['http11.py', 'http_legacy.py', 'test_http11.py', 'test_http_legacy.py']"
+639b993a236107f22d529cde488d1e1eb6645228,Aymeric Augustin,2020-07-26T21:38:15+02:00,"Create correct Host header for IPv6.
+
+Fix #802.",['f056c1cfb8ef417180bf337308aa73e49c9469b4'],False,"['asyncio_client.py', 'client.py', 'http.py', 'test_http.py']"
+6466e238f4809e81579f70460563fa0d00b7905a,Aymeric Augustin,2020-07-26T21:49:05+02:00,"Raise a good error when sending a dict.
+
+This must be a common mistake.
+
+Fix #734.",['639b993a236107f22d529cde488d1e1eb6645228'],False,"['protocol.py', 'test_protocol.py']"
+97ae02b4560516f577b265ef222fff5fb3e950b6,Aymeric Augustin,2020-07-26T22:05:31+02:00,"Document pitfall.
+
+Fix #335.",['6466e238f4809e81579f70460563fa0d00b7905a'],False,['faq.rst']
+0a1195eed14eddb3f27929ef49af4024814c3f37,Aymeric Augustin,2020-07-26T22:48:28+02:00,"Type create_protocol arguments as callables.
+
+Fix #764.",['97ae02b4560516f577b265ef222fff5fb3e950b6'],False,"['asyncio_client.py', 'asyncio_server.py', 'auth.py', 'test_auth.py']"
+c39268c4867e41d11c20f7859583761d52a04012,Ram Rachum,2020-07-27T14:06:08+03:00,Fix exception causes in handshake_legacy.py,['cb91aa1575066f6624944cb75bb41d68a45d1b45'],False,['handshake_legacy.py']
+b331e6c9c3d2cfd3d768aa81e396a9e2f977cf88,Aymeric Augustin,2020-11-21T13:37:53+01:00,"Document how to pass arguments to protocol factory.
+
+Fix #851.",['a64136c869c527808c337b13e6dace43ad9d674e'],False,['faq.rst']
+988572074edbde4dce1e49573e9dca05498bb159,Aymeric Augustin,2020-11-21T13:50:45+01:00,"Brag with # stargazers.
+
+Fix #844.",['b331e6c9c3d2cfd3d768aa81e396a9e2f977cf88'],False,['conf.py']
+e6d5da9b94167d875e2fb3936e44665fe0f562bc,Aymeric Augustin,2020-11-21T16:25:33+01:00,"Include ""broadcast"" as a search term.
+
+Fix #841.",['988572074edbde4dce1e49573e9dca05498bb159'],False,['intro.rst']
+5bce4c1c5e59c8c3f5ec45de1c94f9047126b885,Aymeric Augustin,2020-11-21T17:44:11+01:00,"Support IRIs in addition to URIs.
+
+Fix #832.",['f6e03bbd1f0e1affdda16488e46ae488ab0ccfcb'],False,"['changelog.rst', 'uri.py', 'test_uri.py']"
+8061b03b803fb1ce2c7dfcf7bf3cd48f41d34b83,Aymeric Augustin,2020-11-21T18:18:54+01:00,"Remove loop argument to asyncio.Queue.
+
+Prepare compatibility with Python 3.10.
+
+Fix #801.",['72d32619650eace78a4d7e797de9369fbee10ada'],False,['__main__.py']
+a58540d681fc858fc43fcfaf7a6be33f177446a7,konichuvak,2020-08-27T16:26:46-04:00,"Adds 1012-1014 close codes.
+
+Also replac. `list` with a `set` for faster close code lookups.",['07775cfaa07b2fb2e31622af03a4fa62820482fb'],False,"['exceptions.py', 'frames.py']"
+965f8ec77347adaaf23c82eef693c9882269b46c,Aymeric Augustin,2020-11-30T21:46:25+01:00,Fix lazy imports of objects on Python 3.6.,['42f0e2c0b8e994c33b792208adff32bea1cdff4f'],False,"['imports.py', 'test_imports.py']"
+6167b5d8d8f7ec7d96f925089813503ee53b2983,Aymeric Augustin,2020-12-11T22:02:12+01:00,"Clarify there's no guarantee to yield control.
+
+Fix #865.",['ecf64e7a56ee85e10a812139a4aee09e736aa241'],False,['protocol.py']
+dccba0efb3bcb554fad85d72b4f6aa392626caac,Aymeric Augustin,2020-12-13T10:57:15+01:00,"Fix sending fragmented, compressed messages.
+
+Fix #866.",['6167b5d8d8f7ec7d96f925089813503ee53b2983'],False,"['changelog.rst', 'permessage_deflate.py', 'test_permessage_deflate.py']"
+97a601454e193d1f30d3069d8015d086a5b83aa2,Aymeric Augustin,2021-01-01T18:21:24+01:00,"Support serve() with existing Unix socket.
+
+Fix #878.",['dccba0efb3bcb554fad85d72b4f6aa392626caac'],False,"['changelog.rst', 'server.py']"
+dda3dfa992ddf6045be48c34143e4c1656dff9d4,Aymeric Augustin,2021-04-20T19:31:39+02:00,"Document how to run on Heroku.
+
+Fix #929.",['aa93c4ceca90a1798f86b2fc2b110a42f308d721'],False,"['heroku.rst', 'index.rst', 'spelling_wordlist.txt']"
+835d16dfadd912766df99dac21e82c151eb1bda7,Aymeric Augustin,2021-05-01T10:47:38+02:00,"Add example of client shutdown.
+
+Fix #933.",['fa295a75fd0fcf53906d7aa0fe4fdcc8c7d81cd2'],False,"['deployment.rst', 'faq.rst', 'shutdown_client.py', 'shutdown_server.py']"
+9c818367b2177aae6c90c3a5c4fad26e540c81bc,Aymeric Augustin,2021-05-01T21:51:07+02:00,"Support existing Unix sockets in unix_connect.
+
+The same fix was made for the server side, but not the client side.",['cf2453625a023868bfe760dc438a500e3ebcb931'],False,"['changelog.rst', 'client.py']"
+927287380011e4388c11c24d286beef2b877284d,Aymeric Augustin,2021-05-01T22:49:58+02:00,Work around coverage bug.,['d82a7a9de7cebec22bdcdf763ba4cb7ea75bdb76'],False,['protocol.py']
+b6f085e86f0a62e1fe3a38b33256479cbf84a0dd,Aymeric Augustin,2021-05-02T20:55:50+02:00,Fix badge.,['fc176f462b6a5ef4f470df415780b09fed5da7c1'],False,"['README.rst', 'index.rst']"
+db6f5b50d09ae86606c4e0d9b92079eb02dbff5e,Aymeric Augustin,2021-05-02T21:24:13+02:00,"Document public methods that can raise ConnectionClosed.
+
+Fix #768.",['b6f085e86f0a62e1fe3a38b33256479cbf84a0dd'],False,['protocol.py']
+4ca3721bd29e1e0efddb89dff17809382af339dd,Aymeric Augustin,2021-05-02T09:01:01+02:00,"Drop support for Python 3.6.
+
+Also fix a few places that were missed when adding 3.9.",['e4fe1e0999237c3def055dddfee39c3a09e743a4'],False,"['tests.yml', 'wheels.yml', 'README.rst', 'changelog.rst', 'intro.rst', 'setup.cfg', 'setup.py', '__main__.py', 'datastructures.py', 'imports.py', 'server.py', 'typing.py', 'tox.ini']"
+ab6f4382ec1cd122b3a515601d413a8f247ea79e,Aymeric Augustin,2021-05-02T09:42:50+02:00,"Remove use of get_event_loop.
+
+Refs #916 - get_event_loop is deprecated in Python 3.10.
+
+Fix #534.",['4ca3721bd29e1e0efddb89dff17809382af339dd'],False,"['README.rst', 'test_client.py', 'test_server.py', 'faq.rst', 'heroku.rst', 'basic_auth_client.py', 'basic_auth_server.py', 'client.py', 'counter.py', 'echo.py', 'health_check_server.py', 'hello.py', 'secure_client.py', 'secure_server.py', 'server.py', 'show_time.py', 'shutdown_client.py', 'shutdown_server.py', 'unix_client.py', 'unix_server.py', 'mem_client.py', 'mem_server.py']"
+9834fca95204c517adedca2478a53058ecf72ae3,Aymeric Augustin,2021-05-07T21:21:37+02:00,"Use relative imports everywhere, for consistency.
+
+Fix #946.",['eb856f2ba31d1154e18db4ca33b0ab9586ae129c'],False,"['extensions.rst', 'extensions.rst', '__init__.py', 'frames.py', 'framing.py']"
+60e9531eb978b41deee1db8552b27faa749aa515,Aymeric Augustin,2021-05-03T23:49:45+02:00,"Document how to use with Django.
+
+Fix #890.",['9834fca95204c517adedca2478a53058ecf72ae3'],False,"['django.rst', 'index.rst', 'spelling_wordlist.txt', 'authentication.py', 'notifications.py', 'signals.py']"
+217ac2d19174c6f01d9524648eb4058985f72754,Aymeric Augustin,2021-05-13T22:37:31+02:00,"Fix broken link.
+
+Fix #953.",['fc176f462b6a5ef4f470df415780b09fed5da7c1'],False,['design.rst']
+70fadbf97c5a117ca13f6c8f4f111ba5025f3c94,Aymeric Augustin,2021-05-13T22:41:46+02:00,"Restore compatibility with Python < 3.9.
+
+Fix #951.",['217ac2d19174c6f01d9524648eb4058985f72754'],False,"['changelog.rst', '__main__.py']"
+e44e085e030d186c7bb9822becfbb5423aefe971,Aymeric Augustin,2021-05-07T21:21:37+02:00,"Use relative imports everywhere, for consistency.
+
+Fix #946.",['70fadbf97c5a117ca13f6c8f4f111ba5025f3c94'],False,"['extensions.rst', 'extensions.rst', '__init__.py', 'frames.py', 'framing.py']"
+b99c4fe390a22cc846ce550a29f2c9841e99660d,Aymeric Augustin,2021-05-07T21:44:51+02:00,"Restore real imports for compatibility with mypy.
+
+Fix #940.",['e44e085e030d186c7bb9822becfbb5423aefe971'],False,"['client.rst', 'index.rst', 'server.rst', 'changelog.rst', 'extensions.rst', 'auth.py', 'client.py', 'server.py']"
+f9371fca175f799ae3f1cc1cb0d5122cfd25d8de,Aymeric Augustin,2021-05-15T19:03:11+02:00,"Improve example in intro.
+
+* Refactor to increase clarity.
+* Avoid deprecated usage of asyncio.wait.
+* Clarify what happens when clients disconnect.
+* Restore call to main() -- it disappeared.
+
+Fix #757.",['5e53592c73289b1e662bffd5d9262863dc72491f'],False,['counter.py']
+8acf7ccf39c96acec293a2ec668e299f6f29e46b,Aymeric Augustin,2021-05-15T18:33:41+02:00,"Setup issue template
+
+Fix #835.",['2222beaaa2900847ecf7b3b487ac6106254504d1'],False,"['config.yml', 'issue.md']"
+5e69983096359fdf87d26afa7b5143badfe2140e,Aymeric Augustin,2021-05-25T23:00:21+02:00,"Add deployment doc.
+
+Fix #445.",['b455d30252d8eb66771b63c7b9ca26d37f76e4d9'],False,"['deployment.rst', 'index.rst', 'spelling_wordlist.txt', 'deployment.rst', 'deployment.svg', 'index.rst', 'memory.rst', 'security.rst', 'health_check_server.py', 'shutdown_server.py']"
+dfecbd0307a94bc8704f895b66167e8838c222e6,Aymeric Augustin,2021-05-27T13:23:30+02:00,Prep for releasing 9.1 with security fix.,['5e69983096359fdf87d26afa7b5143badfe2140e'],False,['changelog.rst']
+ac85304980285079ff871cde728964d0acfde569,Aymeric Augustin,2021-05-27T21:27:27+02:00,Fix link to changelog.,['639436a3d37e82acd718c1440ef38732cbd4279d'],False,['setup.cfg']
+2617b2c8f80c19e759a4e1364bc7007ff8d99acd,Aymeric Augustin,2021-05-29T20:59:26+02:00,"Add human-friendly representation of frames.
+
+Fix #765.",['58193e088ace6ce7c4c2dfcb6deea2af7cbe8601'],False,"['__main__.py', 'exceptions.py', 'frames.py', 'test_frames.py']"
+57ff93f051d0731d28c8be5182740a0167a85d23,Aymeric Augustin,2021-05-29T07:25:52+02:00,"Document how to disable logging.
+
+Fix #759.",['f5eae5657c2d948cdf20174a03190c6a4206341c'],False,"['index.rst', 'logging.rst']"
+acb6166aa3ab20dbd4ca8e80abf1a614b76f92c1,Aymeric Augustin,2021-05-30T15:06:06+02:00,"Overhaul logging.
+
+* Log connections open and closed at the info level.
+* Put debug logs behind `if self.debug:` to minimize overhead.
+* Standardize logging style.
+* Add documentation.",['3388225957c6bba1cf46748f6f83c6bb8f7ff7f6'],False,"['logging.rst', 'changelog.rst', 'setup.cfg', 'client.py', 'connection.py', 'client.py', 'protocol.py', 'server.py', 'server.py', 'test_connection.py', 'test_http11.py']"
+2883ca8a41bb4ce2a933e58a1fdbf958a97ccb84,Aymeric Augustin,2021-06-01T08:57:50+02:00,Simplify connection shutdown on handshake failure.,['848e0500a61e14180cebd8ad2eadaf9c9d3e4176'],False,"['protocol.py', 'server.py']"
+0cce70a8645abeac25cae59eac6bd0fb008afa38,Aymeric Augustin,2021-06-03T09:26:10+02:00,"Add error reason in close on ping timeout.
+
+Fix #636.",['6722857ebefd365c9299a79e1526644e25fe1015'],False,"['protocol.py', 'test_protocol.py']"
+d5ccd3658b29fea1b57b869d7b9911efa333ff8d,Aymeric Augustin,2021-06-03T21:04:19+02:00,Fix docstring after refactoring.,['ba4be454b6fd7f283d2ea8ec4354e2e6c9627267'],False,['frames.py']
+d3d1d0550c62ac68edb09dc6f6a11b4715148251,Aymeric Augustin,2021-06-05T07:39:01+02:00,"Store response headers in InvalidStatusCode.
+
+Also introduce InvalidStatus for the new implementation, storing the
+entire response (but not for the legacy implementationn).
+
+Fix #712.",['d5ccd3658b29fea1b57b869d7b9911efa333ff8d'],False,"['changelog.rst', '__init__.py', 'client.py', 'exceptions.py', 'client.py', 'test_exceptions.py']"
+0c157d457b871a3055329a50ac30cef640787b67,Aymeric Augustin,2021-06-05T08:21:40+02:00,"Add timeout to connect.
+
+Fix #574.",['d3d1d0550c62ac68edb09dc6f6a11b4715148251'],False,"['changelog.rst', 'client.py']"
+0779eb973d2779c33b560488212ea8b652601596,Aymeric Augustin,2021-06-04T23:08:11+02:00,"Prevent crash of data transfer task
+
+When the read buffer isn't empty, the following scenario is possible:
+
+* TCP connection is closed (one way or another)
+* transfer_data is still processing buffered data
+* it encounters a ping and attempts to send a pong
+
+transfer_data must never crash, so ignore the error in this case.
+
+Fix #977",['0c157d457b871a3055329a50ac30cef640787b67'],False,"['protocol.py', 'test_protocol.py']"
+e5458a16f7c4162289c248a386e21fce24fa621f,Aymeric Augustin,2021-06-05T22:29:22+02:00,"Simplify table.
+
+Fix #985.",['ebc8448b6603977c4e81e182e9827705c9a5889c'],False,['compression.rst']
+cb11516e0ed4fe2b67ab6c1511650bd42115d0b6,Aymeric Augustin,2021-06-07T22:11:26+02:00,"Stop requiring loop in WebSocketCommonProtocol.
+
+Change tests to avoid passing a loop argument.
+
+Fix #988.",['cc1254b28867fcd2391e436fe5f10f7f40c77729'],False,"['client.py', 'protocol.py', 'server.py', 'test_client_server.py', 'test_protocol.py']"
+29094a27e65ae34b9219effd2f4bd755f0a63ff5,Aymeric Augustin,2021-06-05T11:49:15+02:00,"Add support for reconnecting automatically.
+
+Fix #414.",['cb11516e0ed4fe2b67ab6c1511650bd42115d0b6'],False,"['logging.rst', 'changelog.rst', 'spelling_wordlist.txt', 'client.py', 'server.py', 'test_client_server.py']"
+0a60fac6c2cd922198bd17e034c9a4406e273db7,Aymeric Augustin,2021-06-09T08:15:00+02:00,"Make test less timing-sensitive.
+
+Fix #991.",['29094a27e65ae34b9219effd2f4bd755f0a63ff5'],False,['test_client_server.py']
+71dbbffabcaaaba5dbcfb21df20f98e2bdbe01f6,Aymeric Augustin,2021-06-10T23:16:30+02:00,"Break import cycles.
+
+Import modules rather than their contents.
+
+Fix #989.",['298cdabef68e9619d89100684eb27f719fc361a6'],False,"['client.py', 'connection.py', 'exceptions.py', 'base.py', 'permessage_deflate.py', 'frames.py', 'http11.py', 'client.py', 'framing.py', 'protocol.py', 'server.py', 'server.py', 'uri.py']"
+f96c0d0e71e781e8603561c1d0e3c2322ffd76ed,Aymeric Augustin,2021-06-13T14:20:31+02:00,"Add a utility function for broadcasting messages.
+
+Fix #870.",['85e8799de819da0d6e370c61b10f72a5368fa40b'],False,"['changelog.rst', 'utilities.rst', '__init__.py', 'protocol.py', 'server.py', 'test_protocol.py']"
+185e9c6e076aecdff0aee3e858049f569cc0ed8e,Aymeric Augustin,2021-06-13T17:55:29+02:00,"Discuss broadcasting messages.
+
+Fix #653.",['a3958847c033c5d532eaef0b335c103171f9f7e7'],False,"['spelling_wordlist.txt', 'broadcast.rst', 'index.rst']"
+fa497e501b505ba7255315cb660128d01cfbef44,Aymeric Augustin,2021-06-13T22:13:15+02:00,"Take advantage of broadcast() in examples.
+
+Fix #995.",['185e9c6e076aecdff0aee3e858049f569cc0ed8e'],False,"['index.rst', 'counter.py', 'notifications.py']"
+4c8d987e02895e0c372ddfca63b73d86aace35e9,Aymeric Augustin,2021-06-13T22:54:15+02:00,"Add performance tips.
+
+Fix #968.",['fa497e501b505ba7255315cb660128d01cfbef44'],False,"['spelling_wordlist.txt', 'index.rst', 'performance.rst']"
+897d1b27f362c4113308e76b989321ece3bfd4af,Aymeric Augustin,2021-06-14T20:53:10+02:00,"Validate subprotocols argument.
+
+Fix #263.",['4c8d987e02895e0c372ddfca63b73d86aace35e9'],False,"['headers.py', 'client.py', 'server.py', 'test_client_server.py', 'test_headers.py']"
+047222c434fa8f54d92bb904438267113a09f5a1,Aymeric Augustin,2021-06-16T07:42:46+02:00,Add an abstraction for close codes and reasons.,['897d1b27f362c4113308e76b989321ece3bfd4af'],False,['frames.py']
+5bb653f2da9351ee00275e04c63bef19da565528,Aymeric Augustin,2021-06-16T07:59:27+02:00,"Adopt the abstraction for close code and reasons.
+
+Preserve backwards compatibility in the framing module.",['047222c434fa8f54d92bb904438267113a09f5a1'],False,"['__main__.py', 'connection.py', 'exceptions.py', 'frames.py', 'framing.py', 'protocol.py', 'test_permessage_deflate.py', 'test_framing.py', 'test_protocol.py', 'test_connection.py', 'test_frames.py']"
+2dd793ffc0e0faab2ed34e4e06fc0b9702a84999,Aymeric Augustin,2021-06-16T08:42:03+02:00,Simplify display of close codes and reasons.,['5bb653f2da9351ee00275e04c63bef19da565528'],False,"['frames.py', 'protocol.py', 'test_exceptions.py', 'test_frames.py']"
+62eb267c34034e97813bc210f0b04a6acbedd7a5,Aymeric Augustin,2021-06-16T22:21:01+02:00,"Add details to ConnectionClosed.
+
+Fix #587.
+
+Ref #767.",['2dd793ffc0e0faab2ed34e4e06fc0b9702a84999'],False,"['django.rst', 'faq.rst', 'haproxy.rst', 'heroku.rst', 'kubernetes.rst', 'nginx.rst', 'supervisor.rst', 'changelog.rst', 'client.rst', 'server.rst', '__main__.py', 'exceptions.py', 'frames.py', 'protocol.py', 'test_protocol.py', 'test_exceptions.py', 'test_frames.py']"
+1186dd6cfc072a7038d5478f6f5722038efba51c,Aymeric Augustin,2021-06-16T22:51:50+02:00,"Store details of close frames.
+
+Ref #587.",['62eb267c34034e97813bc210f0b04a6acbedd7a5'],False,"['connection.py', 'test_connection.py']"
+b2a95c45fae19fff0a3473158dd02afe2ca42604,Aymeric Augustin,2021-06-17T22:30:00+02:00,"Don't answer pings on closing connection.
+
+Technically, this is the wrong behavior, but I'll live with this in the
+legacy layer. The new Sans I/O layer has the right behavior.
+
+Fix #669.",['f148d821f3b9ce620c65011281056f7655ea6fa6'],False,"['protocol.py', 'test_protocol.py']"
+361f38066622636eff8d9e0d3d071e93e8e02b05,Aymeric Augustin,2021-06-17T23:31:31+02:00,"Handle connection drop during handshake.
+
+Fix #984.",['b2a95c45fae19fff0a3473158dd02afe2ca42604'],False,['server.py']
+ebda766d856b59faa86e14f9cf53a5e0ede0a355,Aymeric Augustin,2021-06-18T18:03:01+02:00,"Fix connection closure.
+
+* In a regular closing handshake, server closes the connection after
+  receiving and sending a close frame.
+* When failing the connection, server closes the connection after
+  sending a close frame.",['f9c28e8b7810c5a2fcadc88825046618f1fdc012'],False,"['connection.py', 'test_connection.py']"
+81a4a2a369190ae4a30e7914ead889c5931172d1,Aymeric Augustin,2021-06-20T07:41:45+02:00,Close connecting when opening handshake fails.,['98e8b8d31326557c5c1a85fa0bd75d390b34b3f3'],False,"['server.py', 'test_server.py']"
+5495af64f016c332f4a6f91811e9896f07e0ea59,Aymeric Augustin,2021-06-20T09:22:16+02:00,"Prevent client from closing TCP connection
+
+Read until EOF and wait for the server to close the connection first.",['81a4a2a369190ae4a30e7914ead889c5931172d1'],False,"['connection.py', 'streams.py', 'test_connection.py', 'test_streams.py']"
+8add3a648ae4886b78db018f5b672abc0f6e5a8c,Aymeric Augustin,2021-06-20T14:59:43+02:00,Indicate when TCP connection should close,['008c160365bcda5b38ddeccf5613b1b2a8395599'],False,"['connection.py', 'test_connection.py']"
+d5ab29687ae19170cbf6ee80ecd26d7de0862f5a,Aymeric Augustin,2021-06-20T15:15:41+02:00,Set connection state to closed after EOF,['8add3a648ae4886b78db018f5b672abc0f6e5a8c'],False,"['connection.py', 'test_connection.py']"
+b96d82202cf6d7fbe2196c07c23679cf2318055b,Aymeric Augustin,2021-06-20T21:26:47+02:00,Add API for getting connection closed exception.,['48527e4c1c07a9d2c68ac16f91dd2f0c267c18b5'],False,"['connection.py', 'test_connection.py']"
+5d8e0c5dbefa1c487c14736943f858e3b0dc9921,Aymeric Augustin,2021-06-23T08:44:11+02:00,Stop processing data after receiving close frame.,['a9de47d9247335d4a4b2df551b1732049597ec58'],False,"['connection.py', 'test_connection.py']"
+6aae7c69e30c74bbdc9bd81c52f7a5f90b4c8037,Aymeric Augustin,2021-07-25T18:21:36+02:00,"Explain ping timeout errors in the FAQ.
+
+Fix #1012.",['4ed76b2cc43b9480428121cc9f94ee36af4ea27f'],False,"['faq.rst', 'timeouts.rst']"
+21af14cdd61cb31a4a4c003d73f9eb489a7a22f3,Aymeric Augustin,2021-07-25T21:37:01+02:00,Fix display of license in docs.,['4e1dac362a3639b9cf0e5bcf382601e6e32cfede'],False,['license.rst']
+59eb1b53a9b3b868a05e0eecc8255ee3b11b8bcc,Aymeric Augustin,2021-07-25T21:45:52+02:00,Fix typo.,['bf02ad01e91a05777d607f926673f8d8b0efc2e7'],False,['broadcast.rst']
+0867d9f0f9fa0dfc267e6e0b91cb1aaa5858ccaf,Aymeric Augustin,2021-07-25T21:51:41+02:00,Clarify error message.,['59eb1b53a9b3b868a05e0eecc8255ee3b11b8bcc'],False,"['frames.py', 'protocol.py']"
+786134542d9f0d6ad3959198c5e543ce55fff4aa,Aymeric Augustin,2021-07-31T09:35:19+02:00,"Document that time.sleep doesn't work in asyncio.
+
+This belongs in asyncio's docs, not in websockets', but I can't find it
+(easily) in Python docs and it keeps tripping people up.
+
+Fix #1025, #1024, #923, #901, #703, etc.",['0867d9f0f9fa0dfc267e6e0b91cb1aaa5858ccaf'],False,['faq.rst']
+1f462000ac9b4f8ad80deb565083ffe430e09acf,Aymeric Augustin,2021-08-11T09:53:50+02:00,"Fix handling of relative redirects.
+
+Fix #1023.",['b343fc60824737d4faa421aafe7983a8d3d0c9df'],False,"['changelog.rst', 'client.py', 'test_client_server.py']"
+5de7b41a2b2003aaf1db4042ac3d5e2ab4c24cdb,Aymeric Augustin,2021-08-12T08:43:46+02:00,"Fix initializing Headers from Headers.
+
+It didn't work when a header had multiple values.",['dc42ecba8d809e14f1856e2e65816c27eaeb8fb6'],False,"['datastructures.py', 'test_datastructures.py']"
+af0f5646ad14e62ee614fa898cc4651ae7d02b93,Aymeric Augustin,2021-08-14T08:36:27+02:00,Fix rendering of extensions how-to.,['6edb363af07365867b4c372405b6ab3177a57830'],False,['extensions.rst']
+4b10c2c8e0334535ae4874d95dc7fdd6392bf68a,Stefan Wojcik,2021-08-25T11:02:42+02:00,Fix typo in the FAQ.,['c7fc0d36bd8ea2aeb7c4321f53d208fb1297db85'],False,['faq.rst']
+9e75d1e6fc4edc53f27d546362711d3bd22291b3,Ben Hoyt,2021-08-27T14:14:48+12:00,"Fix docstring of parse_uri to reflect the exception type raised
+
+It doesn't raise a ValueError, but an InvalidURI error (see below). If
+we want the exception type to be a ValueError as well, you could make
+InvalidURI inherit from ValueError as well as WebSocketException. But
+just changing the doc seems like the right fix here.
+
+>>> from websockets.uri import parse_uri
+>>> parse_uri('foo://example.com')
+Traceback (most recent call last):
+  File ""/home/ben/w/websockets/src/websockets/uri.py"", line 58, in parse_uri
+    assert parsed.scheme in [""ws"", ""wss""]
+AssertionError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File ""<stdin>"", line 1, in <module>
+  File ""/home/ben/w/websockets/src/websockets/uri.py"", line 63, in parse_uri
+    raise exceptions.InvalidURI(uri) from exc
+websockets.exceptions.InvalidURI: foo://example.com isn't a valid URI
+>>> import sys
+>>> exc = sys.last_value
+>>> isinstance(exc, ValueError)
+False",['4b10c2c8e0334535ae4874d95dc7fdd6392bf68a'],False,['uri.py']
+88ae5eb25fa3e8caa3f5d7be7517ec8d5c68847d,Aymeric Augustin,2021-09-03T20:50:03+02:00,"Make error messages more error friendly.
+
+Avoid weird exception chaining to assertion errors.",['1b0b2de59f13b79062a888a8d17ae5e9e5a60ef9'],False,"['changelog.rst', 'exceptions.py', 'uri.py', 'test_exceptions.py', 'test_uri.py']"
+27f6539abc678182970af621c007646403968f82,Aymeric Augustin,2021-08-14T15:01:47+02:00,"Review reference docs.
+
+Remove sphinx-autodoc-typehints and use native autodoc features
+instead, mainly because I can't find a workaround for:
+https://github.com/agronholm/sphinx-autodoc-typehints/issues/132
+
+Re-introduce the ""common"" docs, else linking to send() and recv()
+is a mess.",['88ae5eb25fa3e8caa3f5d7be7517ec8d5c68847d'],False,"['conf.py', 'cheatsheet.rst', 'django.rst', 'extensions.rst', 'faq.rst', 'index.rst', 'changelog.rst', 'client.rst', 'common.rst', 'exceptions.rst', 'extensions.rst', 'index.rst', 'limitations.rst', 'server.rst', 'types.rst', 'utilities.rst', 'requirements.txt', 'spelling_wordlist.txt', 'broadcast.rst', 'compression.rst', 'deployment.rst', 'design.rst', 'memory.rst', 'timeouts.rst', '__init__.py', '__main__.py', 'auth.py', 'client.py', 'connection.py', 'datastructures.py', 'exceptions.py', 'base.py', 'permessage_deflate.py', 'frames.py', 'headers.py', 'http11.py', 'imports.py', 'auth.py', 'client.py', 'framing.py', 'handshake.py', 'http.py', 'protocol.py', 'server.py', 'server.py', 'streams.py', 'typing.py', 'uri.py', 'utils.py']"
+6680923c0f253ed85f885f983bb9f29efcd86b30,Aymeric Augustin,2021-09-05T16:44:19+02:00,Fix typo.,['6f5e609b3d7644a42367946f0a8d33afcda854f4'],False,['authentication.rst']
+903fd24d8cb163e7a8836f3a1faf03fa8869d969,Aymeric Augustin,2021-09-05T17:01:04+02:00,Minor formatting fixes in FAQ.,['6680923c0f253ed85f885f983bb9f29efcd86b30'],False,['faq.rst']
+eba7b56eb652a1bfff2d536b5d348499a1e434d5,Aymeric Augustin,2021-09-06T22:33:10+02:00,Improve docs of Frame and Close.,['abd297b832a74fe23825aacc28bf30e8b00f122d'],False,"['utilities.rst', 'frames.py']"
+5fc6fa832c11be7c42739f901b3a893285bddec0,Aymeric Augustin,2021-09-06T22:40:53+02:00,"Clarify comment.
+
+Fix #1032.",['eba7b56eb652a1bfff2d536b5d348499a1e434d5'],False,['datastructures.py']
+a8eb9738244f9f3ee3d2471baa09c3010cf45afc,Aymeric Augustin,2021-09-08T21:27:43+02:00,"Avoid creating __doc__ attributes.
+
+Sphinx still finds the docstring-that-isn't-really-a-docstring.",['5fc6fa832c11be7c42739f901b3a893285bddec0'],False,"['datastructures.py', 'typing.py']"
+1b16b57ba94c00e20ab08e5596a98511bca95070,Aymeric Augustin,2021-09-09T22:34:19+02:00,Remove obsolete workaround.,['c439f1d52aafc05064cc11702d1c3014046799b0'],False,['client.py']
+dc0e79d6ca2ce6da4906c861443b8c696bf93dff,Aymeric Augustin,2021-09-10T22:54:12+02:00,Fix excessive escaping in debug logs.,['541f95cdab5d4dd953fc9428c47421b7168ae0b1'],False,['protocol.py']
+5d67724fa80765ef95b21b0b04a3d22b1014649a,Aymeric Augustin,2021-09-18T15:55:04+02:00,Fix indentation issue.,['dc0e79d6ca2ce6da4906c861443b8c696bf93dff'],False,['django.rst']
+397eda4952e1f2b044e352ddbf2b45b336881583,Aymeric Augustin,2021-09-18T17:11:20+02:00,Mention crypto policy in issue template.,['5d67724fa80765ef95b21b0b04a3d22b1014649a'],False,['issue.md']
+a2a61ead84cfaf60752452f245e111eecf4a6e53,Oliver Zehentleitner,2021-09-20T21:43:31+02:00,Fix link to tutorial,['744482a2c2ab33e86ec877441f6f8d44ce03b282'],False,['README.rst']
+17af113f028b8a04e1ff8ba00381e9b57b386cfc,Aymeric Augustin,2021-09-20T22:20:54+02:00,Fix link to FAQ,['a2a61ead84cfaf60752452f245e111eecf4a6e53'],False,['issue.md']
+9f77f4e492fa0030ae3e5c388c606931c130065e,Vladislav Smirnov,2021-09-21T22:35:04+03:00,Fix typo in FAQ,['20960c2792353dff7569554fcbe956111d772ba0'],False,['faq.rst']
+27e861fd8566d056d4382992c659868bc57ef01d,Aymeric Augustin,2021-08-14T11:34:06+02:00,"Enable Python 3.10 in CI.
+
+Fix #935.",['c70c7d6703ab8bef35cc89965becc67e8a1afe7c'],False,"['tests.yml', 'wheels.yml']"
+fc3ade70aeafa5535e433b2c6d05f6fb7c70e9e3,Aymeric Augustin,2021-10-28T21:17:23+02:00,"Recommend Sanic for mixing HTTP and WebSocket.
+
+Fix #1073.",['5ba529bf55e271040a122b999f756f5c1919cd11'],False,"['README.rst', 'faq.rst']"
+ed9a7b446c7147f6f88dbeb1d86546ad754e435e,Aymeric Augustin,2021-10-08T22:18:24+02:00,"Disable memory optimization on the client side.
+
+Also clarify compression docs.
+
+Fix #1065.",['fc3ade70aeafa5535e433b2c6d05f6fb7c70e9e3'],False,"['changelog.rst', 'compression.rst', 'memory.rst', 'permessage_deflate.py']"
+56b589368175bf18fa1c3f0036460c0c2f3e4c4b,Aymeric Augustin,2021-11-11T19:14:09+01:00,"Unpin Python 3.9.6.
+
+Reverts 744482a2.
+
+Fix #1051.",['b4d9a2add6a9e716c9405dc74aae8bd521dec3ae'],False,['tests.yml']
+27a439b6d20089dd24ab5a08d07d0585cc31ee34,Aymeric Augustin,2021-11-11T19:31:33+01:00,Work around bug in coverage.,['56b589368175bf18fa1c3f0036460c0c2f3e4c4b'],False,['test_client_server.py']
+b6e25e290143c4dbb5b7bd0acd0c44efd086167e,Aymeric Augustin,2021-11-11T20:16:58+01:00,Work around bug in mypy.,['27a439b6d20089dd24ab5a08d07d0585cc31ee34'],False,['protocol.py']
+0fafda84ae722bf319a46d7cad4c67bcfd47c16d,Aymeric Augustin,2021-09-18T16:57:48+02:00,"Extract patterns to a howto guide.
+
+Improve this guide.
+
+Fix #1022.",['b9e11125b781da3cf567cd2cf3036478c6ee1670'],False,"['index.rst', 'patterns.rst', 'index.rst']"
+448e777adc7d8cf0cbc0bd585959bbdfad682926,Aymeric Augustin,2021-11-06T09:01:11+01:00,"Avoid shutdown on closed socket.
+
+Fix #1072.",['ce611d79b3c849f66da6645513f6a28195e298e1'],False,"['protocol.py', 'test_protocol.py']"
+14891ffa20f6acc0f6ec24a96b6bd4d3504ea3eb,David Sanders,2021-12-21T15:54:27-08:00,Fix some typos in comments,['67b19e6e9ac96722a584e35d7e9dc3a2173af6b8'],False,"['client.py', 'connection.py', 'datastructures.py', 'http11.py', 'server.py', 'speedups.c']"
+2b965a146eb41d05073264ddd296542992fb327f,Aymeric Augustin,2022-02-19T09:50:26+01:00,"Document that convenience imports break IDEs.
+
+Fix #1124.",['668f320e0547d80afe6529528e1ecc6088955cdc'],False,"['changelog.rst', 'index.rst']"
+1e44065f49647abb6bd58bdb9a435dd064e40c74,Aymeric Augustin,2022-02-19T13:41:05+01:00,"Document OSError: [Errno 99].
+
+Fix #1102.",['2b965a146eb41d05073264ddd296542992fb327f'],False,['faq.rst']
+c3560c9f6ff33d058459c2e626c0bd0b8c2c8e1a,Aymeric Augustin,2022-02-19T15:24:31+01:00,"Made compression negotation more lax.
+
+This change means connections from Firefox get compression by default,
+while they didn't use to since the compression ""optimizations"" in 10.0.
+
+Fix #1109.",['9535c2137bdcdc0d34cf8367d2bb16c91a6fc083'],False,"['changelog.rst', 'compression.rst', 'permessage_deflate.py', 'test_permessage_deflate.py', 'test_client_server.py']"
+1882bd185f9b4269ac15ea30b8c31eb1bc39347a,Aymeric Augustin,2022-02-19T17:35:01+01:00,Work around coverage issue in tests.,['c3560c9f6ff33d058459c2e626c0bd0b8c2c8e1a'],False,['test_client_server.py']
+8516801f7f41b91cc491b3466f57a7bd4c8ee544,Aymeric Augustin,2022-02-20T10:52:48+01:00,"Avoid leaking sockets when connect() is canceled.
+
+Fix #1113.",['88d2e2fb51c9154d603861249d26efb0b5e55d80'],False,"['changelog.rst', 'client.py', 'test_client_server.py']"
+fe946ef0d1fb6dac982879a20f584ef66bc0a879,Aymeric Augustin,2022-02-20T11:11:30+01:00,"Fix flaky test.
+
+Ref #1113.",['c6f05b6a594bf5ef5857b2ef23402105d98f3a7a'],False,['test_client_server.py']
+5b3a6d26c493f1aa54d267223ba3a908f0793fc8,Aymeric Augustin,2022-02-20T11:12:31+01:00,"Avoid OSError: [Errno 107] noise in logs.
+
+Fix #1117.
+
+Ref #1072.",['fe946ef0d1fb6dac982879a20f584ef66bc0a879'],False,"['protocol.py', 'test_protocol.py']"
+72e9b37d422191faef3e939905a4edaee1145c24,Aymeric Augustin,2022-02-20T14:24:28+01:00,"Expand discussion of keepalives.
+
+Also mention pitfall in browsers.
+
+Fix #1084.",['5b3a6d26c493f1aa54d267223ba3a908f0793fc8'],False,['timeouts.rst']
+a2ca001a06ebc0d4af7ae66776cb6212e62f8e24,Aymeric Augustin,2022-02-20T16:22:00+01:00,"Add to FAQ how to message one, several, or all users.
+
+Fix #1083.",['46bc5e4dba19aa7052c5777657f9608fd6245c43'],False,['faq.rst']
+731ad8c127bae60b59d622b87d9406333432cfbd,Aymeric Augustin,2022-02-20T19:26:27+01:00,"Add broadcast example to quick start guide.
+
+Also review and improve that guide.
+
+Fix #1070.",['a2ca001a06ebc0d4af7ae66776cb6212e62f8e24'],False,"['quickstart.rst', 'show_time.py']"
+695d43a90819d817562b5d51bb2eb8c1b641a324,Aymeric Augustin,2022-02-20T20:31:23+01:00,"Improve FAQ about HTTP headers.
+
+Fix #798.",['5407db58d5a840a78dbc3572545030dc2d5036fe'],False,['faq.rst']
+f605e86aeab7ac045c21e2eac0d677916031022e,Aymeric Augustin,2022-02-20T21:28:28+01:00,"Restore backwards-compatibility for partial handlers.
+
+Fix #1095.",['695d43a90819d817562b5d51bb2eb8c1b641a324'],False,"['changelog.rst', 'server.py', 'test_client_server.py']"
+c60df611023ac47345d9201b0a4785c4d8dbdbd9,Erik van Raalte,2022-02-26T21:33:26+01:00,"Update documentation
+
+Fix misleading function definition for `play` function in intro/tutorial2",['778a1ca6936ac67e7a3fe1bbe585db2eafeaa515'],False,['tutorial2.rst']
+286768512b0c2bd671cae0ae3e64c1545632b6d4,Aymeric Augustin,2022-03-26T08:51:27+01:00,"Remove path parameters in connection handlers.
+
+9b8a8d1c wasn't reflected properly before the tutorial was merged.
+
+Fix #1154.",['f7478be1321e5ccc9cd8995e2e95676faff57944'],False,"['tutorial2.rst', 'app.py', 'app.py']"
+4034d8dbc81742dc2c0688dc9f29c5161bec66e9,Aymeric Augustin,2022-04-03T10:43:21+02:00,Expect TCP close after a failed opening handshake.,['5dc16c27001a9465b22832e5b02036d2f10862bb'],False,"['client.py', 'connection.py', 'server.py', 'test_client.py', 'test_server.py']"
+81cb6f55e50d54640f9a0cdff31e3eb0d079434d,Michał Górny,2022-04-08T15:57:51+02:00,"Skip non-contiguous buffer tests on NotImplementedError (pypy)
+
+PyPy3.9 7.3.9 does not implement creating contiguous buffers from
+non-contiguous, causing the respective tests to fail due to
+NotImplementedError.  Catch it and skip the tests appropriately
+as discussed in #1157.
+
+Fixes #1158",['8a58de259381f82036ab624255d01a8fbc6234de'],False,['test_utils.py']
+72abbd3d61801f4f45ed7babdfe14ebbd7c2ccf1,Aymeric Augustin,2022-04-17T09:07:57+02:00,"Narrow down exception for PyPy
+
+To avoid accidentally masking real test failures on other platforms.",['81cb6f55e50d54640f9a0cdff31e3eb0d079434d'],False,['test_utils.py']
+f761e23614c4d8b35ce461e70896e7c6c5bc1cfa,Aymeric Augustin,2022-04-17T10:42:33+02:00,"Prevent AttributeError on server shutdown.
+
+close() shouldn't be called on a CONNECTING connection because the
+transfer_data_task attribute isn't initialized.",['79182b66798ed96c622462dbe9e28457655f887b'],False,['server.py']
+8dd8e410431408cf33fe761d8b273a95cf45da5f,Aymeric Augustin,2022-04-17T10:36:32+02:00,"Ignore failing test on PyPy.
+
+This has to do with closing TLS connections: transport.close() is enough
+on CPython while PyPy requires transport.abort() (which websockets will
+call eventually, but not before that test fails.)",['9e2503a5c5cc4c48f223ec8aa780dfa7268622a1'],False,['test_client_server.py']
+a446fb78d9994c30a479719ea579c349de4f372f,Aymeric Augustin,2022-04-17T12:03:30+02:00,"Handle zlib.error when receiving compressed messages.
+
+Refs #1160, #665.",['19367485bbdda2eb7c55ad3a43b5b1296743b1f3'],False,"['permessage_deflate.py', 'test_permessage_deflate.py']"
+8850eb06c7955462dd641acf50d1dcfcfc95b0ee,wwqgtxx,2022-02-28T14:10:16+08:00,"Fix logging error when sending a memoryview.
+
+See also: https://bugs.python.org/issue15945",['a446fb78d9994c30a479719ea579c349de4f372f'],False,['frames.py']
+a96fffa85907a392711c75ad3039c2949531a268,Aymeric Augustin,2022-04-17T12:57:01+02:00,"Add FAQ on request path.
+
+Fix #1154.",['778879eb0144a14a2a406fb2c3fa45f80afcd421'],False,['faq.rst']
+f9fd2cebcd42633ed917cd64e805bea17879c2d7,Aymeric Augustin,2022-04-17T13:27:32+02:00,"Catch RuntimeError to cater to uvloop.
+
+Fix #1138, #1072 (again).",['a96fffa85907a392711c75ad3039c2949531a268'],False,['protocol.py']
+42e33f17cdaaa258f3035618fb806c74744406aa,Aymeric Augustin,2022-04-17T15:39:18+02:00,"Clarify answer about threads.
+
+Fix #1156. Ref #1162.",['f9fd2cebcd42633ed917cd64e805bea17879c2d7'],False,['faq.rst']
+9c87d43f1d7bbf6847350087aae74fd35f73a642,Aymeric Augustin,2022-04-24T10:24:30+02:00,"Fix two typos.
+
+Found by codereview.doctor (among many false positives).",['c590dc8a69ca9f3052aa34f7db017b9a253a48a1'],False,"['benchmark.py', 'test_headers.py']"
+ac45051ecb34c07407c4315a08729e9967be8e51,Aymeric Augustin,2022-05-03T13:53:03+02:00,Fix typing in client connection initialization.,['9c87d43f1d7bbf6847350087aae74fd35f73a642'],False,['client.py']
+50483798cdbdf0ab3edee5cd8d4a9b4069d7dfc4,Aymeric Augustin,2022-05-03T07:29:59+02:00,"Bump cibuildwheel version.
+
+Fix #1169.",['670f7c5e8c934c29f46f24089a84dd65709c1d13'],False,['wheels.yml']
+fad12d475e4c65aff9040d9e5f34a4924c470774,Tim Gates,2022-07-31T13:17:18+10:00,"docs: Fix a few typos
+
+There are small typos in:
+- src/websockets/legacy/protocol.py
+- src/websockets/legacy/server.py
+- tests/legacy/test_protocol.py
+- tests/legacy/utils.py
+
+Fixes:
+- Should read `suspect` rather than `supect`.
+- Should read `acknowledged` rather than `acknowleged`.
+- Should read `attempts` rather than `attemps`.
+- Should read `asynchronous` rather than `asychronous`.
+
+Signed-off-by: Tim Gates <tim.gates@iress.com>",['57a1325795cc7b9166a5b4599c34c4869d8b2ab6'],False,"['protocol.py', 'server.py', 'test_protocol.py', 'utils.py']"
+5d2a04ae65b48c8d02e37318bc6e8d43be9ae18e,Aymeric Augustin,2022-08-16T09:05:34+02:00,"Add usage docs for start_serving and serve_forever.
+
+The only example for Python I found was https://bugs.python.org/issue32662:
+
+    async def main():
+        srv = await asyncio.start_server(...)
+        async with srv:
+            await srv.serve_forever()
+
+    asyncio.run(main())
+
+It looks pretty bad to me: it starts the server thrice and stops it
+twice, relying on idempotency to avoid issues. I dislike this style
+of ""pile it up to be sure that it works"" so I'm showing a subset of
+possibilities only.
+
+Ref #1197.",['d84108b2bf2256187509276a7cb2a905f39af392'],False,['server.py']
+8e096fc5a2a49b3c42fb2543547867cab11297fb,Aymeric Augustin,2022-08-16T12:39:33+02:00,"Add FAQ on benchmarking.
+
+Fix #1189.",['28e1c7d60214f85d058d4f63629dc94a7e686dc4'],False,['misc.rst']
+2a07325cecf8be4732cd991ead0314c530dd7cdd,Irfanuddin,2022-08-17T10:09:05+02:00,"Support removing Server and User-Agent headers.
+
+Fix #1193.",['8e096fc5a2a49b3c42fb2543547867cab11297fb'],False,"['client.rst', 'server.rst', 'client.rst', 'server.rst', 'client.py', 'client.py', 'server.py', 'server.py', 'test_client_server.py', 'test_client.py', 'test_server.py']"
+b5a2f37f8b2d0149e81ab380b84441a37a2db83e,Michał Górny,2022-05-15T10:27:09+02:00,"Wrap recv_into() in test_explicit_socket to fix py3.11
+
+Extend TrackedSocket class in test_explicit_socket to wrap
+the recv_into() method.  The Python 3.11 implementation of asyncio
+is calling it rather than recv(), therefore causing used_for_read
+not to be set if it's not wrapped.",['2a07325cecf8be4732cd991ead0314c530dd7cdd'],False,['test_client_server.py']
+bebbf40b5a14a75cd06e58be79dc1eed4255d8ac,Michał Górny,2022-05-15T10:32:03+02:00,"Skip YieldFromTests in Python 3.11+
+
+asyncio.coroutine has been removed in Python 3.11, so skip it if Python
+is newer than that.
+
+Fixes #1175",['b5a2f37f8b2d0149e81ab380b84441a37a2db83e'],False,['test_client_server.py']
+653466389996b466e7b0a6a83ec9e573ca5b09c5,Aymeric Augustin,2022-08-18T12:45:04+02:00,Fix tests with PyPy.,['0ea2818b370ae572d52ec5d7063de2f8b64faa38'],False,['test_client_server.py']
+a899d5a1e5453767cda984324c61caa83ef0654c,Aymeric Augustin,2022-10-08T14:03:48+02:00,"Avoid triggerring deprecation warnings in tests.
+
+This also avoids having to account for them.",['270d5dae8f87afa4f0a340fc0045e4cc980e5d44'],False,"['test_client_server.py', 'test_protocol.py']"
+8ce4739b7efed3ac78b287da7fb5e537f78e72aa,Aymeric Augustin,2022-10-08T19:31:23+02:00,"Increase maximum header length (again).
+
+Fix #1239.",['ee54c4db1ad0d7a0701bad90e44950cc51c73ce9'],False,"['http11.py', 'http.py', 'test_http11.py']"
+86961582f40596efe81d616ac9daa5369e0e17e9,Aymeric Augustin,2022-10-09T14:53:10+02:00,"Add API for connection latency.
+
+Fix #1195.",['8ce4739b7efed3ac78b287da7fb5e537f78e72aa'],False,"['changelog.rst', 'client.rst', 'common.rst', 'server.rst', 'timeouts.rst', 'protocol.py', 'test_protocol.py']"
+d5cf4a94e599dd678255a2d23712cb82a43ec41a,Aymeric Augustin,2022-10-09T15:32:09+02:00,"Document workaround for bug in Python < 3.10.
+
+Fix #1182.",['86961582f40596efe81d616ac9daa5369e0e17e9'],False,['logging.rst']
+a07f4e8190755de47f9915ef89535de18c02f88e,Aymeric Augustin,2022-10-09T15:45:48+02:00,"Highlight issue with convenience imports in FAQ.
+
+Fix #1183.",['d5cf4a94e599dd678255a2d23712cb82a43ec41a'],False,"['misc.rst', 'index.rst']"
+ad797212ce45bcab7c4cf57d21095a12e8f284ba,Aymeric Augustin,2022-10-10T08:52:29+02:00,"Don't log when connection drops during handshake.
+
+Fix #1237.
+
+Refs #984.",['580c41744330a83ff0e4eda728e2aab1a10a4e79'],False,['server.py']
+06ffba57f9460ff577eada5ad3fe2558593be4b9,Aymeric Augustin,2022-10-25T22:42:28+02:00,Fix deprecation warning.,['b2847c2786a88c8c6f6017081f828032fb42ded3'],False,['setup.cfg']
+2cbb8134acfa8b56aba5c40f0479f12434104a62,Aymeric Augustin,2022-08-22T21:52:48+02:00,"Add option keep connections open when closing server.
+
+Fix #1174.",['06ffba57f9460ff577eada5ad3fe2558593be4b9'],False,"['server.rst', 'changelog.rst', 'server.py', 'test_client_server.py']"
+9e960b508988c4049eb9f3377c505f506a3af060,Aymeric Augustin,2022-11-11T14:26:45+01:00,"Fix example of shutting down a client.
+
+Fix #1261.",['591d047884d08d938324c4a484e8138a88a7a4a9'],False,['shutdown_client.py']
+0f4ecfc3d0abe4fdc2bc5104ea98e134be399c9a,Aymeric Augustin,2022-11-20T22:39:49+01:00,"Don't treat close code 1005 as an error.
+
+Fix #1260.",['26e1946f4d02357c71ca909a8e347f38892900d1'],False,"['changelog.rst', 'exceptions.py', 'frames.py', 'client.py', 'protocol.py', 'server.py']"
+1363dd5be5b55fb3a16d58ca346c9f09e7519393,Aymeric Augustin,2022-11-28T07:28:09+01:00,"Revert ""Fix example of shutting down a client.""
+
+This reverts commit 9e960b50.
+
+The example was correct.",['35731196de91b91fa79573ad6235a27858027398'],False,['shutdown_client.py']
+38b08fb72fb3c7e8358b3bba7cbe467c2a355aa9,Aymeric Augustin,2023-01-08T08:51:24+01:00,"Increase max header length in legacy module.
+
+Fix #1243. Ref #1239.",['3015447f5afbe5e6c913bf0a353777ce3dc45f80'],False,"['http.py', 'test_http.py']"
+75bb1cb07a476e899b689c5f50872f90f98a38e5,Aymeric Augustin,2023-01-08T09:14:09+01:00,"Fix incorrect partial binding pattern in docs.
+
+Fix #1275. Supersede #1276.",['38b08fb72fb3c7e8358b3bba7cbe467c2a355aa9'],False,"['common.rst', 'server.rst']"
+f2176ebc682742ec6a00646663c108bc400451bb,Aymeric Augustin,2023-01-18T07:36:10+01:00,Fix errors in the documentation of 23a2d3f6.,['716245215fab4a6937a9514eb0c0e1939dfc4fcd'],False,"['changelog.rst', 'server.py']"
+a525950c84a60151f261f6282fa80ff310954718,Aymeric Augustin,2023-02-19T13:35:29+01:00,"Fix typos in comments.
+
+Fix #1284.
+
+Thank you @cclauss!",['f2176ebc682742ec6a00646663c108bc400451bb'],False,"['frames.py', 'protocol.py', 'protocol.py', 'server.py']"
+bc8b3a85fe3d83378257d5ef2630e9c03714da44,Aymeric Augustin,2023-02-19T16:45:29+01:00,"Explain the legacy submodule.
+
+Fix #1297.",['87657de0edefa9c1d5b305d48c9cb0d28bdfc9d1'],False,['misc.rst']
+ba1ed7a65cc876ff4e0fcd4dd4711402836475e2,Sasja,2023-02-28T12:47:07+08:00,fix small docs typo,['8e1628a14e0dd2ca98871c7500484b5d42d16b67'],False,['broadcast.rst']
+09875a619f53fa7fb566d640943e7ea0c28dffae,Aymeric Augustin,2023-03-29T08:02:43+02:00,Attempt to fix #1317.,['f0e547965a53582b45df45c5b6202dc3a1284240'],False,['test_client.py']
+25a5252c385d867add96b9bc5df2d537b49d636a,Aymeric Augustin,2023-03-29T08:13:20+02:00,"Skip test that fails randomly on PyPy.
+
+Fix #1314.",['09875a619f53fa7fb566d640943e7ea0c28dffae'],False,['test_connection.py']
+ce06dd6e15159dbfb83e33c16ec9afcb05ff1ec7,Aymeric Augustin,2023-04-01T08:49:19+02:00,"Rewrite interactive client with synchronous API.
+
+Fix #1312.",['25a5252c385d867add96b9bc5df2d537b49d636a'],False,['__main__.py']
+2fcc4837faca2a05f395805455070dc0347e9ab1,Aymeric Augustin,2023-04-01T08:29:51+02:00,"Improve error handling in broadcast().
+
+Fix #1319.",['ce06dd6e15159dbfb83e33c16ec9afcb05ff1ec7'],False,"['changelog.rst', 'logging.rst', 'protocol.py', 'test_client_server.py', 'test_protocol.py']"
+f269e1e9704ff2776dc5ed54d11e120aa06d62e3,Aymeric Augustin,2023-04-01T10:11:26+02:00,"Document that connect() can raise OSError.
+
+Fix #1265.",['2fcc4837faca2a05f395805455070dc0347e9ab1'],False,"['client.py', 'client.py']"
+d0a292c5a25fcf4c27deb031e1b7e814494aac0e,Aymeric Augustin,2023-04-01T17:58:29+02:00,Fix typo in docs.,['8a6665892051b26d65344a573c1aea89f9c0e64c'],False,['server.py']
+db6b1a892ce8508cf362d541b45430966ab2bc02,Aymeric Augustin,2023-04-01T18:30:51+02:00,"Add feature support matrices.
+
+Fix #1313.",['1c9bdceccd9023e88e1cab5a1044f42c341930ee'],False,"['features.rst', 'index.rst', 'limitations.rst']"
+d3d4cf4a2baf7362b004e9bffe5344287dbb9a51,Aymeric Augustin,2023-04-01T18:43:44+02:00,"Build architecture independent wheels.
+
+Fix #1300.",['6dcac04c10c61dde9aa5be0374965c31f16e77f4'],False,"['wheels.yml', 'setup.py']"
+af9173790a620c5f3687ea61f17e58c7466fc020,Aymeric Augustin,2023-04-01T22:33:30+02:00,"Replace flake8 and isort by ruff.
+
+Configure in pyproject.toml instead of setup.cfg.
+
+Fix #1306.",['0924e9cdd9e74065aa23d160414187f202771d61'],False,"['tests.yml', 'Makefile', 'pyproject.toml', 'setup.cfg', 'server.py', 'tox.ini']"
+f075aac67e15cdf4bc06078e23b82eac5fb2d758,Aymeric Augustin,2023-04-02T08:38:39+02:00,"Restore semantics of tests.
+
+They relied (accidentally) on wait_for() creating a task,
+causing the event loop to run once when calling close().",['808d8540af05e6bbfd74be8ae501b200ce7c966e'],False,['test_protocol.py']
+901e434fac7bf60018c950bdaf85b9946cc4309d,Aymeric Augustin,2023-04-02T09:30:00+02:00,Work around bug in coverage.,['f075aac67e15cdf4bc06078e23b82eac5fb2d758'],False,"['protocol.py', 'test_protocol.py']"
+00835ccf2bc9bb483b6bf3a69dd487d3745fbb27,Aymeric Augustin,2023-04-02T10:07:35+02:00,Fix typo.,['901e434fac7bf60018c950bdaf85b9946cc4309d'],False,['features.rst']
+fff80c316e25af645ab5cc9b7217b2064d429d73,Ran Benita,2023-04-03T00:03:43+03:00,Fix FAQ link in issue template,['1bf73423044dedc325435d261a39473337f5ddcf'],False,['issue.md']
+c38507fde13b9d2ac9bf62b8f68dba8d93f1fcd3,Aymeric Augustin,2023-04-16T08:14:33+02:00,"Avoid deadlock when closing sync connection with unread messages.
+
+Fix #1336.",['bb17be2fb0b99c8638788648fdd83f9049c1c344'],False,"['changelog.rst', 'connection.py', 'test_connection.py']"
+fe629dede6eb083013e0d2373d5c3120c0078db3,Aymeric Augustin,2023-04-20T16:45:55+02:00,"Fix typo in changelog.
+
+Fix #1340.",['c38507fde13b9d2ac9bf62b8f68dba8d93f1fcd3'],False,['changelog.rst']
+9c578a1f5a5e20b8901ac75f12a4dfec4877f6d2,Aymeric Augustin,2023-05-07T16:20:55+02:00,"Create GitHub release when pushing tag.
+
+Fix #1347.",['bf51a57f3d9c1f9ed7c04709a3b09ec6f337c4c5'],False,['wheels.yml']
+03d62c97fcafffa5cdbe4bb55b2a8d17a62eca33,Aymeric Augustin,2023-05-18T16:52:39+02:00,"Fix server shutdown on Python 3.12.
+
+Ref https://github.com/python/cpython/issues/79033.
+
+Fix #1356.",['73394df61d3b4c62f4868b75d16e1a81b2329f0c'],False,['server.py']
+2845257be549b41e8279b2ae19f38258f72fb587,Aymeric Augustin,2023-05-18T18:45:25+02:00,"Mention application-level heartbeats.
+
+Fix #1330.",['03d62c97fcafffa5cdbe4bb55b2a8d17a62eca33'],False,['common.rst']
+89fc4086b9bd8bb4c070284276c2eb5973f8b27c,Aymeric Augustin,2023-05-18T18:49:14+02:00,"Don't crash if git is super slow.
+
+Fix #1334.",['2845257be549b41e8279b2ae19f38258f72fb587'],False,['version.py']
+2b627b26b3cd15f222881450cf0e8c19f7e826fd,Aymeric Augustin,2023-05-18T10:21:41+02:00,"Provide an enum for close codes.
+
+Fix #1335.",['89fc4086b9bd8bb4c070284276c2eb5973f8b27c'],False,"['common.rst', 'django.rst', 'fly.rst', 'heroku.rst', 'kubernetes.rst', 'render.rst', 'changelog.rst', 'datastructures.rst', 'authentication.rst', 'authentication.py', 'notifications.py', 'app.py', 'exceptions.py', 'frames.py', 'protocol.py', 'protocol.py', 'connection.py', 'server.py', 'test_permessage_deflate.py', 'test_client_server.py', 'test_framing.py', 'test_protocol.py', 'test_connection.py', 'test_server.py', 'test_exceptions.py', 'test_frames.py', 'test_protocol.py']"
+1bf9d1d766c80da4887240737266926f173fbcef,Aymeric Augustin,2023-05-18T19:16:31+02:00,"Accept int status in process_request and reject.
+
+Fix #1309.",['e3abb88ad6c8fc3e57f42aed4a00b9644c4e65df'],False,"['exceptions.py', 'server.py', 'test_client_server.py', 'test_server.py']"
+b870c46b2778444ae2d8960a0ae0bf4be53dc81c,Aymeric Augustin,2023-07-15T10:14:45+02:00,Fix inconsistency in 2b627b26.,['7b9a53b74c09b27cf0899a28f38f6835c5d141ed'],False,['datastructures.rst']
+8ed5424a5bdcbe99565d05239e7ea6e5a15a3cdd,Aymeric Augustin,2023-07-15T10:24:40+02:00,"Clarify that the TLS example is simplistic.
+
+Fix #1381.",['b870c46b2778444ae2d8960a0ae0bf4be53dc81c'],False,['quickstart.rst']
+adfb8d69a7a1f6f4c8381c9e7182619d202c3cf2,Aymeric Augustin,2023-07-15T10:47:27+02:00,Fix test that fails on IPv6.,['8ed5424a5bdcbe99565d05239e7ea6e5a15a3cdd'],False,['test_client_server.py']
+c41ce814bb173e2b174c60ce935b8598da626863,Aymeric Augustin,2023-10-01T15:55:46+02:00,"Rejecting a connection isn't always a failure.
+
+Fix #1402.",['adfb8d69a7a1f6f4c8381c9e7182619d202c3cf2'],False,"['server.py', 'server.py', 'test_client_server.py']"
+439dafa656029f27c26956181d27a781ec04b105,Aymeric Augustin,2023-10-01T17:15:37+02:00,"Import eagerly when running under a type checker.
+
+Fix #1292 (and many others).
+
+Also fix some inconsistencies in the lists. The new rule is:
+
+- when re-exporting a module, re-export it entirely;
+- don't re-export deprecated modules.",['ca5926ed1532fcd1dd264ef4f5a7a357fef66cfc'],False,"['misc.rst', 'changelog.rst', 'index.rst', '__init__.py', 'http.py', 'test_exports.py']"
+678b4380a258abd2a074475f3a817823241a4362,Aymeric Augustin,2023-10-01T17:43:00+02:00,Fix coverage.,['439dafa656029f27c26956181d27a781ec04b105'],False,['pyproject.toml']
+5121bd15f988cc446db95b15a0bcac8dc64b68ab,Aymeric Augustin,2023-10-21T16:54:27+02:00,Blind fix for automatic release creation.,['88e702ddaf214b46fcf6b3ceca25961f79ca9d00'],False,['release.yml']
+2431e09eebc75578e310627f0eab38cd81df2f6b,Aymeric Augustin,2023-11-03T07:55:23+01:00,Fix import style (likely autogenerated).,['5121bd15f988cc446db95b15a0bcac8dc64b68ab'],False,['server.py']
+fe1833fb103f4d63baee525c5b62dedd24b9884e,Aymeric Augustin,2023-11-25T14:48:59+01:00,"Confirm support for Python 3.12.
+
+Fix #1417.",['94dd203f63bb52b1a30faa228e63ada2f0f2e874'],False,"['tests.yml', 'changelog.rst', 'pyproject.toml', 'tox.ini']"
+b3c51958849c80209b4d68fca081ef3fffc5e2bd,Aymeric Augustin,2024-01-01T15:02:51+01:00,"Make test_local/remote_address more robust.
+
+Fix #1427.",['33b20e11e86f8490770185c78ed39adab8db4560'],False,['test_connection.py']
+cba4c242614734a722891992e8bc005bc848c0c1,Aymeric Augustin,2024-01-20T18:56:07+01:00,Avoid duplicating signature in API docs.,['35bc7dd8288445289134c335aae8af859862ccd1'],False,"['client.rst', 'common.rst', 'server.rst', 'client.rst', 'server.rst', 'client.py', 'server.py']"
+c06e44d214ca3650b12fbbcaa1a0266dae9432d0,Aymeric Augustin,2024-01-27T15:20:39+01:00,"Support closing while sending a fragmented message.
+
+On one hand, it will close the connection with an unfinished fragmented
+message, which is less than ideal.
+
+On the other hand, RFC 6455 implies that it should be legal and it's
+probably best to let users close the connection if they want to close
+the connection (rather than force them to call fail() instead).",['45d8de7495ea33724bf93d753d65cad932472aac'],False,"['protocol.py', 'test_protocol.py']"
+705dc85e87bb1184d926ab95a591097780c4b855,Aymeric Augustin,2024-01-27T14:55:44+01:00,"Allow sending ping and pong after close.
+
+Fix #1429.",['d28b71dd297da99aad9d644a2f4721707e464707'],False,"['protocol.py', 'test_protocol.py']"
+96fddaf49b5a5af1f3215076bf2a73dfb4b72ca1,Aymeric Augustin,2024-01-28T16:47:51+01:00,Wording and line wrapping fixes in changelog.,['705dc85e87bb1184d926ab95a591097780c4b855'],False,['changelog.rst']
+aa33161cd9498bfca39d64fc36319bc1fbce68f2,MtkN1,2024-02-07T13:14:22+09:00,Fix wrong RFC number,['3b7fa7673bf6a96a5e9debd7dcfa65e04f85efbb'],False,"['client.py', 'test_protocol.py']"
+87f58c7190025521e5dc380945b0cc536169bd0c,Aymeric Augustin,2024-02-11T17:25:00+01:00,Fix make clean.,['aa33161cd9498bfca39d64fc36319bc1fbce68f2'],False,['Makefile']
+5f24866bfeefbe561fa76f7e5a494996d95a2757,Aymeric Augustin,2024-04-16T08:48:42+02:00,"Always mark background threads as daemon.
+
+Fix #1455.",['e217458ef8b692e45ca6f66c5aeb7fad0aee97ee'],False,"['connection.py', 'server.py']"
+2774fabc13f09311dec345cc8513aa7b93200b92,Alexis Métaireau,2024-04-16T16:52:01+02:00,docs(nginx): Fix a typo,['5f24866bfeefbe561fa76f7e5a494996d95a2757'],False,['nginx.rst']
+0fdc694a980ede0e91286ea5ea1d4f9c62bb42fb,Aymeric Augustin,2024-04-16T08:55:36+02:00,"Make it easy to monkey-patch length of frames repr.
+
+Fix #1451.",['2774fabc13f09311dec345cc8513aa7b93200b92'],False,['frames.py']
+e05f6dc83434dae7d91fc0db822ab15aa1e4c00b,Aymeric Augustin,2024-07-21T08:05:24+02:00,"Support ws:// to wss:// redirects.
+
+Fix #1454.",['650d08caf1c5f84c77a8bf8780a1b407a1432357'],False,"['client.py', 'test_client_server.py']"
+eaa64c07676a9c28d17c9538242fab4638754584,Aymeric Augustin,2024-07-21T14:41:49+02:00,"Avoid reading the wrong version.
+
+This was causing builds to fail on Read the Docs since sphinx-autobuild
+added websockets as a dependency.",['41c42b8681dc1245a65e2db8491a573bba1827dc'],False,['version.py']
+c8c0a9bfee962540eb3c9c228e36d4ef7bd7ed42,Aymeric Augustin,2024-07-21T15:56:42+02:00,"Improve error reporting when header is too long.
+
+Refs #1471.",['e10eebaec368b04f28102df513e26e933ed5a6fd'],False,"['server.py', 'server.py']"
+14cca7699971c19c30a38cad260aeb5f26e0c3ca,Aymeric Augustin,2024-08-03T10:46:04+02:00,Bugs in coverage were fixed \o/,['fab77d60b660585bcdd996a10ec904f79c901085'],False,"['protocol.py', 'test_client_server.py', 'test_protocol.py']"
+7bb18a6ea84d2651b68ad45f5e9464a47d314b6b,Aymeric Augustin,2024-08-05T07:53:06+02:00,Update references to Python's bug tracker.,['14cca7699971c19c30a38cad260aeb5f26e0c3ca'],False,"['__main__.py', 'protocol.py', 'server.py']"
+d2120de4708d09d3cade465541f202d5a8bab722,Aymeric Augustin,2024-08-07T08:31:06+02:00,"Add an option to disable decoding of text frames.
+
+Also support decoding binary frames.
+
+Fix #1376.",['4a981688198f91385281b8c8e1cdfc0197d43bf5'],False,"['connection.py', 'messages.py', 'test_connection.py']"
+5835da4967e130cd631a7601e75ea5228ab27537,Aymeric Augustin,2024-08-09T09:25:19+02:00,Adjust timings to avoid spurious failures.,['a7a5042bed89b96fa2e391f3be0e255a59bffb0a'],False,"['test_server.py', 'utils.py']"
+906592908bb5850a4f78a5d4877fbc2412d611b7,Aymeric Augustin,2024-08-09T09:25:42+02:00,Avoid spurious coverage failures due to timing effects.,['5835da4967e130cd631a7601e75ea5228ab27537'],False,['test_server.py']
+84e8bd879b8dfc528b4e57517f2e1f8b7ad0a378,Aymeric Augustin,2024-08-09T09:49:55+02:00,"Fix spurious exception while running tests.
+
+Due to a race condition between serve_forever and shutdown, test run
+logs randomly contained this exception:
+
+Exception in thread Thread-NNN (serve_forever):
+Traceback (most recent call last):
+  ...
+ValueError: Invalid file descriptor: -1",['906592908bb5850a4f78a5d4877fbc2412d611b7'],False,['server.py']
+9ec785d6f12cb1a3a3bc43f543f4a831a635472b,Aymeric Augustin,2024-08-11T15:07:40+02:00,Fix copy-paste error in tests.,['58787cc6a58a1f1baf4be3f78d868594108afebd'],False,['test_client.py']
+1853a9b2d0247573633e2749fe1169f764abe03c,Aymeric Augustin,2024-08-11T15:59:59+02:00,"Ignore ResourceWarning in test.
+
+This is expected to prevent a spurious test failure under PyPy.
+
+Refs #1483.",['9ec785d6f12cb1a3a3bc43f543f4a831a635472b'],False,['utils.py']
+7c8e0b9d6246cd7bdd304f630f719fc55620f89a,Aymeric Augustin,2024-08-17T10:20:37+02:00,"Document removal of open and closed properties.
+
+They won't be added to the new asyncio implementation.",['8d9f9a1cc791df01d7995693551cd9cf83e154c2'],False,['upgrade.rst']
+60381d2566b55126f0f89f0c8380cf44ddc51aa1,Aymeric Augustin,2024-08-19T07:58:31+02:00,Fix exception chaining for ConnectionClosed.,['7b19e790ce766dadb0b90b040be68694074a7e0d'],False,['connection.py']
+09b1d8d4d585ed6d4e2c0db6e200e48f176215b1,Aymeric Augustin,2024-08-19T22:26:56+02:00,Fix tests on Python < 3.10.,['b05fa2cceefcc5cfaba4e0e06e40d588505c8334'],False,"['test_connection.py', 'utils.py']"
+9e5b91bf8f9039de0af85e597e7fd643cfd1a139,Aymeric Augustin,2024-08-20T08:26:44+02:00,"Improve documentation of latency.
+
+Also fix #1414.",['8eaa5a26b667fccb1b9d75034a77b2d6906e2b2e'],False,"['features.rst', 'keepalive.rst', 'connection.py', 'protocol.py']"
+f9c20d0e4c9a25b66d4643879bc4594137036793,Aymeric Augustin,2024-08-20T15:06:07+02:00,Avoid deleting .so files in .direnv or equivalent.,['4d0e0e10c6ebb779780a9e590667661381df78dc'],False,['Makefile']
+ed2f21e3ce5bb494e0c9a51833b7da6692b5b9fc,Aymeric Augustin,2024-08-20T16:12:31+02:00,Attempt to fix automatic creation of GitHub release.,['323adef1f3000cf07617d7ee649c27c0801126e6'],False,['release.yml']
+4920a585beef9c4f8a1aa7e332dc20d75f252423,Aymeric Augustin,2024-08-22T09:12:16+02:00,"Make logging examples more robust.
+
+Prevent them from crashing when the opening handshake didn't complete
+successfully.
+
+Also migrate them to the new asyncio API.
+
+Fix #1428.",['d3dcfd150385970a0d1df7187a989680cc426f55'],False,"['logging.rst', 'server.py']"
+d341bbabd81facbf084e7c5b321e7c8c2cd977f5,Aymeric Augustin,2024-08-22T21:55:55+02:00,"Add API for the set of active connections.
+
+Fix #1486.",['4920a585beef9c4f8a1aa7e332dc20d75f252423'],False,"['upgrade.rst', 'changelog.rst', 'server.rst', 'server.py', 'test_server.py', 'test_server.py']"
+2306835d7bf936d3b7c09caabd12dd072c7d7a39,Aymeric Augustin,2024-08-23T08:41:35+02:00,"Set Protocol.close_rcvd_then_sent in an edge case.
+
+When receiving a close frame in the middle of a fragmented message
+-- cf. test_(client|server)_receive_close_in_fragmented_message) --
+recv_frame() was raising a ProtocolError, fail() was sending a Close
+frame, and close_rcvd_then_sent was never set.
+
+These tests don't proceed to the CLOSED state, making it difficult
+to test close_exc.",['d341bbabd81facbf084e7c5b321e7c8c2cd977f5'],False,['protocol.py']
+04ac475805f20cf73d79bb3fd003e412c8526396,Aymeric Augustin,2024-08-28T21:40:47+02:00,Fix copy-paste errors in test docstrings.,['317123119434e22e11c273bf422917bfa0f2a626'],False,"['test_server.py', 'test_server.py']"
+62d70f4a8fb5e30d8744b1378659cc999deb0715,Aymeric Augustin,2024-08-28T22:06:53+02:00,"Restore speedups.c in source distribution.
+
+Fix #1494.",['16456e2bec3ad324d545c8eb5ea9d1eed583dea4'],False,"['MANIFEST.in', 'changelog.rst', 'version.py']"
+d8ab09b2566cdfcb7a0a95dc992454bb9f4b1647,Aymeric Augustin,2024-08-24T14:59:28+02:00,"Add automatic reconnection to the new asyncio implementation.
+
+Missing tests for now.
+
+Fix #1480.",['6ffb6b057caeb1d1d35b60a1a82afa7629694f82'],False,"['upgrade.rst', 'changelog.rst', 'client.rst', 'client.py', 'test_client.py']"
+6b2f06083573be750ac70c894ae13d87c03ef624,Aymeric Augustin,2024-09-07T21:40:07+02:00,"Follow redirects in the new asyncio implementation.
+
+Fix #631.",['1f89db78ca6363a7e4d9830b6b280e311e3934f3'],False,"['upgrade.rst', 'changelog.rst', 'features.rst', 'variables.rst', 'client.py', 'client.py', 'test_client.py']"
+4a9dae23b3661210331463968cf4a5eeb54c41dd,Aymeric Augustin,2024-09-08T16:58:50+02:00,Simplify handling of connection close during handshake.,['0158a246683437de2f85a27fecef06f5e5393e99'],False,"['client.py', 'server.py']"
+96055073d3cbeb6e52bb419205b2753d3898d612,Aymeric Augustin,2024-09-08T18:53:57+02:00,"Close connection when client receives bad response.
+
+This avoids stalling until the opening handshake timeouts.",['4a9dae23b3661210331463968cf4a5eeb54c41dd'],False,"['client.py', 'client.py', 'protocol.py', 'client.py', 'test_client.py', 'test_client.py', 'test_client.py']"
+560f6eed24a516bf9c8c4c7eaf83f84d2ce606f0,Aymeric Augustin,2024-09-08T21:26:32+02:00,Log error when server receives bad request.,['96055073d3cbeb6e52bb419205b2753d3898d612'],False,"['server.py', 'server.py', 'test_server.py', 'test_server.py', 'test_server.py']"
+cb42484bb9e79b12f5d7a19bc96e43a022bc511a,Aymeric Augustin,2024-09-08T22:15:33+02:00,Improve error messages on HTTP parsing errors.,['560f6eed24a516bf9c8c4c7eaf83f84d2ce606f0'],False,"['http11.py', 'test_client.py', 'test_client.py', 'test_http11.py']"
+14d9d40acd23ecc66a8ac8d0535af9d8a1b0fa07,Aymeric Augustin,2024-09-08T22:52:04+02:00,"Fix typo in convenience imports.
+
+Fix #1496.",['90270d8b1bc19ee0c4ac94c6a200c95614ab8771'],False,['__init__.py']
+f9cea9cca568dc92704de3744639eb4248278a8f,Aymeric Augustin,2024-09-09T21:45:49+02:00,"Improve isolation of tests of sync implementation.
+
+Before this change, threads handling requests could continue running
+after the end of the test. This caused spurious failures.
+
+Specifically, a test expecting an error log could get an error log from
+a previous tests. This happened sporadically on PyPy.",['14d9d40acd23ecc66a8ac8d0535af9d8a1b0fa07'],False,"['server.py', 'test_server.py']"
+070ff1a3e536e497a9ee11ea3b0649f82f3974c9,Aymeric Augustin,2024-09-09T22:36:05+02:00,"Add dedicated ConcurrencyError exception.
+
+Previously, a generic RuntimeError was used.
+
+Fix #1499.",['f9cea9cca568dc92704de3744639eb4248278a8f'],False,"['changelog.rst', 'exceptions.rst', '__init__.py', 'connection.py', 'messages.py', 'exceptions.py', 'connection.py', 'messages.py', 'test_connection.py', 'test_messages.py', 'test_connection.py', 'test_messages.py', 'test_exceptions.py']"
+98f236f89529d317628fe8ee3d4d0564e675f68d,Aymeric Augustin,2024-09-10T08:01:49+02:00,"Run handler only when opening handshake succeeds.
+
+When process_request() or process_response() returned a HTTP response
+without calling accept() or reject() and with a status code other than
+101, the connection handler used to start, which was incorrect.
+
+Fix #1419.
+
+Also move start_keepalive() outside of handshake() and bring it together
+with starting the connection handler, which is more logical.",['d19ed267b5e04ded752f78da6c85ad2905cf89e5'],False,"['changelog.rst', 'client.py', 'server.py', 'server.py', 'server.py', 'test_server.py', 'test_server.py', 'test_server.py']"
+36409237c9377fb8fc2fbb90f9f74192777b518c,Aymeric Augustin,2024-09-21T19:04:08+02:00,"Wait until state is CLOSED to acces close_exc.
+
+Fix #1449.",['20739e03ec6ccb010391b5179315368a2dd3a594'],False,"['changelog.rst', 'connection.py', 'connection.py']"
+a0b20f081d7ae48409c6b79ed16bbc261d5109f9,Aymeric Augustin,2024-09-22T21:16:26+02:00,"Document that only asyncio supports keepalive.
+
+Fix #1508.",['d62e423744b3e20ef6405019f96a63faa21612a2'],False,['keepalive.rst']
+524dd4afa8dc2a0d17ab08f20f592af03c165db1,Aymeric Augustin,2024-09-26T23:11:28+02:00,"Avoid making a copy of large frames.
+
+This isn't very significant compared to the cost of compression.
+
+It can make a real difference for decompression.",['baadc33364131ff7236249c9077ae10b561395b6'],False,"['changelog.rst', 'permessage_deflate.py', 'frames.py', 'test_permessage_deflate.py']"
+07dc56443acd8aaac4d79db6a30e450d0073137d,Aymeric Augustin,2024-09-27T21:44:36+02:00,"Add asyncio & threading examples to the homepage.
+
+Fix #1437.",['524dd4afa8dc2a0d17ab08f20f592af03c165db1'],False,"['index.rst', 'echo.py', 'hello.py', 'ruff.toml', 'echo.py', 'hello.py']"
+bc4b8f2776cd4da9aee2e67f66764bf26a5ad09e,Aymeric Augustin,2024-09-30T21:07:28+02:00,"Add option to force sending text or binary frames.
+
+Fix #1515.",['21987f96ad93f8c8bbf0b8ea99f3a18a52335730'],False,"['connection.py', 'test_connection.py']"
+e5182c95a3332535a034c409d59463afbd760f0c,Aymeric Augustin,2024-10-13T21:45:17+02:00,"Blind fix for coverage failing in GitHub Actions.
+
+It doesn't fail locally.",['b2f0a7647f1402c84a8dabb391c3ca7371975eb3'],False,['pyproject.toml']
+1387c976833956ea4d44ed0bd541fe648a065ed7,Aymeric Augustin,2024-10-25T13:26:52+02:00,"Rewrite sync Assembler to improve performance.
+
+Previously, a latch was used to synchronize the user thread reading messages and
+the background thread reading from the network. This required two thread switches
+per message.
+
+Now, the background thread writes messages to queue, from which the user thread
+reads. This allows passing several frames at each thread switch, reducing the
+overhead.
+
+With this server code:
+
+    async def test(websocket):
+        for i in range(int(await websocket.recv())):
+            await websocket.send(f""{{\""iteration\"": {i}}}"")
+
+    async with serve(test, ""localhost"", 8765) as server:
+        await server.serve_forever()
+
+and this client code:
+
+    with connect(""ws://localhost:8765"", compression=None) as websocket:
+        websocket.send(""1_000_000"")
+        for message in websocket:
+            pass
+
+an unscientific benchmark (running it on my laptop) shows a 2.5x speedup,
+going from 11 seconds to 4.4 seconds. Setting a very large recv_bufsize
+and max_size doesn't yield significant further improvement.
+
+Flow control was tested by inserting debug logs in maybe_pause/resume()
+and by measuring the wait for the recv_flow_control lock. It showed the
+expected behavior of pausing and unpausing coupled with some wait time.
+
+The new implementation mirrors the asyncio implementation and gains the
+option to prevent or force decoding of frames.
+
+Fix #1376 for the threading implementation.",['e5182c95a3332535a034c409d59463afbd760f0c'],False,"['changelog.rst', 'client.py', 'messages.py', 'server.py', 'client.py', 'connection.py', 'messages.py', 'server.py', 'test_connection.py', 'test_messages.py', 'test_connection.py', 'test_messages.py']"
+8315d3cbd356fb2fbbe3fd03e189e3750a4d0399,Aymeric Augustin,2024-10-25T16:18:30+02:00,"Close the connection with code 1007 on invalid UTF-8.
+
+Fix #1523.",['6c9e3f48ff48dd4ad025f307e68d1be3c0687b4e'],False,"['features.rst', 'connection.py', 'messages.py', 'frames.py', 'connection.py', 'messages.py', 'test_connection.py', 'test_connection.py']"
+0d2e246f4ee44ece6f74066cfe608e0df906e312,Aymeric Augustin,2024-10-25T16:36:51+02:00,Various fixes for the compliance test suite.,['8315d3cbd356fb2fbbe3fd03e189e3750a4d0399'],False,"['README.rst', 'client.py', 'server.py', 'fuzzingclient.json', 'fuzzingserver.json', 'client.py', 'server.py']"
+6cea05e51d50455d66e90a1888aba9be8e8809db,Aymeric Augustin,2024-10-26T08:06:21+02:00,"Support HTTP response without Content-Length.
+
+Fix #1531.",['0d2e246f4ee44ece6f74066cfe608e0df906e312'],False,"['connection.py', 'exceptions.py', 'connection.py', 'test_client.py', 'test_client.py']"
+018d2e5cf56ff03690bcbf271d188e76d59c62f3,Aymeric Augustin,2024-10-27T07:59:35+01:00,"Explain application-level keepalives.
+
+Fix #1514.",['3b2c5223f7213b130d1469535fccbf9c3d08c4a9'],False,['keepalive.rst']
+810bdeb7943e4cc0dcb662ef27ea764e31740e05,Aymeric Augustin,2024-11-01T12:35:38+01:00,"Report size correctly in PayloadTooBig.
+
+Previously, it was reported incorrectly for fragmented messages.
+
+Fix #1522.",['e44d79559d16661df4709c1b54150d735f85ae54'],False,"['changelog.rst', 'exceptions.py', 'permessage_deflate.py', 'frames.py', 'framing.py', 'protocol.py', 'test_exceptions.py', 'test_protocol.py']"
+cdeb882865145399ee0fb7d0e7623418916d6b78,Aymeric Augustin,2024-11-03T08:48:53+01:00,"Don't log an error when process_request returns a response.
+
+Fix #1513.",['810bdeb7943e4cc0dcb662ef27ea764e31740e05'],False,"['client.py', 'server.py', 'protocol.py', 'server.py', 'client.py', 'server.py', 'test_connection.py', 'test_server.py', 'test_protocol.py']"
+76f6f573e2ecb279230c2bf56c07bf4d4f717147,Aymeric Augustin,2024-11-03T09:11:51+01:00,"Factor out backport of assertNoLogs.
+
+Fix previous commit on Python 3.9.",['cdeb882865145399ee0fb7d0e7623418916d6b78'],False,"['test_connection.py', 'test_server.py', 'test_protocol.py', 'utils.py', 'utils.py']"
+9b3595d8d4d0573e00209f9e920f6a6fab981fa9,Aymeric Augustin,2024-11-04T22:58:18+01:00,"Remove stack traces from INFO and WARNING logs.
+
+Fix #1501.",['0a5a79c224c9be97f79909f7218fd1da7b2acabb'],False,"['client.py', 'connection.py', 'client.py', 'protocol.py', 'test_connection.py', 'test_client_server.py', 'test_protocol.py']"
+5f34e2741e94ac21ef99e3dc212aa152d77d1a37,Aymeric Augustin,2024-11-09T08:55:26+01:00,Fix remaining instances of shortcut imports.,['9b3595d8d4d0573e00209f9e920f6a6fab981fa9'],False,"['broadcast.rst', 'keepalive.rst', 'server.py']"
+083bcacd485a12dc1f9c6b98123bb92fafa4a9cf,Aymeric Augustin,2024-11-11T18:50:43+01:00,"Import ConnectionClosed from websockets.exceptions.
+
+Fix #1539.",['e9fc77da927793d05072163d61e137dd35f97e4d'],False,"['client.rst', 'server.rst', 'tutorial1.rst', 'client.py', 'client.py']"
+303483412dc5b420d09c1421792b3f8b99c323e6,Aymeric Augustin,2024-11-11T18:30:36+01:00,"Support recv() after the connection is closed.
+
+Fix #1538.",['bdfc8cf90301b528eebfbd0ef8a31e5a2fc7d5f7'],False,"['changelog.rst', 'messages.py', 'messages.py', 'test_connection.py', 'test_messages.py', 'test_connection.py', 'test_messages.py']"
+9a2f39fc66fd2427f904e551b1cc5f3995b02217,Aymeric Augustin,2024-11-11T21:13:39+01:00,"Support max_queue=None like the legacy implementation.
+
+Fix #1540.",['303483412dc5b420d09c1421792b3f8b99c323e6'],False,"['changelog.rst', 'client.py', 'connection.py', 'messages.py', 'server.py', 'client.py', 'connection.py', 'messages.py', 'server.py', 'test_connection.py', 'test_messages.py', 'test_connection.py', 'test_messages.py']"
+de2e7fb8b7eaca56d633ae7d2ffffdbb212048a1,Aymeric Augustin,2024-11-11T21:40:26+01:00,"Add close_code and close_reason to new implementations.
+
+Also add state to threading implementation.
+
+Fix #1537.",['9a2f39fc66fd2427f904e551b1cc5f3995b02217'],False,"['client.rst', 'common.rst', 'server.rst', 'client.rst', 'common.rst', 'server.rst', 'connection.py', 'protocol.py', 'connection.py', 'test_connection.py', 'test_connection.py']"
+d0015c93f49511eb8dd073caa6a3a338979f741b,Aymeric Augustin,2024-11-13T07:51:11+01:00,"Fix refactoring error in a78b5546.
+
+Fix #1546.",['7438b8ebee3f6ef59c15b86d627d32f98f49df8f'],False,['health_check_server.py']
+59d4dcf779fe7d2b0302083b072d8b03adce2f61,Aymeric Augustin,2024-11-13T23:00:22+01:00,"Reintroduce InvalidMessage.
+
+This improves compatibility with the legacy implementation and clarifies
+error reporting.
+
+Fix #1548.",['d8891a101d7cfc2cf7e01de078ada7c93a264ebd'],False,"['changelog.rst', 'exceptions.rst', '__init__.py', 'client.py', 'client.py', 'exceptions.py', 'client.py', 'exceptions.py', 'server.py', 'server.py', 'test_client.py', 'test_server.py', 'test_exceptions.py', 'test_client.py', 'test_server.py', 'test_client.py', 'test_exceptions.py', 'test_server.py']"
+197b3ec2c7acf3a3804a94c0c02ed8e27051b0f0,Aymeric Augustin,2025-01-03T22:50:31+01:00,"Don't crash when acknowledging a cancelled ping.
+
+Fix #1566.",['d852df7dd6324eaee17fc848f029ada371678cbe'],False,"['connection.py', 'test_connection.py', 'test_connection.py']"
+2abf77fb1ce67b3c5995fb63eeea6b829d96c0fb,Aymeric Augustin,2025-01-04T22:38:44+01:00,"Improve consistency of convenience imports.
+
+APIs available as convenience imports should have their types also
+available as convenienc imports.
+
+Fix #1560.",['197b3ec2c7acf3a3804a94c0c02ed8e27051b0f0'],False,"['upgrade.rst', '__init__.py', 'datastructures.py', 'frames.py', 'http11.py', 'test_exports.py']"
+e6d0ea1d6b13a979924329d02fb82f79d82c7236,Aymeric Augustin,2025-01-04T10:18:38+01:00,"Read chunked HTTP responses.
+
+Fix #1550.",['2abf77fb1ce67b3c5995fb63eeea6b829d96c0fb'],False,"['client.py', 'http11.py', 'server.py', 'test_client.py', 'test_http11.py', 'test_server.py']"
+668e56cf5d405d5f418d97d183e76fc36d21f857,Aymeric Augustin,2025-01-10T22:26:15+01:00,"Fix Connection.recv(timeout=0) in the sync implementation.
+
+Fix #1552.",['916f841815070a0374434b13b9c91829a7e7a522'],False,"['changelog.rst', 'messages.py', 'test_messages.py']"
+031ec31b70adc527836c5565a7809724fb888c9c,Aymeric Augustin,2025-01-11T10:11:59+01:00,"Prevent close() from blocking when reading is paused.
+
+Fix #1555.",['6317c00cc5af245116781ddfde518ec004de672e'],False,"['changelog.rst', 'messages.py', 'messages.py', 'test_messages.py']"
+e7a098e1a0d5dffcac5f0600703c4ec2de0be48a,Aymeric Augustin,2025-01-12T09:00:51+01:00,"Prevent AssertionError in the recv_events thread.
+
+close_socket() was interacting with the protocol, namely calling
+protocol.receive_of(), without locking the mutex. This created the
+possibility of a race condition.
+
+If two threads called receive_eof() concurrently, the second one
+could return before the first one finished running it. This led to
+receive_eof() returning (in the second thread) before the connection
+state was CLOSED, breaking an invariant.
+
+This race condition could be triggered reliably by shutting down the
+network (e.g., turning wifi off), closing the connection, and waiting
+for the timeout. Then, close() calls close_socket() — this happens in
+the `raise_close_exc` branch of send_context(). This unblocks the read
+in recv_events() which calls close_socket() in the `finally:` branch.
+
+Fix #1558.",['031ec31b70adc527836c5565a7809724fb888c9c'],False,"['connection.py', 'test_client.py']"
+613f3f0ef83a0c80ae49a42766fb634295216c5c,Aymeric Augustin,2025-01-19T18:58:20+01:00,"Prevent close() from blocking when reading is paused.
+
+Closing the transport normally is achieved with transport.write_eof().
+
+Closing it in abnormal situations relied on transport.close(). However,
+that didn't lead to connection_lost() when reading is paused.
+
+Replacing it with transport.abort() ensures that buffers are dropped
+(which is what we want in abnormal situations) and connection_lost()
+called quickly.
+
+Fix #1555 (for real!)",['e7a098e1a0d5dffcac5f0600703c4ec2de0be48a'],False,"['changelog.rst', 'client.py', 'connection.py', 'server.py', 'test_client.py']"
+fc7b151fdfbc092a8d2062ef522d374074153cfe,Aymeric Augustin,2025-01-21T22:32:30+01:00,Add option to set pong waiters on connection close.,['0fac3829353905c2079e05c36958a294b2b49cf1'],False,"['connection.py', 'test_connection.py']"
+ee0d7441940131cc30b0f5a9a2afc905bb490564,Aymeric Augustin,2025-01-24T21:15:08+01:00,Avoid shadowing an import with another import.,['8f12d8fd16d8945cbb7ad2d37962c47c16cb804f'],False,"['pyproject.toml', '__init__.py', 'typing.py']"
+bba423e510cc422e27dfd77a95771d208e3e766a,Aymeric Augustin,2025-01-23T21:22:14+01:00,"Add type overloads for recv and recv_streaming.
+
+Fix #1578.",['ee0d7441940131cc30b0f5a9a2afc905bb490564'],False,"['changelog.rst', 'pyproject.toml', 'connection.py', 'messages.py', 'connection.py', 'messages.py']"
+bd1796625de9a087229bb805acae86b414a4449c,Aymeric Augustin,2025-01-25T14:19:29+01:00,Fix names of environment variables in docs.,['1e62b3c384a9fc345c661ebdd66a2a1a0fbbff52'],False,['variables.rst']
+4a89e5616ffed1a8662fe195ad14827bb93a9bed,Aymeric Augustin,2025-01-25T17:18:27+01:00,"Add support for SOCKS proxies.
+
+Fix #475.",['4ea521f62dfbda4335f21db6604260c83a0fac67'],False,"['changelog.rst', 'features.rst', 'index.rst', 'proxies.rst', 'client.py', 'client.py', 'version.py', 'test_client.py', 'proxy.py', 'requirements.txt', 'test_client.py', 'tox.ini']"
+321be894176262a74a0b020aa1327f2aaca728ca,Aymeric Augustin,2025-01-28T22:42:11+01:00,Improve error handling for SOCKS proxy.,['10175f7a41ea1cf17aff7983d7eace3c2e4da5c0'],False,"['exceptions.rst', '__init__.py', 'client.py', 'exceptions.py', 'client.py', 'test_client.py', 'test_server.py', 'test_client.py', 'test_server.py', 'test_exceptions.py']"
+a00c18436a8c1500928f032f7131fa226f745334,Aymeric Augustin,2025-01-29T21:38:33+01:00,"Support the legacy pattern for setting User-Agent.
+
+Support setting it with additional_headers for backwards compatibility
+with the legacy implementation and the API until websoockets 10.4.
+
+Before this change, the header was added twice: once with the custom
+value and once with the default value.
+
+Fix #1583.",['321be894176262a74a0b020aa1327f2aaca728ca'],False,"['upgrade.rst', 'client.py', 'client.py', 'test_client.py', 'test_client.py']"
+ec706c922deeaf6fcf98174d4b2f16a6819117c7,Aymeric Augustin,2025-01-26T21:21:49+01:00,"Add support for HTTP(S) proxies.
+
+Fix #364.",['e5e85d21a07995ac993c325c7b2c38441c2cbf83'],False,"['changelog.rst', 'features.rst', 'proxies.rst', 'client.py', 'client.py', 'test_client.py', 'proxy.py', 'test_client.py', 'utils.py']"
+4b9caad779c3c995845abb099c185e7d6009570f,Aymeric Augustin,2025-02-02T23:15:59+01:00,"Add a router based on werkzeug.routing.
+
+Fix #311.",['602d7195c09c3c568bfd0268311a7b07a07ffb3d'],False,"['conf.py', 'client.rst', 'server.rst', 'changelog.rst', 'server.rst', 'features.rst', 'server.rst', 'requirements.txt', '__init__.py', 'router.py', 'server.py', 'router.py', 'server.py', 'server.py', 'test_router.py', 'server.py', 'test_router.py', 'test_exports.py', 'tox.ini']"
+0bdfbd1dbe72ce3770428325eb4cfa6f3952773c,Forrest Li,2025-02-04T18:38:27-05:00,Fix incorrect asyncio import in README,['dde3716725332f76d7f62fdedfde172017bd02b8'],False,['README.rst']
+5b516463c9a2ab9cf76ea087f0687cc0c8d54f0c,Aymeric Augustin,2025-02-07T10:17:51+01:00,"Revert ""Disable PyPy in CI.""
+
+This reverts commit 1e62b3c384a9fc345c661ebdd66a2a1a0fbbff52.
+
+Fix #1581.",['0bdfbd1dbe72ce3770428325eb4cfa6f3952773c'],False,['tests.yml']
+2dd33c86dfac2861d2adddb6e32eac9d1787a221,Aymeric Augustin,2025-02-08T17:49:02+01:00,"Add guide for deployment to Koyeb.
+
+Fix #1369.",['90db2de19feb1bd6147f2335f9facdec9f87e690'],False,"['fly.rst', 'heroku.rst', 'index.rst', 'koyeb.rst', 'spelling_wordlist.txt', 'Procfile', 'app.py', 'requirements.txt']"
+277f0f80e00fca87a9dbda8f5766d8dbf1347eda,Aymeric Augustin,2025-02-09T16:24:39+01:00,"Switch tutorial to Koyeb.
+
+Fix #1299.",['2dd33c86dfac2861d2adddb6e32eac9d1787a221'],False,"['koyeb.rst', 'tutorial3.rst', 'spelling_wordlist.txt', 'app.py', 'main.js']"
+755eac176700548d430ef580c4ad1128a096674a,Aymeric Augustin,2025-02-09T17:28:02+01:00,"Simplify pattern for shutting down servers.
+
+This avoids having to create manually a future. Also, it's robust to
+receiving multiple times the signal.
+
+Fix #1593.",['277f0f80e00fca87a9dbda8f5766d8dbf1347eda'],False,"['client.rst', 'server.rst', 'haproxy.rst', 'nginx.rst', 'tutorial3.rst', 'deployment.rst', 'app.py', 'app.py', 'app.py', 'app.py', 'app.py', 'app.py', 'app.py', 'app.py', 'shutdown_client.py', 'shutdown_server.py', 'app.py', 'server.py']"
+930defe196547aba051dbac8d409d6008a86f454,Aymeric Augustin,2025-02-09T18:57:13+01:00,Fix signal name.,['9f01cefde6f0d55de8bd2738a9601ddf661a1db1'],False,['app.py']
+4a2cfd5eaccb8e48971d21f65c4d04cf766a273f,Aymeric Augustin,2025-02-09T20:30:33+01:00,Assorted fixes to the docs.,['476aaac5bd146f82c8b30658233897acaedbe82e'],False,"['index.rst', 'client.rst', 'common.rst', 'server.rst', 'features.rst', 'index.rst', 'client.rst', 'common.rst', 'server.rst', 'spelling_wordlist.txt', 'design.rst']"
+7bfb1140e1c19aa3b59ecf2b08bde56a82cfe04a,Aymeric Augustin,2025-02-15T13:48:51+01:00,"Add standalone guide to enable debug logs.
+
+Pointing to this information is frequently needed in the issue tracker.",['74a7ac20a7009d68cd4a38705d8aac969a17e78a'],False,"['common.rst', 'autoreload.rst', 'debugging.rst', 'index.rst', 'tutorial1.rst']"
+61a6a7a99534e2522773476fc72ca615f5a6ea97,Aymeric Augustin,2025-02-15T21:48:27+01:00,"Clean up quick start guides.
+
+* Move most examples back to the getting started section.
+* Add a dedicated howto on encryption.
+
+And some drive-by fixes.
+
+Refs #1209.",['82dfd83cee4814f27867c909da785ebe3228cbf8'],False,"['koyeb.rst', 'encryption.rst', 'index.rst', 'quickstart.rst', 'examples.rst', 'index.rst', 'server.rst', 'compression.rst', 'proxies.rst', 'routing.rst', 'security.rst', 'client.py', 'counter.css', 'counter.html', 'counter.js', 'counter.py', 'server.py', 'show_time.html', 'show_time.js', 'show_time.py', 'sync_time.py', 'client.py', 'show_time_2.py', 'client.py', 'localhost.pem', 'server.py', 'router.py', 'router.py']"
+667e418ae474235c2bc26024df11c8e1d573d27a,Aymeric Augustin,2025-02-15T22:55:58+01:00,"Review how-to guides, notably the patterns guide.
+
+Fix #1209.",['e934680c21b719bad631d8a6ee12bbc54c783601'],False,"['conf.py', 'autoreload.rst', 'debugging.rst', 'django.rst', 'extensions.rst', 'index.rst', 'patterns.rst', 'changelog.rst']"
+963f13f0bc9ed72afc38fdc0f373b2549744d570,Aymeric Augustin,2025-02-16T08:41:55+01:00,"Restore display of close code and reason.
+
+Fix #1591.",['667e418ae474235c2bc26024df11c8e1d573d27a'],False,['__main__.py']
+bc3fd2946a67276faff6e1a1043e6f1f1d0ad69f,Aymeric Augustin,2025-02-16T09:22:55+01:00,"Simplify enabling VT100 mode on Windows.
+
+Arguably, this relies on a bug, but:
+
+* The current implementation was vulnerable to platform-specific bugs,
+  as highlighted in discussions of VT100 on Windows in the Python bug
+  tracker, while the new one is clearly not going to cause harm.
+* If the bug in Python is fixed, hopefully we will gain a proper way to
+  enable VT100.",['963f13f0bc9ed72afc38fdc0f373b2549744d570'],False,['__main__.py']
+a1ba01db142459db0ea6f7659b3a5f4962749fa6,Aymeric Augustin,2025-02-16T11:32:49+01:00,"Rewrite interactive client (again) without threads.
+
+Fix #1592.",['bc3fd2946a67276faff6e1a1043e6f1f1d0ad69f'],False,['__main__.py']
+5fa24bbb4aa5e0ee4dcc2cf1ce186f3ab68349a6,Aymeric Augustin,2025-02-26T06:43:51+01:00,"Exit cleanly the interactive client on ^C.
+
+Fix #1599.",['d0e60d319f95cfab19ac027410dbf07799c76c1d'],False,['cli.py']
+6385bdd7e32ac052bf555185259d60a265aef766,John L. Villalovos,2025-04-10T12:59:58-07:00,"fix: allow 'Content-Length' = ""0""
+
+Shelly devices send a 'Content-Length' header with a value of ""0"".
+Allow this as this also means there is not a request body.
+
+In addition give a bit more detail in the error message.
+
+Closes: #1616",['bb78c20c1779ee6d3815e7d2ab41a4d36c6467a3'],False,"['http11.py', 'test_http11.py']"
+b22f1da01a99a4cfcb8d25516cb506afa121f231,Aymeric Augustin,2025-04-12T09:18:09+02:00,"Fix broken link in tutorial.
+
+Fix #1613.",['fa4509201dd6aa6e2ac168877f02351f0b2e2dcd'],False,['tutorial1.rst']
+5cd37cdf38fe508640a5a9acd56cce2d9242b7da,Aymeric Augustin,2025-04-14T21:28:58+02:00,"Add support for HTTP/1.0 proxies.
+
+It is legal to answer an HTTP/1.1 request with an HTTP/1.0 response.
+
+Fix #1609.",['b22f1da01a99a4cfcb8d25516cb506afa121f231'],False,"['changelog.rst', 'client.py', 'http11.py', 'client.py', 'test_http11.py']"
+3128f5619de15991ec2af93d68c9c6626c6a5ae0,Aymeric Augustin,2025-04-22T08:53:25+02:00,"Fix help(websockets) when werkzeug isn't installed.
+
+Fix #1621.",['77cf665ad49070b596545c711f0cf38b9ffbff69'],False,"['client.py', 'router.py', 'client.py', 'router.py']"
+eb47e347ec33fa9a4f50a32ebde6192880c1808c,Aymeric Augustin,2025-04-22T08:34:51+02:00,"Support separate limits for messages and fragments.
+
+Fix #1602.",['3128f5619de15991ec2af93d68c9c6626c6a5ae0'],False,"['misc.rst', 'changelog.rst', 'client.py', 'connection.py', 'server.py', 'client.py', 'exceptions.py', 'protocol.py', 'server.py', 'client.py', 'connection.py', 'server.py', 'test_protocol.py']"
+fc7cafea01ebe3ec1738160ac62889fd80653255,Aymeric Augustin,2025-05-26T21:19:02+02:00,"Fix link in issue template.
+
+Fix #1630.",['1c8032acb16b2de9d3a63a747eb0ee15feffb41d'],False,['issue.md']
+356dc7018235462179cdd61b3be00966adebb6cd,Aymeric Augustin,2025-07-15T19:59:25+02:00,"Declare Router even when werkzeug isn't installed.
+
+Fix #1639.",['194c49ae9366b1492bb0ba19bf1decc8f1504094'],False,['router.py']
+c2bc41b00d6cb943d9235f01c420562b9ad532b1,Aymeric Augustin,2025-07-15T22:47:32+02:00,"Implement strict typing for bytes.
+
+Fix #1641.",['2fdf3521c01614e710733f31795c5df278512021'],False,"['types.rst', 'connection.py', 'permessage_deflate.py', 'frames.py', 'http11.py', 'framing.py', 'protocol.py', 'protocol.py', 'speedups.pyi', 'streams.py', 'client.py', 'connection.py', 'typing.py', 'utils.py', 'tox.ini']"
+e57b31539b1c02b9534110e5ca7766c061bba607,Aymeric Augustin,2025-08-06T14:10:57+02:00,Support custom close code/reason in Server.close.,['ba1ce05542304b4fd251f1deee0471c21f6cfa71'],False,"['changelog.rst', 'server.py', 'test_server.py']"
+91abba4a561acd14a5005595654e060e8371c9a4,Aymeric Augustin,2025-08-07T12:14:35+02:00,"Create close coroutine only when scheduling it.
+
+Otherwise, this can lead to:
+
+    RuntimeWarning: coroutine 'Connection.close' was never awaited
+
+Fix #1647.",['e57b31539b1c02b9534110e5ca7766c061bba607'],False,"['client.rst', 'shutdown_client.py']"
+532c90155ca45c3021d3bd0f8dec96ecb10b2f3f,Aymeric Augustin,2025-08-11T08:16:37+02:00,"Declare Router even when werkzeug isn't installed.
+
+Fix #1639 (again).
+
+This is the same change in the sync implementation as 356dc701
+in the asyncio implementation.",['5c809b0ae3641605c86e9f0d66136168b0d8bdd2'],False,['router.py']
+00be6a2cf4dfb587a2c884112d5b4212263870ca,Aymeric Augustin,2025-08-11T09:14:20+02:00,"Close HTTP response objects in case of errors.
+
+This avoids a warning on Python 3.15.",['532c90155ca45c3021d3bd0f8dec96ecb10b2f3f'],False,"['test_auth.py', 'test_client_server.py']"
+c19da91d66e35b3c8234159a3318ae4bad69f2f4,Aymeric Augustin,2025-08-12T19:40:41+02:00,Fix inconsistent indentation.,['7c0c0dabf59c432c3ce86b1fe1e91d0b7db4d3f4'],False,['release.yml']
+118660a85ad8afc95b6ae8ad47731d5a7fa79a4c,Aymeric Augustin,2025-08-13T09:33:51+02:00,Fix docs generation errors.,['947b81f346bc8c7698a0ffc4aa571c7446391afb'],False,"['django.rst', 'client.rst', 'server.rst', 'router.py', 'router.py']"
